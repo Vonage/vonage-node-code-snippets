@@ -1,0 +1,23 @@
+{
+  "name": "nexmo-node-quickstart",
+  "version": "0.1.0",
+  "description": "Nexmo Quickstart Samples for Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nexmo",
+    "node.js",
+    "quickstart",
+    "sms"
+  ],
+  "author": "Phil Leggetter <phil@leggetter.co.uk> (http://www.leggetter.co.uk)",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "nexmo": "^1.0.0-beta-5"
+  }
+}
