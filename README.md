@@ -22,7 +22,7 @@ node /path/to/example.js
 
 ## Request an Example
 
-Please [raise and issue](/issues) to request an example that isn't present within
+Please [raise and issue](https://github.com/nexmo-community/nexmo-node-quickstart/issues) to request an example that isn't present within
 the quickstart. Pull requests will be gratefully received.
 
 ## License
