@@ -9,4 +9,4 @@ var FROM_NUMBER = process.env.EXAMPLE_FROM_NUMBER;
 var Nexmo = require('nexmo');
 
 var nexmo = new Nexmo({apiKey: API_KEY, apiSecret: API_SECRET}, {debug:true});
-nexmo.message.sendSms(TO_NUMBER, FROM_NUMBER, 'Hello from Nexmo!');
+nexmo.message.sendSms(FROM_NUMBER, TO_NUMBER, 'Hello from Nexmo!');
