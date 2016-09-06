@@ -1,7 +1,7 @@
 # Nexmo Quickstart Examples for Node.JS
 
 The purpose of the quickstart guide is to provide simple examples focused
-on one goal. For example, sending and SMS, handling and incoming SMS webhook,
+on one goal. For example, sending an SMS, handling an incoming SMS webhook or
 making a Text to Speech call.
 
 ## Setup
@@ -13,7 +13,7 @@ For some of the examples you will need to [buy a number][buy-number].
 
 ## Running the Examples
 
-Run the examples using the following replacing `/path/to/example.js` with a path
+Run the examples using the following, replacing `/path/to/example.js` with a path
 to a real file:
 
 ```sh
@@ -22,8 +22,7 @@ node /path/to/example.js
 
 ## Request an Example
 
-Please [raise and issue](https://github.com/nexmo-community/nexmo-node-quickstart/issues) to request an example that isn't present within
-the quickstart. Pull requests will be gratefully received.
+Please [raise and issue](https://github.com/nexmo-community/nexmo-node-quickstart/issues) to request an example that isn't present within the quickstart. Pull requests will be gratefully received.
 
 ## License
 
