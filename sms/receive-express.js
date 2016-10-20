@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const server = app.listen(3000, () => {
+const server = app.listen(process.env.PORT || 3000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
 
@@ -19,14 +19,14 @@ storage.init();
 // Handle both GET and POST requests
 
 app.get('/inbound', (req, res) => {
-  handleQueries(req.query, res);
+  handleParams(req.query, res);
 });
 
 app.post('/inbound', (req, res) => {
-  handleQueries(req.body, res);
+  handleParams(req.body, res);
 });
 
-function handleQueries(params, res) {
+function handleParams(params, res) {
   if (!params.to || !params.msisdn) {
     console.log('This is not a valid inbound SMS message!');
   } else {
