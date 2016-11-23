@@ -23,18 +23,14 @@ app.post('/receipt', (req, res) => {
 });
 
 function handleParams(params, res) {
-  if (!params.status || !params.messageId) {
-    console.log('This is not a delivery receipt');
-  }
-  else {
-    if (params.status !== 'delivered') {
-      console.log('Fail: ' + params.status);
-    } else {
-      console.log('Success');
+  if (params.status !== 'delivered') {
+    console.log('Fail: ' + params.status);
+  } else {
+    console.log('Success');
 
-      /* params look like:
+    /* params look like:
 
-      { msisdn: '14155551234',
+    { msisdn: '14155551234',
       to: '12015556666',
       'network-code': '310090',
       messageId: '02000000FEA5EE9B',
@@ -42,9 +38,9 @@ function handleParams(params, res) {
       status: 'delivered',
       scts: '1610192240', // The Coordinated Universal Time (UTC)
       'err-code': '0',
-      'message-timestamp': '2016-10-19 22:40:30' }
-       */
+      'message-timestamp': '2016-10-19 22:40:30'
     }
+    */
   }
   res.status(200).end();
 }
