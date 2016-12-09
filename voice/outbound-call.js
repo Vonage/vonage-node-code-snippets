@@ -19,7 +19,7 @@ function sign(cert, applicationId) {
 		'application_id': applicationId,
 		 "jti": uuid.v1()
 	};
-  
+
   var token = jwt.sign(toSign, cert, {algorithm: 'RS256'});
   return token;
 }
@@ -61,7 +61,7 @@ app.get('/call', function (callReq, callRes) {
       callRes.json(body);
     }
   });
-  
+
 });
 
 app.get('/answer', function(req, res) {
@@ -71,16 +71,12 @@ app.get('/answer', function(req, res) {
       text: 'Hello from Nexmo!'
     }
   ];
-  
+
   res.json(ncco);
 });
 
 app.post('/event', function(req, res) {
   console.log(req.body);
-  
-  res.sendStatus(204);
-});
 
-app.listen(app.get('port'), function() {
-  console.log('Example app listening on port', app.get('port'));
+  res.sendStatus(204);
 });

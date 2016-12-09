@@ -9,7 +9,7 @@ app.use(require('body-parser').urlencoded({ extended: false }));
 app.get('/answer-webhook', function (req, res) {
   var from = req.query.from;
   var to = req.query.to;
-  
+
   // At this point you build an NCCO that fulfills your use case.
   // For the purposes of an example we'll just read out some text.
   var ncco = [
@@ -18,7 +18,7 @@ app.get('/answer-webhook', function (req, res) {
       text: 'Hello from Nexmo!'
     }
   ];
-  
+
   res.json(ncco);
 });
 

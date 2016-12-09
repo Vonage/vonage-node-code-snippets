@@ -7,16 +7,16 @@ function createApp() {
   nexmo.app.create('First Voice App', 'voice', 'http://example.com/answer', 'http://example.com/event', {}, function(err, res) {
     var appId = res.id;
     var privateKey = res.keys.private_key;
-    
+
     var privateKeyFile = __dirname + '/' + appId;
     require('fs').writeFileSync(privateKeyFile, privateKey);
     console.log('Private key written to', privateKeyFile)
-    
+
     makeCall(privateKeyFile);
   });
 }
 
-function makeCall(PRIVATE_KEY_FILE) {  
+function makeCall(PRIVATE_KEY_FILE) {
   var Nexmo = require('nexmo');
 
   var privateKey = require('fs').readFileSync(PRIVATE_KEY_FILE);
@@ -28,7 +28,7 @@ function makeCall(PRIVATE_KEY_FILE) {
     applicationId: appId,
     privateKey: privateKey
   });
-  
+
   nexmo.calls.create({
     to: [{
       type: 'phone',
