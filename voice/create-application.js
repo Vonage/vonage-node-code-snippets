@@ -1,8 +1,8 @@
 /* Voice Tutorial 2: Receiving calls to your Nexmo number
-   This example only create an Application for a voice app.
-   To make an action to incoming calls, you need to set the webhooks.
-   See recive-call-webhook.js
-
+   This example is an alternative to use Nexmo CLI to create an Application.
+   Run this code, then update your Dashboard with the App ID generated with this script.
+   See also: receive-call-webhook.js
+   
    API Referene: https://docs.nexmo.com/voice/voice-api/api-reference
  */
 

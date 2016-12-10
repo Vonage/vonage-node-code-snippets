@@ -1,3 +1,14 @@
+/* Voice Tutorial 2: Receiving calls to your Nexmo number
+   To receive incoming calls, you need to set the webhooks.
+   You need to create or update an existing Application wuth the webhook endpoints:
+   1) Answer URL (e.g. https://97855482.ngrok.io/answer)
+   2) Event URL (e.g. https://97855482.ngrok.io/event)
+   Also use the Application ID and the event webhook to assiciate with your
+   virtual number at https://dashboard.nexmo.com/your-numbers.
+
+   API Referene: https://docs.nexmo.com/voice/voice-api/api-reference
+ */
+
 'use strict';
 
 require('dotenv').config({path: __dirname + '/../.env'});
