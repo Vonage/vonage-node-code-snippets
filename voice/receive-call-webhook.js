@@ -11,8 +11,6 @@
 
 'use strict';
 
-require('dotenv').config({path: __dirname + '/../.env'});
-
 const app = require('express')();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -22,7 +20,7 @@ const server = app.listen(process.env.PORT || 4001, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
 
-app.get('/answer', function (req, res) {
+app.get('/answer', (req, res) => {
   let from = req.query.from;
   let to = req.query.to;
 
@@ -37,7 +35,7 @@ app.get('/answer', function (req, res) {
   res.json(ncco);
 });
 
-app.post('/event', function (req, res) {
+app.post('/event', (req, res) => {
   console.log(req.body);
   res.status(204).end();
 });

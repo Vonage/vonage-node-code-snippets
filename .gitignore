@@ -3,3 +3,5 @@ node_modules
 private.key
 .DS_Store
 .node-persist
+conversation
+chat

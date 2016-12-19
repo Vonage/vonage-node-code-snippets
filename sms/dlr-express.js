@@ -27,7 +27,7 @@ function handleParams(params, res) {
     console.log('Fail: ' + params.status);
   } else {
     console.log('Success');
-
+    console.log(params);
     /* params look like:
 
     { msisdn: '14155551234',
