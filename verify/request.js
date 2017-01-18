@@ -13,7 +13,7 @@ var verifyRequestId = null; // use in the check process
 nexmo.verify.request({number: TO_NUMBER, brand: BRAND_NAME}, function(err, result) {
   if(err) { console.error(err); }
   else {
-    verifyRequestId = result. request_id;
+    verifyRequestId = result.request_id;
     console.log('request_id', verifyRequestId);
   }
 });
