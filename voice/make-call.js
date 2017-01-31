@@ -31,7 +31,7 @@ nexmo.calls.create({
     type: 'phone',
     number: process.env.EXAMPLE_FROM_NUMBER
   },
-  answer_url: ['https://nexmo-community.github.io/ncco-examples/first_call_talk.json']
+  answer_url: ['https://gist.githubusercontent.com/girliemac/1bd791e808d63d9133bb0c43906355d5/raw/ae72d5204cfa5303a75deef8713b2f9f4316c2ee/ncco-test.json']
 }, (err, res) => {
   if(err) { console.error(err); }
   else { console.log(res); }

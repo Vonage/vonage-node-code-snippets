@@ -7,6 +7,18 @@
 
 'use strict';
 
+require('dotenv').config({path: __dirname + '/../.env'});
+const Nexmo = require('nexmo');
+const appId = 'c6b78717-db0c-4b8b-9723-ee91400137cf'; // Use your App ID, generated with the CLI
+const privateKey = require('fs').readFileSync(__dirname + '/private.key');
+
+const nexmo = new Nexmo({
+  apiKey: process.env.NEXMO_API_KEY,
+  apiSecret: process.env.NEXMO_API_SECRET,
+  applicationId: appId,
+  privateKey: privateKey
+});
+
 const app = require('express')();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -28,7 +40,7 @@ app.get('/answer', (req, res) => {
     },
     {
       'action': 'record',
-      'eventUrl': ['https://db95720f.ngrok.io/record'],
+      'eventUrl': ['https://0522c7a8.ngrok.io/record'],
       'endOnSilence': '3',
       'endOnKey' : '#',
       'beepStart': 'true'
@@ -49,9 +61,15 @@ app.post('/event', (req, res) => {
 });
 
 // Record action event endpoint
-// To retreive the mp3 messages, use fetch-recording.js
 app.post('/record', (req, res) => {
   console.log('*** Recording... ***');
   console.log(req.body);
+
+  let audioURL = req.body.recording_url;
+  let audioFile = audioURL.split('/').pop() + '.mp3';
+
+  nexmo.files.save(audioURL, audioFile, (err, response) => {
+    if(response) {console.log('The audio is downloaded: ' + audioFile + '.mp3');}
+  });
   res.status(204).end();
 });
