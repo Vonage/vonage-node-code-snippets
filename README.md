@@ -23,7 +23,7 @@ For some of the examples you will need to [buy a number](https://dashboard.nexmo
 
 ### Voice
 
-| Tutorial                                 | Code Smaple                              |
+| Tutorial                                 | Code Sample                              |
 | ---------------------------------------- | ---------------------------------------- |
 | [How to Make an Outbound Text-to-Speech Phone Call with Node.js](https://www.nexmo.com/blog/2017/01/12/make-outbound-text-speech-phone-call-node-js-dr/) | [make-calls.js](https://github.com/nexmo-community/nexmo-node-quickstart/blob/master/voice/make-call.js) |
 | [How to Handle Inbound Phone Calls with Node.js](https://www.nexmo.com/blog/2017/01/26/handle-inbound-text-speech-phone-call-node-js-dr/) | [receive-call-webhook.js](https://github.com/nexmo-community/nexmo-node-quickstart/blob/master/voice/receive-call-webhook.js) |
