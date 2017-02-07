@@ -12,16 +12,16 @@
     "quickstart",
     "sms"
   ],
-  "author": "Phil Leggetter <phil@leggetter.co.uk> (http://www.leggetter.co.uk)",
+  "author": "Phil Leggetter <phil@leggetter.co.uk> (http://www.leggetter.co.uk), Tomomi Imura <tomomi.imura@nexmo.com>",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "jsonwebtoken": "^7.1.9",
-    "nexmo": "^1.0.0-beta-5",
+    "nexmo": "^1.2.0",
     "node-persist": "^2.0.4",
     "node-uuid": "^1.4.7",
-    "request": "^2.74.0"
+    "request": "^2.79.0"
   }
 }
