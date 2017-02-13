@@ -3,8 +3,8 @@
 require('dotenv').config({path: __dirname + '/../.env'});
 
 const SERVER_BASE_URL = process.env.SERVER_BASE_URL;
-const FROM_NUMBER = process.env.EXAMPLE_FROM_NUMBER;
-const TO_NUMBER = process.env.EXAMPLE_TO_NUMBER;
+const FROM_NUMBER = process.env.FROM_NUMBER;
+const TO_NUMBER = process.env.TO_NUMBER;
 const ALT_TO_NUMBER = process.env.ALT_TO_NUMBER;
 
 const app = require('express')();

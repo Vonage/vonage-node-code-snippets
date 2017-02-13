@@ -16,11 +16,11 @@ function createApp() {
   });
 }
 
-function makeCall(PRIVATE_KEY_FILE) {
+function makeCall(PRIVATE_KEY) {
   var Nexmo = require('nexmo');
 
-  var privateKey = require('fs').readFileSync(PRIVATE_KEY_FILE);
-  var appId = require('path').basename(PRIVATE_KEY_FILE);
+  var privateKey = require('fs').readFileSync(PRIVATE_KEY);
+  var appId = require('path').basename(PRIVATE_KEY);
 
   var nexmo = new Nexmo({
     apiKey: process.env.NEXMO_API_KEY,
@@ -32,11 +32,11 @@ function makeCall(PRIVATE_KEY_FILE) {
   nexmo.calls.create({
     to: [{
       type: 'phone',
-      number: process.env.EXAMPLE_TO_NUMBER
+      number: process.env.TO_NUMBER
     }],
     from: {
       type: 'phone',
-      number: process.env.EXAMPLE_FROM_NUMBER
+      number: process.env.FROM_NUMBER
     },
     answer_url: ['https://nexmo-community.github.io/ncco-examples/first_call_talk.json']
   }, function(err, res) {

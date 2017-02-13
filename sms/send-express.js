@@ -5,7 +5,7 @@
 require('dotenv').config({path: __dirname + '/../.env'});
 const API_KEY = process.env.NEXMO_API_KEY;
 const API_SECRET = process.env.NEXMO_API_SECRET;
-const FROM_NUMBER = process.env.EXAMPLE_FROM_NUMBER;
+const FROM_NUMBER = process.env.FROM_NUMBER;
 
 const express = require('express');
 const bodyParser = require('body-parser');
