@@ -10,28 +10,36 @@
 'use strict';
 
 require('dotenv').config({path: __dirname + '/../.env'});
+
+const API_KEY = process.env.API_KEY;
+const API_SECRET = process.env.API_SECRET;
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const APPLICATION_ID = process.env.APPLICATION_ID;
+
+const TO_NUMBER = process.argv[2];
+const FROM_NUMBER = process.env.FROM_NUMBER;
+
 const Nexmo = require('nexmo');
 
-const appId = 'c6b78717-db0c-4b8b-9723-ee91400137cf'; // Use your App ID, generated with the CLI
-const privateKey = require('fs').readFileSync(__dirname + '/private.key');
+const privateKey = require('fs').readFileSync(PRIVATE_KEY);
 
 const nexmo = new Nexmo({
-  apiKey: process.env.NEXMO_API_KEY,
-  apiSecret: process.env.NEXMO_API_SECRET,
-  applicationId: appId,
-  privateKey: privateKey
+  apiKey: API_KEY,
+  apiSecret: API_SECRET,
+  applicationId: APPLICATION_ID,
+  privateKey: PRIVATE_KEY
 });
 
 nexmo.calls.create({
   to: [{
     type: 'phone',
-    number: process.argv[2]
+    number: TO_NUMBER
   }],
   from: {
     type: 'phone',
-    number: process.env.EXAMPLE_FROM_NUMBER
+    number: FROM_NUMBER
   },
-  answer_url: ['https://gist.githubusercontent.com/girliemac/1bd791e808d63d9133bb0c43906355d5/raw/ae72d5204cfa5303a75deef8713b2f9f4316c2ee/ncco-test.json']
+  answer_url: ['https://nexmo-community.github.io/ncco-examples/first_call_talk.json']
 }, (err, res) => {
   if(err) { console.error(err); }
   else { console.log(res); }
