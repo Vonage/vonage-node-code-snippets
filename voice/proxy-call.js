@@ -19,7 +19,7 @@ app.get('/proxy-call', (req, res) => {
       'action': 'connect',
       'eventUrl': ['https://18627fc4.ngrok.io/event'],
       'timeout': 45, // the default is 60
-      'from': process.env.VIRTUAL_NUMBER,
+      'from': process.env.FROM_NUMBER,
       'endpoint': [
         {
           'type': 'phone',
