@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Nexmo Two-Factor Authentication Demo</title>
+  <meta name="description" content="Nexmo SMS Demo">
+  <meta name="author" content="Tomomi Imura  @girlie_mac">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One">
+  <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css" integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJtE" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header class="flex-row">
+    <h1>Two-Factor Auth</h1>
+    <img class="logo" src="https://github.com/nexmo-community/send-sms-nodejs/blob/master/public/images/nexmo-white.png?raw=true">
+  </header>
+
+  <section id="main" role="main">
+    <p class="status"><%= message %></p>
+    <% if(locals.requestId) { %>
+      Try with another PIN if you have one.<br>
+      <form action="/verify" method="post">
+        <div class="fa fa-key"></div>
+        <input type="number" name="pin" placeholder="1234" required>
+        <input type="hidden" name="requestId" value="<%= requestId %>" >
+        <input type="submit" value="Verify PIN">
+      </form>
+    <% } %>
+
+  </section>
+
+  <p class="response"></p>
+
+  <footer class="flex-row">
+    Fork me on <a href="https://github.com/nexmo-community/nexmo-node-quickstart"><i class="fa fa-github fa-lg"></i>/nexmo-community</a>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+/* Color Theme
+#225378 dark blue
+#1695A3 teal
+#ACF0F2 pale blue
+#F3FFE2 pale yellow
+#EB7F00 orange
+*/
+body {
+  background: #225378;
+  color: #ACF0F2;
+}
+#main {
+  background: #1695A3;
+}
+.intro {
+  background: #F3FFE2;
+  color: #EB7F00
+} /* also .intro:before */
+a {
+  color: #EB7F00;
+}
+input[type=submit] {
+  background: #EB7F00;
+  color: #F3FFE2;
+}
+.fa-key {
+  background: #ACF0F2;
+  color: #1695A3;
+}
+
+
+
+html {
+  height: 100%;
+}
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Noto Sans', sans-serif;
+  background-size: cover;
+}
+h1, h2, h3 {
+  margin: 0;
+  text-rendering: optimizeLegibility;
+}
+footer {
+  max-width: 600px;
+  margin: auto;
+  text-align: right;
+}
+header {
+  max-width: 600px;
+  margin: 2em auto 1em;
+
+  display: -ms-flexbox;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+header h1 {
+  font-family: 'Alfa Slab One';
+  font-size: 2.4em;
+  font-weight: normal;
+}
+header .logo {
+  width: 120px;
+  display: block;
+}
+form {
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: flex-end;
+}
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-radius: 6px;
+  color: #333;
+  font-size: 1.1em;
+  padding: .75em 1em;
+  margin-bottom: 1em;
+}
+input:not(:last-of-type) {
+  margin-right: 0.5em;
+}
+input[type=tel] {
+  width: 170px;
+}
+input[type=text] {
+  flex-grow: 1;
+}
+input[type=submit]:active {
+  position: relative;
+  top: 2px;
+  left: 1px;
+}
+#main {
+  max-width: 600px;
+  margin: 1em auto 2em;
+  padding: 1em 1.5em 1.5em;
+  border-radius: 12px;
+  box-shadow: 3px 7px 10px rgba(0, 0, 0, 0.5);
+}
+.intro {
+  position: relative;
+  padding: 0 0.75em;
+  line-height: 46px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 2em;
+}
+.intro:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 50px;
+  top: 46px;
+  border: 10px solid;
+  border-color: #F3FFE2 transparent transparent #F3FFE2;
+}
+.response {
+  color: #f7d51b;
+  font-style: italic;
+  max-width: 600px;
+  margin: 1em auto 2em;
+}
+section[section] {
+  display: none; /* for IE < 11 */
+}
+.fa-key {
+  border-radius: 50%;
+  font-size: 2em;
+  padding: 5px;
+  margin-right: 0.5em;
+  margin-top: 1.5em;
+  position: relative;
+  top: -20px;
+}
+.status {
+  font-size: 1.5em;
+}
