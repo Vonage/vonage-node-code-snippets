@@ -32,11 +32,11 @@ function makeCall(PRIVATE_KEY_FILE) {
   nexmo.calls.create({
     to: [{
       type: 'phone',
-      number: process.env.EXAMPLE_TO_NUMBER
+      number: process.env.TO_NUMBER
     }],
     from: {
       type: 'phone',
-      number: process.env.EXAMPLE_FROM_NUMBER
+      number: process.env.VIRTUAL_NUMBER
     },
     answer_url: ['https://nexmo-community.github.io/ncco-examples/first_call_talk.json']
   }, function(err, res) {

@@ -37,7 +37,11 @@ nexmo.calls.create({
   }],
   from: {
     type: 'phone',
+<<<<<<<
     number: FROM_NUMBER
+=======
+    number: process.env.VIRTUAL_NUMBER
+>>>>>>>
   },
   answer_url: ['https://nexmo-community.github.io/ncco-examples/first_call_talk.json']
 }, (err, res) => {
