@@ -21,8 +21,6 @@ const FROM_NUMBER = process.env.FROM_NUMBER;
 
 const Nexmo = require('nexmo');
 
-const privateKey = require('fs').readFileSync(PRIVATE_KEY);
-
 const nexmo = new Nexmo({
   apiKey: API_KEY,
   apiSecret: API_SECRET,
