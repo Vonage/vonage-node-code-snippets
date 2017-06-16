@@ -19,6 +19,11 @@ const APPLICATION_ID = process.env.NEXMO_APPLICATION_ID;
 const TO_NUMBER = process.argv[2];
 const FROM_NUMBER = process.env.NEXMO_FROM_NUMBER;
 
+if(!TO_NUMBER) {
+  console.error('Please provide a number to call as a command line argument');
+  return;
+}
+
 const Nexmo = require('nexmo');
 
 const nexmo = new Nexmo({
