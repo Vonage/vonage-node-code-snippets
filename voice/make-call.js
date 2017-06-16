@@ -11,13 +11,13 @@
 
 require('dotenv').config({path: __dirname + '/../.env'});
 
-const API_KEY = process.env.API_KEY;
-const API_SECRET = process.env.API_SECRET;
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const API_KEY = process.env.NEXMO_API_KEY;
+const API_SECRET = process.env.NEXMO_API_SECRET;
+const PRIVATE_KEY = __dirname +"/../"+ process.env.PRIVATE_KEY_FILE;
 const APPLICATION_ID = process.env.APPLICATION_ID;
 
 const TO_NUMBER = process.argv[2];
-const FROM_NUMBER = process.env.FROM_NUMBER;
+const FROM_NUMBER = process.env.NEXMO_FROM_NUMBER;
 
 const Nexmo = require('nexmo');
 
