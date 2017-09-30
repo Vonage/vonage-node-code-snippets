@@ -14,7 +14,7 @@ const nexmo = new Nexmo({
   apiSecret: NEXMO_API_SECRET,
   applicationId: NEXMO_APPLICATION_ID,
   privateKey: NEXMO_PRIVATE_KEY
-});
+}, {debug: true});
 
 nexmo.calls.get({}, (err, res) => {
   if(err) { console.error(err); }
