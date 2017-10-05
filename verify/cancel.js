@@ -10,7 +10,12 @@ if(!REQUEST_ID) {
 }
 
 var Nexmo = require('nexmo');
-var nexmo = new Nexmo({apiKey: NEXMO_API_KEY, apiSecret: NEXMO_API_SECRET}, {debug:true});
+var nexmo = new Nexmo({
+  apiKey: NEXMO_API_KEY,
+  apiSecret: NEXMO_API_SECRET
+}, {
+  debug:true
+});
 
 nexmo.verify.control({request_id: REQUEST_ID, cmd: 'cancel'}, function(err, result) {
   if(err) { console.error(err); }
