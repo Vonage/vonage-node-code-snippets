@@ -10,19 +10,16 @@ const onInboundCall = (request, response) => {
       text: 'Please enter a digit'
     },
     {
-      action: 'input'
+      action: 'input',
+      eventUrl: [`${request.protocol}://${request.get('host')}/webhooks/dtmf`]
     }
   ]
 
   response.json(ncco)
 }
 
-const onEvent = (request, response) => {
+const onInput = (request, response) => {
   const dtmf = request.query.dtmf || request.body.dtmf
-
-  if (!dtmf) {
-    return response.status(204).send()
-  }
 
   const ncco = [{
     action: 'talk',
@@ -35,7 +32,7 @@ const onEvent = (request, response) => {
 app
   .get('/webhooks/answer', onInboundCall)
   .post('/webhooks/answer', onInboundCall)
-  .get('/webhooks/event', onEvent)
-  .post('/webhooks/event', onEvent)
+  .get('/webhooks/dtmf', onInput)
+  .post('/webhooks/dtmf', onInput)
 
 app.listen(3000)
