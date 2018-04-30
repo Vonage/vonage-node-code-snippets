@@ -15,10 +15,10 @@
   "author": "Phil Leggetter <phil@leggetter.co.uk> (http://www.leggetter.co.uk), Tomomi Imura <tomomi.imura@nexmo.com>",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.15.2",
+    "body-parser": "^1.18.2",
     "dotenv": "^2.0.0",
     "ejs": "^2.5.6",
-    "express": "^4.14.0",
+    "express": "^4.16.3",
     "jsonwebtoken": "^7.1.9",
     "nexmo": "^2.0.2",
     "node-persist": "^2.0.4",
