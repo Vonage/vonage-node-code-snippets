@@ -15,7 +15,6 @@ const onInboundCall = (request, response) => {
   response.json(ncco)
 }
 
-app.get('/webhook/answer', onInboundCall)
-app.post('/webhook/event', (request, response) => { response.sendStatus(200); })
+app.get('/webhooks/answer', onInboundCall)
 
 app.listen(3000)
