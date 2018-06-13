@@ -18,23 +18,12 @@ const nexmo = new Nexmo({
 
 const TEXT = 'This is some sample text to speech text. It could go on and on and never end.';
 
-nexmo.calls.talk.start(CALL_UUID, { text: TEXT, voiceName: 'Emma', loop: 1 }, (err, res) => {
+nexmo.calls.talk.start(CALL_UUID, { text: TEXT, voiceName: 'Emma', loop: 0 }, (err, res) => {
   if(err) { console.error(err); }
   else {
       console.log(res);
   }
 });
-
-function stop_talk (){
-    nexmo.calls.talk.stop(CALL_UUID, (err, res) => {
-        if(err) { console.error(err); }
-        else {
-            console.log(res);
-        }
-    });
-}
-
-setTimeout(stop_talk, 2000); // delay 2 seconds
 
 
 

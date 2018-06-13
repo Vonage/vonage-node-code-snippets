@@ -32,7 +32,7 @@ function unearmuff (){
     });
 }
 
-setTimeout(unearmuff, 5000); // delay 5 seconds
+setTimeout(unearmuff, 3000); // delay 3 seconds
 
 
 
