@@ -13,7 +13,7 @@ const nexmo = new Nexmo({
   apiSecret: NEXMO_API_SECRET
 });
 
-nexmo.numberInsight.get({level: 'basic', number: NEXMO_TO_LOOKUP}, (error, result) => {
+nexmo.numberInsight.get({level: 'advanced', number: NEXMO_TO_LOOKUP}, (error, result) => {
   if(error) {
     console.error(error);
   }
