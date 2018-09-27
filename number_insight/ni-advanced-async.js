@@ -1,16 +1,9 @@
 const app = require('express')()
-const bodyParser = require('body-parser')
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
-
-app
-  .route('/webhooks/insight')
-  .post(handleInsight)
+app.post('/webhooks/insight', handleInsight)
 
 function handleInsight(request, response) {
-  const params = Object.assign(request.query, request.body)
-  console.log(params)
+  console.log("params", Object.assign(request.query, request.body))
   response.status(204).send()
 }
 
