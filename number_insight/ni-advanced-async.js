@@ -1,4 +1,10 @@
 const app = require('express')()
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 
 app.post('/webhooks/insight', handleInsight)
 
