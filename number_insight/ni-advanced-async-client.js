@@ -2,10 +2,9 @@ require('dotenv').config({ path: __dirname + '/../.env' })
 
 const NEXMO_API_KEY = process.env.NEXMO_API_KEY
 const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET
-const WEBHOOK_URL = process.env.WEBHOOK_URL
 
 // By default use the command line argument. Otherwise use the environment variable.
-const SEARCH_NUMBER = process.argv[2] || process.env.SEARCH_NUMBER;
+const INSIGHT_NUMBER = process.argv[2] || process.env.INSIGHT_NUMBER;
 
 const Nexmo = require('nexmo');
 
@@ -16,8 +15,8 @@ const nexmo = new Nexmo({
 
 nexmo.numberInsight.get({
   level: 'advancedAsync',
-  number: SEARCH_NUMBER,
-  callback: WEBHOOK_URL
+  number: INSIGHT_NUMBER,
+  callback: 'https://demo.ngrok.io/webhooks/insight'
 }, (error, result) => {
   if (error) {
     console.error(error);
