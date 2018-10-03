@@ -24,7 +24,7 @@ nexmo.workflow.create("failover", [
     "message": {
       "content": {
         "type": "text",
-        "text": "This is a Viber Service Message sent from the Messages API"
+        "text": "This is a Viber Service Message sent from the Dispatch API"
       }
     },
     "failover":{
@@ -38,7 +38,7 @@ nexmo.workflow.create("failover", [
     "message": {
       "content": {
         "type": "text",
-        "text": "This is an SMS sent from the Messages API"
+        "text": "This is an SMS sent from the Dispatch API"
       }
     }
   },
