@@ -42,5 +42,5 @@ nexmo.workflow.create("failover", [
       }
     }
   },
-  (err, data) => { console.log(data.workflow_uuid); }
+  (err, data) => { console.log(data.dispatch_uuid); }
 ])
