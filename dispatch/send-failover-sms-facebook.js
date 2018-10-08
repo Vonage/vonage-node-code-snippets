@@ -17,7 +17,7 @@ const nexmo = new Nexmo({
   privateKey: NEXMO_APPLICATION_PRIVATE_KEY_PATH
 })
 
-nexmo.workflow.create("failover", [
+nexmo.dispatch.create("failover", [
   {
     "from": { "type": "messenger", "id": "FB_SENDER_ID" },
     "to": { "type": "messenger", "id": "FB_RECIPIENT_ID" },

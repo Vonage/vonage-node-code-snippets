@@ -17,7 +17,7 @@ const nexmo = new Nexmo({
   privateKey: NEXMO_APPLICATION_PRIVATE_KEY_PATH
 })
 
-nexmo.workflow.create("failover", [
+nexmo.dispatch.create("failover", [
   {
     "from": { "type": "viber_service_msg", "id": "VIBER_SERVICE_MESSAGE_ID"},
     "to": { "type": "viber_service_msg", "number": "TO_NUMBER"},
