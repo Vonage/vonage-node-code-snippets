@@ -16,12 +16,9 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "dotenv": "^2.0.0",
+    "dotenv": "^6.1.0",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
-    "nexmo": "^2.2.1",
-    "node-persist": "^2.0.4",
-    "node-uuid": "^1.4.7",
-    "request": "^2.86.0"
+    "nexmo": "^2.4.0"
   }
 }
