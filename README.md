@@ -36,7 +36,7 @@ For some of the examples you will need to [buy a number](https://dashboard.nexmo
 
 | Tutorial                  | Code Sample                              |
 | ------------------------- | ---------------------------------------- |
-| Two-Factor Authentication | [2fa.js](https://github.com/nexmo-community/nexmo-node-quickstart/blob/master/verify/2fa.js) and [UI code](https://github.com/nexmo-community/nexmo-node-quickstart/tree/master/verify/views) |
+| [Two-Factor Authentication](https://www.nexmo.com/blog/2017/04/11/implement-two-factor-authentication-2fa-web-apps-node-js-dr/) | [2fa.js](https://github.com/nexmo-community/nexmo-node-quickstart/blob/master/verify/2fa.js) and [UI code](https://github.com/nexmo-community/nexmo-node-quickstart/tree/master/verify/views) |
 
 
 
