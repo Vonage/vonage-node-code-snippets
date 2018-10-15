@@ -19,7 +19,7 @@ const nexmo = new Nexmo({
 
 nexmo.dispatch.create("failover", [
   {
-    "from": { "type": "whatsapp", "id": "WHATSAPP_NUMBER"},
+    "from": { "type": "whatsapp", "number": "WHATSAPP_NUMBER"},
     "to": { "type": "whatsapp", "number": "TO_NUMBER"},
     "message": {
       "content": {
