@@ -46,7 +46,7 @@ Please [raise an issue](/../../issues/) to request an example that isn't present
 
 ## Licenses
 
-- The code samples in this repo is under [MIT](LICENSE)
+- The code samples in this repo are under [MIT](LICENSE)
 
 - The tutorials contents are under Creative Commons, [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/legalcode)
 
