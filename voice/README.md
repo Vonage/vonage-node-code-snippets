@@ -9,7 +9,7 @@ You also need to [buy a number](https://dashboard.nexmo.com/buy-numbers) where y
 
 ## Run the Examples
 
-To run Voice APIs, you need to set up your secure Nexmo Application first. You can use [Nexmo CLI tool](https://github.com/Nexmo/nexmo-cli) to create and manage your Nexmo Appllications.
+To run Voice APIs, you need to set up your secure Nexmo Application first. You can use [Nexmo CLI tool](https://github.com/Nexmo/nexmo-cli) to create and manage your Nexmo Applications.
 
 For more information, read the tutorials.
 
