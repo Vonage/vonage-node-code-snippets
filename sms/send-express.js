@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const server = app.listen(process.env.PORT || 3000);
 
 const nexmo = new Nexmo({
-  apiKey: NEXMO_.API_KEY,
+  apiKey: NEXMO_API_KEY,
   apiSecret: NEXMO_API_SECRET,
 }, {debug: true});
 

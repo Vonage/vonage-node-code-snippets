@@ -15,4 +15,4 @@ function handleDeliveryReceipt(request, response) {
   response.status(204).send()
 }
 
-app.listen(3000)
+app.listen(process.env.PORT || 3000)
