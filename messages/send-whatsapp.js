@@ -17,14 +17,14 @@ const nexmo = new Nexmo({
   privateKey: NEXMO_APPLICATION_PRIVATE_KEY_PATH
 })
 
-nexmo.calls.create({
-  to: [{
-    type: 'phone',
-    number: TO_NUMBER
-  }],
-  from: {
-    type: 'phone',
-    number: NEXMO_NUMBER
+nexmo.channel.send(
+  { "type": "whatsapp", "number": "TO_NUMBER" },
+  { "type": "whatsapp", "number": "WHATSAPP_NUMBER" },
+  {
+    "content": {
+      "type": "text",
+      "text": "This is a WhatsApp Message sent from the Messages API"
+    }
   },
-  answer_url: ['https://developer.nexmo.com/ncco/tts.json']
-})
+  (err, data) => { console.log(data.message_uuid); }
+);

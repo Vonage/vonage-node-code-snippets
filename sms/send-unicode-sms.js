@@ -14,6 +14,9 @@ const nexmo = new Nexmo({
 
 const from = FROM_NUMBER
 const to = TO_NUMBER
-const text = 'A text message sent using the Nexmo SMS API'
+const text = 'こんにちは世界'
+const opts = {
+  "type": "unicode"
+}
 
-nexmo.message.sendSms(from, to, text)
+nexmo.message.sendSms(from, to, text, opts, function(){})

@@ -17,7 +17,15 @@ $ node you_dir/send.js
 
 To run "send" examples, just set up your ENV and run locally.
 
-To run "receive" examples, you need to run the webhook file on a server, or tunnel from your local server using the services like [ngrok](http://ngrok.io). See the tutorials for more details.
+To run "receive" examples, you need to run the webhook file on a server, or tunnel from your local server using the services like [ngrok](https://ngrok.com/). See the tutorials for more details.
+
+### Webhooks
+
+These simple examples will receive webhooks and output information to the console so you can see the data that was received.
+
+For incoming SMSes, configure your webhook to point to `/webhooks/incoming-sms`.
+
+To receive delivery receipts (DLRs), configure your webhook to point to `/webhooks/delivery-receipt`.
 
 ## Tutorials
 
