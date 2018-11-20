@@ -5,7 +5,7 @@ const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET;
 
 const REQUEST_ID = process.argv[2];
 if (!REQUEST_ID) {
-    console.error('Please supply theß `request_id`');
+    console.error('Please supply the `request_id`');
     return;
 }
 
