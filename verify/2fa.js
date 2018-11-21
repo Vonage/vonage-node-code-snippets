@@ -36,10 +36,14 @@ const server = app.listen(process.env.PORT || 5000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
 
+const BRAND_NAME = process.env.NEXMO_BRAND_NAME;
+const NEXMO_API_KEY = process.env.NEXMO_API_KEY;
+const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET;
+
 const Nexmo = require('nexmo');
 const nexmo = new Nexmo({
-  apiKey: process.env.API_KEY,
-  apiSecret: process.env.API_SECRET
+  apiKey: NEXMO_API_KEY,
+  apiSecret: NEXMO_API_SECRET
 });
 
 // Web UI ("Registration Form")
@@ -53,7 +57,7 @@ app.post('/register', (req, res) => {
   console.log(phoneNumber);
   nexmo.verify.request({
     number: phoneNumber,
-    brand: 'Awesome Company'
+    brand: BRAND_NAME
   }, (err, result) => {
     if (err) {
       //res.sendStatus(500);
