@@ -11,6 +11,6 @@ const nexmo = new Nexmo({
 })
 
 nexmo.account.checkBalance((err, result) => {
-    console.log(String(result.value.toFixed(2)) + " EUR");
+    console.log(`${result.value.toFixed(2)} EUR`);
 });
 
