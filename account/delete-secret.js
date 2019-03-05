@@ -2,7 +2,7 @@ require('dotenv').config({path: __dirname + '/../.env'})
 
 const NEXMO_API_KEY = process.env.NEXMO_API_KEY
 const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET
-const SECRET_ID = "2e5751a6-8cae-4795-afda-5ef86320deef"
+const SECRET_ID = process.env.SECRET_ID
 
 const Nexmo = require('nexmo')
 
