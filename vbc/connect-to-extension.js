@@ -8,7 +8,7 @@ const onInboundCall = (request, response) => {
     action: 'connect',
     endpoint: [{
       type: 'vbc',
-      number: VBC_EXTENSION
+      extension: VBC_EXTENSION
     }]
   }]
 
