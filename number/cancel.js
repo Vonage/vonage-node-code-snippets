@@ -1,4 +1,4 @@
-require('dotenv').config({ path: __dirname + '/../.env' })
+require('dotenv').config({path: __dirname + '/../.env'})
 
 const NEXMO_API_KEY = process.env.NEXMO_API_KEY
 const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET
@@ -17,8 +17,8 @@ const nexmo = new Nexmo(
   }
 )
 
-nexmo.number.buy(COUNTRY_CODE, NEXMO_NUMBER, (err, res) => {
-  if (err) {
+nexmo.number.cancel(COUNTRY_CODE, NEXMO_NUMBER, (err, res) => {
+  if(err) {
     console.error(err)
   }
   else {

@@ -2,9 +2,6 @@ require('dotenv').config({ path: __dirname + '/../.env' })
 
 const NEXMO_API_KEY = process.env.NEXMO_API_KEY
 const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET
-const COUNTRY_CODE = process.env.COUNTRY_CODE
-const NEXMO_NUMBER_TYPE = process.env.NEXMO_NUMBER_TYPE
-const NEXMO_NUMBER_FEATURES = process.env.NEXMO_NUMBER_FEATURES
 const NUMBER_SEARCH_CRITERIA = process.env.NUMBER_SEARCH_CRITERIA
 const NUMBER_SEARCH_PATTERN = process.env.NUMBER_SEARCH_PATTERN
 
@@ -20,19 +17,15 @@ const nexmo = new Nexmo(
   }
 )
 
-nexmo.number.search(
-  COUNTRY_CODE,
+nexmo.number.get(
   {
-    type: NEXMO_NUMBER_TYPE,
     pattern: NUMBER_SEARCH_CRITERIA,
-    search_pattern: NUMBER_SEARCH_PATTERN,
-    features: NEXMO_NUMBER_FEATURES
+    search_pattern: NUMBER_SEARCH_PATTERN
   },
   (err, res) => {
     if (err) {
       console.error(err)
-    }
-    else {
+    } else {
       console.log(JSON.stringify(res, null, 2))
     }
   }
