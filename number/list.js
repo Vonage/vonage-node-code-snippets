@@ -26,7 +26,10 @@ nexmo.number.get(
     if (err) {
       console.error(err)
     } else {
-      console.log(JSON.stringify(res, null, 2))
+      console.log(`Here are ${res.numbers.length} of your ${res.count} matching numbers:`)
+      res.numbers.forEach((number) => {
+        console.log(`Tel: ${number.msisdn} Cost: ${number.type}`)
+      })
     }
   }
 )
