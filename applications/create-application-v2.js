@@ -4,7 +4,6 @@ const NEXMO_API_KEY = process.env.NEXMO_API_KEY
 const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET
 
 const Nexmo = require('nexmo')
-
    
 var nexmo = new Nexmo({
     apiKey: NEXMO_API_KEY,
