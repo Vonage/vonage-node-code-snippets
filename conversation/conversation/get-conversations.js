@@ -1,9 +1,9 @@
-require('dotenv').config({ path: __dirname + '/../.env' })
+require('dotenv').config({ path: __dirname + '/../../.env' })
 
 const NEXMO_API_KEY = process.env.NEXMO_API_KEY
 const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET
 const NEXMO_APPLICATION_ID = process.env.NEXMO_APPLICATION_ID
-const NEXMO_APPLICATION_PRIVATE_KEY_PATH = __dirname +"/../"+ process.env.NEXMO_APPLICATION_PRIVATE_KEY_PATH
+const NEXMO_APPLICATION_PRIVATE_KEY_PATH = __dirname +"/../../"+ process.env.NEXMO_APPLICATION_PRIVATE_KEY_PATH
 
 const Nexmo = require('nexmo')
 
@@ -21,6 +21,6 @@ nexmo.conversations.get(
         console.error(error);
     }
     else {
-        console.log(result);
+        console.log(result._embedded.conversations);
     }
 });
