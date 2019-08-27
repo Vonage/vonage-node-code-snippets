@@ -11,7 +11,6 @@ const NEXMO_APPLICATION_ID = process.env.NEXMO_APPLICATION_ID;
 
 const CALL_UUID = process.env.CALL_UUID;
 
-
 const Nexmo = require('nexmo');
 
 const nexmo = new Nexmo({
