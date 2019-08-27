@@ -1,11 +1,3 @@
-require('dotenv').config({
-  path: __dirname + '/../.env'
-})
-
-
-const NEXMO_TO_NUMBER = process.env.NEXMO_TO_NUMBER
-const NEXMO_NUMBER = process.env.NEXMO_NUMBER
-
 const app = require('express')()
 
 const onInboundCall = (request, response) => {
