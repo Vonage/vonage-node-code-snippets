@@ -1,6 +1,4 @@
-require('dotenv').config({
-  path: __dirname + '/../.env'
-})
+require('dotenv').config({path: __dirname + '/../.env'})
 
 const TO_NUMBER = process.env.TO_NUMBER
 const NEXMO_NUMBER = process.env.NEXMO_NUMBER
