@@ -1,3 +1,9 @@
+require('dotenv').config({path: __dirname + '/../.env'})
+
+
+const NEXMO_TO_NUMBER = process.env.NEXMO_TO_NUMBER
+const NEXMO_NUMBER = process.env.NEXMO_NUMBER
+
 const app = require('express')()
 const bodyParser = require('body-parser')
 
@@ -5,23 +11,18 @@ app.use(bodyParser.json())
 
 const onInboundCall = (request, response) => {
   const ncco = [{
-      action: 'talk',
-      text: 'Please leave a message after the tone, then press pound.'
+      action: "record",
+      eventUrl: [`${request.protocol}://${request.get('host')}/webhooks/recordings`]
     },
     {
-      action: 'record',
-      endOnKey: '#',
-      beepStart: 'true',
-      eventUrl: [
-        `${request.protocol}://${request.get('host')}/webhooks/recordings`
-      ]
-    },
-    {
-      action: 'talk',
-      text: 'Thank you for your message.'
+      action: "connect",
+      from: NEXMO_NUMBER,
+      endpoint: [{
+        type: "phone",
+        number: NEXMO_TO_NUMBER
+      }]
     }
   ]
-
   response.json(ncco)
 }
 

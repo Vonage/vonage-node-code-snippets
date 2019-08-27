@@ -1,4 +1,6 @@
-require('dotenv').config({path: __dirname + '/../.env'})
+require('dotenv').config({
+  path: __dirname + '/../.env'
+})
 
 const TO_NUMBER = process.env.TO_NUMBER
 const NEXMO_NUMBER = process.env.NEXMO_NUMBER
@@ -26,5 +28,8 @@ nexmo.calls.create({
     type: 'phone',
     number: NEXMO_NUMBER
   },
-  answer_url: ['https://developer.nexmo.com/ncco/tts.json']
+  ncco: [{
+    "action": "talk",
+    "text": "This is a text to speech call from Nexmo"
+  }]
 })
