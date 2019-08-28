@@ -1,7 +1,7 @@
 require('dotenv').config({path: __dirname + '/../.env'})
 
 
-const NEXMO_TO_NUMBER = process.env.NEXMO_TO_NUMBER
+const TO_NUMBER = process.env.TO_NUMBER
 const NEXMO_NUMBER = process.env.NEXMO_NUMBER
 
 const app = require('express')()
@@ -21,7 +21,7 @@ const onInboundCall = (request, response) => {
       from: NEXMO_NUMBER,
       endpoint: [{
         type: "phone",
-        number: NEXMO_TO_NUMBER
+        number: TO_NUMBER
       }]
     }
   ]
