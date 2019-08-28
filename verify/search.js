@@ -16,6 +16,6 @@ nexmo.verify.search(REQUEST_ID, (err, result) => {
   if (err) {
     console.error(err);
   } else {
-    console.log('Request status:', resut.status);
+    console.log('Request status:', result.status);
   }
 });
