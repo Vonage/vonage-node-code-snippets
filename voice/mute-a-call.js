@@ -6,6 +6,7 @@ const NEXMO_API_KEY = process.env.NEXMO_API_KEY;
 const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET;
 const NEXMO_PRIVATE_KEY = __dirname +"/../"+ process.env.NEXMO_PRIVATE_KEY;
 const NEXMO_APPLICATION_ID = process.env.NEXMO_APPLICATION_ID;
+const UUID = process.env.UUID;
 
 const Nexmo = require('nexmo');
 
@@ -16,7 +17,7 @@ const nexmo = new Nexmo({
   privateKey: NEXMO_PRIVATE_KEY
 }, {debug: true});
 
-nexmo.calls.update(CALL_UUID, { action: 'mute' }, (err, res) => {
+nexmo.calls.update(UUID, { action: 'mute' }, (err, res) => {
   if(err) { console.error(err); }
   else {
       console.log(res);
@@ -24,7 +25,7 @@ nexmo.calls.update(CALL_UUID, { action: 'mute' }, (err, res) => {
 });
 
 function unmute (){
-    nexmo.calls.update(CALL_UUID, { action: 'unmute' }, (err, res) => {
+    nexmo.calls.update(UUID, { action: 'unmute' }, (err, res) => {
         if(err) { console.error(err); }
         else {
             console.log(res);
@@ -33,6 +34,3 @@ function unmute (){
 }
 
 setTimeout(unmute, 5000); // delay 5 seconds
-
-
-

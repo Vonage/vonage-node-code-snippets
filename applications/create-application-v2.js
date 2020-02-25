@@ -2,9 +2,10 @@ require('dotenv').config({ path: __dirname + '/../.env' })
 
 const NEXMO_API_KEY = process.env.NEXMO_API_KEY
 const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET
+const NAME = process.env.NAME
 
 const Nexmo = require('nexmo')
-   
+
 var nexmo = new Nexmo({
     apiKey: NEXMO_API_KEY,
     apiSecret: NEXMO_API_SECRET
@@ -13,7 +14,7 @@ var nexmo = new Nexmo({
 });
 
 nexmo.applications.create({
-    name: 'My nexmo-node Example V2 App',
+    name: NAME,
     capabilities: {
         voice: {
             webhooks: {

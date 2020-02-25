@@ -17,6 +17,8 @@ const nexmo = new Nexmo({
   privateKey: NEXMO_APPLICATION_PRIVATE_KEY_PATH
 })
 
+const ANSWER_URL = 'https://developer.nexmo.com/ncco/tts.json'
+
 nexmo.calls.create({
   to: [{
     type: 'phone',
@@ -26,5 +28,5 @@ nexmo.calls.create({
     type: 'phone',
     number: NEXMO_NUMBER
   },
-  answer_url: ['https://developer.nexmo.com/ncco/tts.json']
+  answer_url: [ANSWER_URL]
 })
