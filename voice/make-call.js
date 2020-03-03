@@ -1,4 +1,4 @@
-require('dotenv').config({path: __dirname + '/../.env'})
+require('dotenv').config({ path: __dirname + '/../.env' })
 
 const TO_NUMBER = process.env.TO_NUMBER
 const NEXMO_NUMBER = process.env.NEXMO_NUMBER
@@ -29,4 +29,7 @@ nexmo.calls.create({
     number: NEXMO_NUMBER
   },
   answer_url: [ANSWER_URL]
+}, (error, response) => {
+  if (error) console.error(error)
+  if (response) console.log(response)
 })
