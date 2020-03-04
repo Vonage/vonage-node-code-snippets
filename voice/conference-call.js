@@ -1,3 +1,6 @@
+require('dotenv').config({path: __dirname + '/../.env'})
+const CONF_NAME = process.env.CONF_NAME
+
 const app = require('express')()
 const bodyParser = require('body-parser')
 
@@ -7,11 +10,11 @@ const onInboundCall = (request, response) => {
   const ncco = [
     {
       action: 'talk',
-      text: 'Welcome to a Nexmo powered conference call'
+      text: 'Please wait while we connect you to the conference'
     },
     {
       action: 'conversation',
-      name: 'room-name'
+      name: CONF_NAME
     }
   ]
 

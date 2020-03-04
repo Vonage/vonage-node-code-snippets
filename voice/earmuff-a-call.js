@@ -7,6 +7,8 @@ const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET;
 const NEXMO_PRIVATE_KEY = __dirname +"/../"+ process.env.NEXMO_PRIVATE_KEY;
 const NEXMO_APPLICATION_ID = process.env.NEXMO_APPLICATION_ID;
 
+const UUID = process.env.UUID;
+
 const Nexmo = require('nexmo');
 
 const nexmo = new Nexmo({
@@ -16,7 +18,7 @@ const nexmo = new Nexmo({
   privateKey: NEXMO_PRIVATE_KEY
 }, {debug: true});
 
-nexmo.calls.update(CALL_UUID, { action: 'earmuff' }, (err, res) => {
+nexmo.calls.update(UUID, { action: 'earmuff' }, (err, res) => {
   if(err) { console.error(err); }
   else {
       console.log(res);
@@ -24,7 +26,7 @@ nexmo.calls.update(CALL_UUID, { action: 'earmuff' }, (err, res) => {
 });
 
 function unearmuff (){
-    nexmo.calls.update(CALL_UUID, { action: 'unearmuff' }, (err, res) => {
+    nexmo.calls.update(UUID, { action: 'unearmuff' }, (err, res) => {
         if(err) { console.error(err); }
         else {
             console.log(res);
@@ -33,6 +35,3 @@ function unearmuff (){
 }
 
 setTimeout(unearmuff, 3000); // delay 3 seconds
-
-
-

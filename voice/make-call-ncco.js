@@ -30,4 +30,7 @@ nexmo.calls.create({
     "action": "talk",
     "text": "This is a text to speech call from Nexmo"
   }]
+}, (error, response) => {
+  if (error) console.error(error)
+  if (response) console.log(response)
 })

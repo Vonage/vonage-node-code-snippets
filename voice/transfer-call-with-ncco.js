@@ -9,7 +9,7 @@ const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET;
 const NEXMO_PRIVATE_KEY = __dirname + "/../" + process.env.NEXMO_PRIVATE_KEY;
 const NEXMO_APPLICATION_ID = process.env.NEXMO_APPLICATION_ID;
 
-const CALL_UUID = process.env.CALL_UUID;
+const UUID = process.env.UUID;
 
 const Nexmo = require('nexmo');
 
@@ -22,7 +22,7 @@ const nexmo = new Nexmo({
   debug: true
 });
 
-nexmo.calls.update(CALL_UUID, {
+nexmo.calls.update(UUID, {
   action: 'transfer',
   destination: {
     "type": "ncco",
