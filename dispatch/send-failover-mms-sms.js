@@ -49,7 +49,7 @@ nexmo.dispatch.create(
   ],
   (err, data) => {
     if (err) {
-      console.log("logging after error !!!");
+      console.error(err);
     } else {
       console.log(data.dispatch_uuid);
     }
