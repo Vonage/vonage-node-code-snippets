@@ -29,7 +29,7 @@ nexmo.channel.send(
   },
   (err, data) => {
     if (err) {
-      console.log("logging after error !!!", err);
+      console.error(err);
     } else {
       console.log(data.message_uuid);
     }
