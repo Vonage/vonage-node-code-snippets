@@ -16,7 +16,7 @@ function handleInboundMessage(request, response){
     let token = request.headers.authorization.split(" ")[1]
     try{
         var decoded = jwt.verify(token, NEXMO_API_SIGNATURE_SECRET, {algorithms:['HS256']});
-        if(sha256(JSON.stringify(payload))!=decoded["payload_body"]){
+        if(sha256(JSON.stringify(payload))!=decoded["payload_hash"]){
             console.log("tampering detected");
             response.status(401).send();
         }
