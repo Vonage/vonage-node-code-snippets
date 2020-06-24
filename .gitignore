@@ -8,3 +8,4 @@ npm-debug.log
 *.key
 .c9
 private.key
+.nexmo-app
