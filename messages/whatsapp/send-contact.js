@@ -11,7 +11,6 @@ const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER;
 const BASE_URL = process.env.BASE_URL;
 
 const Nexmo = require('nexmo');
-const { fileLoader } = require('ejs');
 
 const nexmo = new Nexmo(
 	{
