@@ -9,6 +9,7 @@ const NEXMO_APPLICATION_PRIVATE_KEY_PATH =
 const FB_RECIPIENT_ID = process.env.FB_RECIPIENT_ID;
 const FB_SENDER_ID = process.env.FB_SENDER_ID;
 const BASE_URL = process.env.BASE_URL;
+const FILE_URL = process.env.FILE_URL;
 
 const Nexmo = require('nexmo');
 
@@ -29,9 +30,10 @@ nexmo.channel.send(
 	{ type: 'messenger', id: FB_SENDER_ID },
 	{
 		content: {
-			type: 'text',
-			text:
-				'This is a Facebook Messenger text message sent using the Messages API',
+			type: 'file',
+			file: {
+				url: FILE_URL,
+			},
 		},
 	},
 	(err, data) => {

@@ -6,11 +6,14 @@ const NEXMO_APPLICATION_ID = process.env.NEXMO_APPLICATION_ID;
 const NEXMO_APPLICATION_PRIVATE_KEY_PATH =
 	__dirname + '/../../' + process.env.NEXMO_APPLICATION_PRIVATE_KEY_PATH;
 
-const FB_RECIPIENT_ID = process.env.FB_RECIPIENT_ID;
-const FB_SENDER_ID = process.env.FB_SENDER_ID;
+const TO_NUMBER = process.env.TO_NUMBER;
+const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER;
 const BASE_URL = process.env.BASE_URL;
+const FILE_URL = process.env.FILE_URL;
+const FILE_CAPTION = process.env.FILE_CAPTION;
 
 const Nexmo = require('nexmo');
+const { fileLoader } = require('ejs');
 
 const nexmo = new Nexmo(
 	{
@@ -25,13 +28,15 @@ const nexmo = new Nexmo(
 );
 
 nexmo.channel.send(
-	{ type: 'messenger', id: FB_RECIPIENT_ID },
-	{ type: 'messenger', id: FB_SENDER_ID },
+	{ type: 'whatsapp', number: TO_NUMBER },
+	{ type: 'whatsapp', number: WHATSAPP_NUMBER },
 	{
 		content: {
-			type: 'text',
-			text:
-				'This is a Facebook Messenger text message sent using the Messages API',
+			type: 'file',
+			file: {
+				url: FILE_URL,
+				caption: FILE_CAPTION,
+			},
 		},
 	},
 	(err, data) => {

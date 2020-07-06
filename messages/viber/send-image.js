@@ -6,9 +6,10 @@ const NEXMO_APPLICATION_ID = process.env.NEXMO_APPLICATION_ID;
 const NEXMO_APPLICATION_PRIVATE_KEY_PATH =
 	__dirname + '/../../' + process.env.NEXMO_APPLICATION_PRIVATE_KEY_PATH;
 
-const FB_RECIPIENT_ID = process.env.FB_RECIPIENT_ID;
-const FB_SENDER_ID = process.env.FB_SENDER_ID;
+const TO_NUMBER = process.env.TO_NUMBER;
+const VIBER_SERVICE_MESSAGE_ID = process.env.VIBER_SERVICE_MESSAGE_ID;
 const BASE_URL = process.env.BASE_URL;
+const IMAGE_URL = process.env.IMAGE_URL;
 
 const Nexmo = require('nexmo');
 
@@ -25,13 +26,14 @@ const nexmo = new Nexmo(
 );
 
 nexmo.channel.send(
-	{ type: 'messenger', id: FB_RECIPIENT_ID },
-	{ type: 'messenger', id: FB_SENDER_ID },
+	{ type: 'viber_service_msg', number: TO_NUMBER },
+	{ type: 'viber_service_msg', id: VIBER_SERVICE_MESSAGE_ID },
 	{
 		content: {
-			type: 'text',
-			text:
-				'This is a Facebook Messenger text message sent using the Messages API',
+			type: 'image',
+			image: {
+				url: IMAGE_URL,
+			},
 		},
 	},
 	(err, data) => {

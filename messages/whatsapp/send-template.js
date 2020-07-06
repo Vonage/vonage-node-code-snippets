@@ -6,8 +6,10 @@ const NEXMO_APPLICATION_ID = process.env.NEXMO_APPLICATION_ID;
 const NEXMO_APPLICATION_PRIVATE_KEY_PATH =
 	__dirname + '/../../' + process.env.NEXMO_APPLICATION_PRIVATE_KEY_PATH;
 
-const FB_RECIPIENT_ID = process.env.FB_RECIPIENT_ID;
-const FB_SENDER_ID = process.env.FB_SENDER_ID;
+const TO_NUMBER = process.env.TO_NUMBER;
+const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER;
+const WHATSAPP_TEMPLATE_NAMESPACE = process.env.WHATSAPP_TEMPLATE_NAMESPACE;
+const WHATSAPP_TEMPLATE_NAME = process.env.WHATSAPP_TEMPLATE_NAME;
 const BASE_URL = process.env.BASE_URL;
 
 const Nexmo = require('nexmo');
@@ -25,13 +27,29 @@ const nexmo = new Nexmo(
 );
 
 nexmo.channel.send(
-	{ type: 'messenger', id: FB_RECIPIENT_ID },
-	{ type: 'messenger', id: FB_SENDER_ID },
+	{ type: 'whatsapp', number: TO_NUMBER },
+	{ type: 'whatsapp', number: WHATSAPP_NUMBER },
 	{
 		content: {
-			type: 'text',
-			text:
-				'This is a Facebook Messenger text message sent using the Messages API',
+			type: 'template',
+			template: {
+				name: `${WHATSAPP_TEMPLATE_NAMESPACE}:${WHATSAPP_TEMPLATE_NAME}`,
+				parameters: [
+					{
+						default: 'Nexmo Verification',
+					},
+					{
+						default: '64873',
+					},
+					{
+						default: '10',
+					},
+				],
+			},
+		},
+		whatsapp: {
+			policy: 'deterministic',
+			locale: 'en',
 		},
 	},
 	(err, data) => {
