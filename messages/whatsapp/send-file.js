@@ -13,7 +13,6 @@ const FILE_URL = process.env.FILE_URL;
 const FILE_CAPTION = process.env.FILE_CAPTION;
 
 const Nexmo = require('nexmo');
-const { fileLoader } = require('ejs');
 
 const nexmo = new Nexmo(
 	{
