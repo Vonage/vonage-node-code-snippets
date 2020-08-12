@@ -18,7 +18,7 @@ const nexmo = new Nexmo({
 })
 
 nexmo.conversations.events.create(CONVERSATION_ID, {
-    "type": `custom:${YOUR_EVENT_NAME}`
+    "type": `custom:${YOUR_EVENT_NAME}`,
     "from": MEMBER_ID,
     "body": {
       "your": "data"
