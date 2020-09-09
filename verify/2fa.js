@@ -1,6 +1,6 @@
 /* Two-Factor Auth Tutorial Code Sample
-  `nexmo.verify.request` to send a temp code to a user's phone, then
-  `nexmo.verify.check` to validate the code entered by the user (on the web interface)
+  `vonage.verify.request` to send a temp code to a user's phone, then
+  `vonage.verify.check` to validate the code entered by the user (on the web interface)
 
   In this sample app, upon user registration, store the user's phone number
   (as a key) and the generated request ID (as the value) in the persist storage.
@@ -36,14 +36,14 @@ const server = app.listen(process.env.PORT || 5000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
 
-const BRAND_NAME = process.env.NEXMO_BRAND_NAME;
-const NEXMO_API_KEY = process.env.NEXMO_API_KEY;
-const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET;
+const BRAND_NAME = process.env.VONAGE_BRAND_NAME;
+const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
+const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
 
-const Nexmo = require('nexmo');
-const nexmo = new Nexmo({
-  apiKey: NEXMO_API_KEY,
-  apiSecret: NEXMO_API_SECRET
+const Vonage = require('@vonage/server-sdk');
+const vonage = new Vonage({
+  apiKey: VONAGE_API_KEY,
+  apiSecret: VONAGE_API_SECRET
 });
 
 // Web UI ("Registration Form")
@@ -55,7 +55,7 @@ app.post('/register', (req, res) => {
   // A user registers with a mobile phone number
   let phoneNumber = req.body.number;
   console.log(phoneNumber);
-  nexmo.verify.request({
+  vonage.verify.request({
     number: phoneNumber,
     brand: BRAND_NAME
   }, (err, result) => {
@@ -87,7 +87,7 @@ app.post('/verify', (req, res) => {
   let pin = req.body.pin;
   let requestId = req.body.requestId;
 
-  nexmo.verify.check({
+  vonage.verify.check({
     request_id: requestId,
     code: pin
   }, (err, result) => {

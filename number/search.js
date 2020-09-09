@@ -1,32 +1,32 @@
 require('dotenv').config({ path: __dirname + '/../.env' })
 
-const NEXMO_API_KEY = process.env.NEXMO_API_KEY
-const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET
+const VONAGE_API_KEY = process.env.VONAGE_API_KEY
+const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET
 const COUNTRY_CODE = process.env.COUNTRY_CODE
-const NEXMO_NUMBER_TYPE = process.env.NEXMO_NUMBER_TYPE
-const NEXMO_NUMBER_FEATURES = process.env.NEXMO_NUMBER_FEATURES
+const VONAGE_NUMBER_TYPE = process.env.VONAGE_NUMBER_TYPE
+const VONAGE_NUMBER_FEATURES = process.env.VONAGE_NUMBER_FEATURES
 const NUMBER_SEARCH_CRITERIA = process.env.NUMBER_SEARCH_CRITERIA
 const NUMBER_SEARCH_PATTERN = process.env.NUMBER_SEARCH_PATTERN
 
-const Nexmo = require('nexmo')
+const Vonage = require('@vonage/server-sdk')
 
-const nexmo = new Nexmo(
+const vonage = new Vonage(
   {
-    apiKey: NEXMO_API_KEY,
-    apiSecret: NEXMO_API_SECRET
+    apiKey: VONAGE_API_KEY,
+    apiSecret: VONAGE_API_SECRET
   },
   {
     debug: true
   }
 )
 
-nexmo.number.search(
+vonage.number.search(
   COUNTRY_CODE,
   {
-    type: NEXMO_NUMBER_TYPE,
+    type: VONAGE_NUMBER_TYPE,
     pattern: NUMBER_SEARCH_CRITERIA,
     search_pattern: NUMBER_SEARCH_PATTERN,
-    features: NEXMO_NUMBER_FEATURES
+    features: VONAGE_NUMBER_FEATURES
   },
   (err, res) => {
     if (err) {

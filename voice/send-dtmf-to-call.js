@@ -2,13 +2,13 @@
 
 require('dotenv').config({path: __dirname + '/../.env'});
 
-const NEXMO_API_KEY = process.env.NEXMO_API_KEY;
-const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET;
-const NEXMO_PRIVATE_KEY = __dirname + "/../" + process.env.NEXMO_PRIVATE_KEY;
+const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
+const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
+const VONAGE_PRIVATE_KEY = __dirname + "/../" + process.env.VONAGE_PRIVATE_KEY;
 const NEXMO_APPLICATION_ID = process.env.NEXMO_APPLICATION_ID;
 
-const TO_NUMBER = process.env.NEXMO_TO_NUMBER;
-const FROM_NUMBER = process.env.NEXMO_FROM_NUMBER;
+const TO_NUMBER = process.env.VONAGE_TO_NUMBER;
+const FROM_NUMBER = process.env.VONAGE_FROM_NUMBER;
 
 const app = require('express')();
 const bodyParser = require('body-parser');
@@ -21,13 +21,13 @@ const server = app.listen(process.env.PORT || 4001, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
 
-const Nexmo = require('nexmo');
+const Vonage = require('@vonage/server-sdk');
 
-const nexmo = new Nexmo({
-  apiKey: NEXMO_API_KEY,
-  apiSecret: NEXMO_API_SECRET,
+const vonage = new Vonage({
+  apiKey: VONAGE_API_KEY,
+  apiSecret: VONAGE_API_SECRET,
   applicationId: NEXMO_APPLICATION_ID,
-  privateKey: NEXMO_PRIVATE_KEY
+  privateKey: VONAGE_PRIVATE_KEY
 }, {
   debug: true
 });
@@ -39,7 +39,7 @@ app.get('/call', (req, res) => {
 
   const serverHost = req.protocol + '://' + req.get('host');
 
-  nexmo.calls.create({
+  vonage.calls.create({
       to: [{
         type: 'phone',
         number: TO_NUMBER,
@@ -72,7 +72,7 @@ app.get('/answer', (req, res) => {
   console.log(req.querystring)
   res.json([{
     action: 'talk',
-    text: 'hello from nexmo',
+    text: 'hello from vonage',
     loop: 0
   }]);
 });

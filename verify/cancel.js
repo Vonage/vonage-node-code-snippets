@@ -2,8 +2,8 @@ require('dotenv').config({
   path: __dirname + '/../.env'
 });
 
-const NEXMO_API_KEY = process.env.NEXMO_API_KEY;
-const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET;
+const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
+const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
 
 const REQUEST_ID = process.argv[2];
 if (!REQUEST_ID) {
@@ -11,15 +11,15 @@ if (!REQUEST_ID) {
   return;
 }
 
-const Nexmo = require('nexmo');
-const nexmo = new Nexmo({
-  apiKey: NEXMO_API_KEY,
-  apiSecret: NEXMO_API_SECRET
+const Vonage = require('@vonage/server-sdk');
+const vonage = new Vonage({
+  apiKey: VONAGE_API_KEY,
+  apiSecret: VONAGE_API_SECRET
 }, {
   debug: true
 });
 
-nexmo.verify.control({
+vonage.verify.control({
   request_id: REQUEST_ID,
   cmd: 'cancel'
 }, (err, result) => {

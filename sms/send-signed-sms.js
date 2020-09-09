@@ -1,25 +1,25 @@
 require('dotenv').config({path: __dirname + '/../.env'})
 
-const NEXMO_API_KEY = process.env.NEXMO_API_KEY
-const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET
-const NEXMO_API_SIGNATURE_SECRET = process.env.NEXMO_API_SIGNATURE_SECRET
-const TO_NUMBER = process.env.NEXMO_TO_NUMBER
-const FROM_NUMBER = process.env.NEXMO_FROM_NUMBER
+const VONAGE_API_KEY = process.env.VONAGE_API_KEY
+const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET
+const VONAGE_API_SIGNATURE_SECRET = process.env.VONAGE_API_SIGNATURE_SECRET
+const TO_NUMBER = process.env.VONAGE_TO_NUMBER
+const FROM_NUMBER = process.env.VONAGE_FROM_NUMBER
 
-const Nexmo = require('nexmo')
+const Vonage = require('@vonage/server-sdk')
 
-const nexmo = new Nexmo({
-  apiKey: NEXMO_API_KEY,
-  apiSecret: NEXMO_API_SECRET,
-  signatureSecret: NEXMO_API_SIGNATURE_SECRET,
+const vonage = new Vonage({
+  apiKey: VONAGE_API_KEY,
+  apiSecret: VONAGE_API_SECRET,
+  signatureSecret: VONAGE_API_SIGNATURE_SECRET,
   signatureMethod: "md5hash"
 })
 
 const from = FROM_NUMBER
 const to = TO_NUMBER
-const text = 'A text message sent using the Nexmo SMS API'
+const text = 'A text message sent using the Vonage SMS API'
 
-nexmo.message.sendSms(from, to, text, (err, responseData) => {
+vonage.message.sendSms(from, to, text, (err, responseData) => {
     if (err) {
         console.log(err);
     } else {

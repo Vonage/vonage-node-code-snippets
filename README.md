@@ -1,7 +1,6 @@
-# Nexmo APIs Quickstart Examples for Node.JS
+# Vonage APIs Quickstart Examples for Node.JS
 
-<img src="https://developer.nexmo.com/assets/images/Vonage_Nexmo.svg" height="48px" alt="Nexmo is now known as Vonage" />
-
+<img src="https://developer.nexmo.com/images/logos/vbc-logo.svg" height="48px"/>
 
 Quickstarts also available for: [Java](https://github.com/nexmo-community/nexmo-java-quickstart), [.NET](https://github.com/nexmo-community/nexmo-dotnet-quickstart), [PHP](https://github.com/nexmo-community/nexmo-php-quickstart), [Python](https://github.com/nexmo-community/nexmo-python-quickstart), [Ruby](https://github.com/nexmo-community/nexmo-ruby-quickstart)
 
@@ -39,8 +38,6 @@ For some of the examples, you will need to [buy a number](https://dashboard.nexm
 | Tutorial                  | Code Sample                              |
 | ------------------------- | ---------------------------------------- |
 | [Two-Factor Authentication](https://www.nexmo.com/blog/2017/04/11/implement-two-factor-authentication-2fa-web-apps-node-js-dr/) | [2fa.js](https://github.com/nexmo-community/nexmo-node-quickstart/blob/master/verify/2fa.js) and [UI code](https://github.com/nexmo-community/nexmo-node-quickstart/tree/master/verify/views) |
-
-
 
 ## Request More Examples
 

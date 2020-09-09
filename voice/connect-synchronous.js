@@ -2,8 +2,8 @@
 
 require('dotenv').config({path: __dirname + '/../.env'});
 
-const NEXMO_FROM_NUMBER = process.env.NEXMO_FROM_NUMBER;
-const NEXMO_TO_NUMBER = process.env.NEXMO_TO_NUMBER;
+const VONAGE_FROM_NUMBER = process.env.VONAGE_FROM_NUMBER;
+const VONAGE_TO_NUMBER = process.env.VONAGE_TO_NUMBER;
 const NEXMO_ALT_NUMBER = process.env.NEXMO_ALT_NUMBER;
 
 const app = require('express')();
@@ -18,7 +18,7 @@ app.get('/answer', function (req, res) {
 
   const ncco = [{
       action: "connect",
-      from: NEXMO_FROM_NUMBER,
+      from: VONAGE_FROM_NUMBER,
       timeout: 5,
       eventType: 'synchronous',
       eventUrl: [`${serverHost}/connect-event`],
@@ -47,10 +47,10 @@ app.post('/connect-event', function(req, res) {
     
     ncco.push({
         action: 'connect',
-        from: NEXMO_FROM_NUMBER,
+        from: VONAGE_FROM_NUMBER,
         endpoint: [{
           type: 'phone',
-          number: NEXMO_TO_NUMBER
+          number: VONAGE_TO_NUMBER
         }]
       });
   }

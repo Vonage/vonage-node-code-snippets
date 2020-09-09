@@ -1,31 +1,31 @@
 require('dotenv').config({ path: __dirname + '/../../.env' });
 
-const NEXMO_API_KEY = process.env.NEXMO_API_KEY;
-const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET;
+const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
+const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
 const NEXMO_APPLICATION_ID = process.env.NEXMO_APPLICATION_ID;
-const NEXMO_APPLICATION_PRIVATE_KEY_PATH =
-	__dirname + '/../../' + process.env.NEXMO_APPLICATION_PRIVATE_KEY_PATH;
+const VONAGE_APPLICATION_PRIVATE_KEY_PATH =
+	__dirname + '/../../' + process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH;
 
 const FB_RECIPIENT_ID = process.env.FB_RECIPIENT_ID;
 const FB_SENDER_ID = process.env.FB_SENDER_ID;
 const BASE_URL = process.env.BASE_URL;
 const VIDEO_URL = process.env.VIDEO_URL;
 
-const Nexmo = require('nexmo');
+const Vonage = require('@vonage/server-sdk');
 
-const nexmo = new Nexmo(
+const vonage = new Vonage(
 	{
-		apiKey: NEXMO_API_KEY,
-		apiSecret: NEXMO_API_SECRET,
+		apiKey: VONAGE_API_KEY,
+		apiSecret: VONAGE_API_SECRET,
 		applicationId: NEXMO_APPLICATION_ID,
-		privateKey: NEXMO_APPLICATION_PRIVATE_KEY_PATH,
+		privateKey: VONAGE_APPLICATION_PRIVATE_KEY_PATH,
 	},
 	{
 		apiHost: BASE_URL,
 	}
 );
 
-nexmo.channel.send(
+vonage.channel.send(
 	{ type: 'messenger', id: FB_RECIPIENT_ID },
 	{ type: 'messenger', id: FB_SENDER_ID },
 	{

@@ -1,5 +1,5 @@
 require('dotenv').config({ path: __dirname + '/../.env' })
-const NEXMO_API_SIGNATURE_SECRET = process.env.NEXMO_API_SIGNATURE_SECRET || ''
+const VONAGE_API_SIGNATURE_SECRET = process.env.VONAGE_API_SIGNATURE_SECRET || ''
 const jwt = require("jsonwebtoken");
 const sha256 = require('js-sha256');
 const app = require('express')()
@@ -15,7 +15,7 @@ function handleInboundMessage(request, response){
     const payload = Object.assign(request.query, request.body)
     let token = request.headers.authorization.split(" ")[1]
     try{
-        var decoded = jwt.verify(token, NEXMO_API_SIGNATURE_SECRET, {algorithms:['HS256']});
+        var decoded = jwt.verify(token, VONAGE_API_SIGNATURE_SECRET, {algorithms:['HS256']});
         if(sha256(JSON.stringify(payload))!=decoded["payload_hash"]){
             console.log("tampering detected");
             response.status(401).send();
