@@ -6,9 +6,9 @@ Quickstarts also available for: [Python](https://github.com/Vonage/vonage-python
 
 These code samples are meant to be used for [https://developer.nexmo.com/](https://developer.nexmo.com/), and are structured in such a way as to be used for internal testing. Developers are free to use these code snippets as a reference, but these may require changes to be worked into your specific application. We recommend checking out the [Vonage API Developer Website](https://developer.nexmo.com/), which displays these code snippets in a more copy/paste fashion.
 
-## Configure with Your Nexmo API Keys
+## Configure with Your Vonage API Keys
 
-If you'd still like to use this sample you will first need a [Nexmo account](https://dashboard.nexmo.com/sign-up). Once you have your own API credentials, rename
+If you'd still like to use this sample you will first need a [Vonage account](https://dashboard.nexmo.com/sign-up). Once you have your own API credentials, rename
 the `.env-example` file to `.env` and set the values as required.
 
 For some of the examples, you will need to [buy a number](https://dashboard.nexmo.com/buy-numbers).
