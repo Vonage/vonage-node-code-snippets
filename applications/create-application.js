@@ -19,6 +19,6 @@ const eventUrl = 'https://97855482.ngrok.io/event';
 
 let options = {};
 
-applications.create(name, type, answerUrl, eventUrl, options, (err, res) => {
+vonage.applications.create(name, type, answerUrl, eventUrl, options, (err, res) => {
   console.log(res);
 });

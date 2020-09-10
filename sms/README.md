@@ -1,8 +1,8 @@
-# Getting Started with Nexmo SMS APIs with Node.js
+# Getting Started with Vonage SMS APIs with Node.js
 
-## Set up the ENV with Your Nexmo API Keys
+## Set up the ENV with Your Vonage API Keys
 
-To use this sample you will first need a [Nexmo account](https://dashboard.nexmo.com/sign-up). Once you have your own API credentials, rename
+To use this sample you will first need a [Vonage account](https://dashboard.nexmo.com/sign-up). Once you have your own API credentials, rename
 the `.env-example` file to `.env` and set the values as required.
 
 You also need to [buy a number](https://dashboard.nexmo.com/buy-numbers) where you can send and receive SMS messages.
@@ -26,16 +26,3 @@ These simple examples will receive webhooks and output information to the consol
 For incoming SMSes, configure your webhook to point to `/webhooks/incoming-sms`.
 
 To receive delivery receipts (DLRs), configure your webhook to point to `/webhooks/delivery-receipt`.
-
-## Tutorials
-
-### SMS
-
-| Tutorial                                 | Code Sample                              |
-| ---------------------------------------- | ---------------------------------------- |
-| [How to Send SMS Messages with Node.js and Express](https://www.nexmo.com/blog/2016/10/19/how-to-send-sms-messages-with-node-js-and-express-dr/) | [send-express.js](https://github.com/nexmo-community/nexmo-node-quickstart/blob/master/sms/send-express.js) |
-| [How to Receive SMS Messages with Node.js and Express](https://www.nexmo.com/blog/2016/10/27/receive-sms-messages-node-js-express-dr/) | [receive-express.js](https://github.com/nexmo-community/nexmo-node-quickstart/blob/master/sms/receive-express.js) |
-| [How to receive an SMS Delivery Receipt from a Mobile Carrier with Node.js](https://www.nexmo.com/blog/2016/11/23/getting-a-sms-delivery-receipt-from-a-mobile-carrier-with-node-js-dr/) | [dlr-express.js](https://github.com/nexmo-community/nexmo-node-quickstart/blob/master/sms/dlr-express.js) |
-
-### 
-
