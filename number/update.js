@@ -5,7 +5,7 @@ const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
 const VONAGE_NUMBER = process.env.VONAGE_NUMBER;
 const COUNTRY_CODE = process.env.COUNTRY_CODE;
 const SMS_CALLBACK_URL = process.env.SMS_CALLBACK_URL;
-const NEXMO_APPLICATION_ID = process.env.NEXMO_APPLICATION_ID;
+const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VOICE_CALLBACK_TYPE = process.env.VOICE_CALLBACK_TYPE;
 const VOICE_CALLBACK_VALUE = process.env.VOICE_CALLBACK_VALUE;
 const VOICE_STATUS_URL = process.env.VOICE_STATUS_URL;
@@ -27,7 +27,7 @@ vonage.number.update(
 	VONAGE_NUMBER,
 	{
 		messagesCallbackType: 'app',
-		messagesCallbackValue: NEXMO_APPLICATION_ID,
+		messagesCallbackValue: VONAGE_APPLICATION_ID,
 		voiceCallbackType: VOICE_CALLBACK_TYPE,
 		voiceCallbackValue: VOICE_CALLBACK_VALUE,
 		voiceStatusCallback: VOICE_STATUS_URL,

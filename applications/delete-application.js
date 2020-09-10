@@ -2,7 +2,7 @@ require('dotenv').config({ path: __dirname + '/../.env' })
 
 const VONAGE_API_KEY = process.env.VONAGE_API_KEY
 const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET
-const NEXMO_APPLICATION_ID = process.env.NEXMO_APPLICATION_ID
+const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID
 
 const Vonage = require('@vonage/server-sdk')
    
@@ -13,7 +13,7 @@ const vonage = new Vonage({
     debug: true
 });
 
-vonage.applications.delete(NEXMO_APPLICATION_ID, (error, result) => {
+vonage.applications.delete(VONAGE_APPLICATION_ID, (error, result) => {
   if(error) {
     console.error(error);
   }
