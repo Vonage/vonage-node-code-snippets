@@ -17,7 +17,7 @@ const vonage = new Vonage({
   privateKey: VONAGE_APPLICATION_PRIVATE_KEY_PATH
 })
 
-const ANSWER_URL = 'https://developer.nexmo.com/ncco/tts.json'
+const ANSWER_URL = 'https://raw.githubusercontent.com/nexmo-community/ncco-examples/gh-pages/text-to-speech.json'
 
 vonage.calls.create({
   to: [{

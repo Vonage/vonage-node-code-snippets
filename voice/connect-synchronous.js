@@ -4,7 +4,7 @@ require('dotenv').config({path: __dirname + '/../.env'});
 
 const VONAGE_FROM_NUMBER = process.env.VONAGE_FROM_NUMBER;
 const VONAGE_TO_NUMBER = process.env.VONAGE_TO_NUMBER;
-const NEXMO_ALT_NUMBER = process.env.NEXMO_ALT_NUMBER;
+const VONAGE_ALT_NUMBER = process.env.VONAGE_ALT_NUMBER;
 
 const app = require('express')();
 const bodyParser = require('body-parser');
@@ -24,7 +24,7 @@ app.get('/answer', function (req, res) {
       eventUrl: [`${serverHost}/connect-event`],
       endpoint: [{
         type: 'phone',
-        number: NEXMO_ALT_NUMBER
+        number: VONAGE_ALT_NUMBER
       }]
   }];
 

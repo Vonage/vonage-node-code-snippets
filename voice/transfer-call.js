@@ -18,7 +18,7 @@ const vonage = new Vonage({
   privateKey: VONAGE_PRIVATE_KEY
 }, { debug: true });
 
-const NCCO_URL = "https://developer.nexmo.com/ncco/tts.json";
+const NCCO_URL = "https://raw.githubusercontent.com/nexmo-community/ncco-examples/gh-pages/text-to-speech.json";
 
 vonage.calls.update(UUID, {
   action: 'transfer',
