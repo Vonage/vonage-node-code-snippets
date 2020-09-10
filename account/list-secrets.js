@@ -1,16 +1,16 @@
 require('dotenv').config({path: __dirname + '/../.env'})
 
-const NEXMO_API_KEY = process.env.NEXMO_API_KEY
-const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET
+const VONAGE_API_KEY = process.env.VONAGE_API_KEY
+const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET
 
-const Nexmo = require('nexmo')
+const Vonage = require('@vonage/server-sdk')
 
-const nexmo = new Nexmo({
-  apiKey: NEXMO_API_KEY,
-  apiSecret: NEXMO_API_SECRET
+const vonage = new Vonage({
+  apiKey: VONAGE_API_KEY,
+  apiSecret: VONAGE_API_SECRET
 })
 
-nexmo.account.listSecrets(NEXMO_API_KEY, (err, result) => {
+vonage.account.listSecrets(VONAGE_API_KEY, (err, result) => {
     if (!err) {
         let secrets = result._embedded.secrets;
 

@@ -1,24 +1,29 @@
 {
-  "name": "nexmo-node-quickstart",
+  "name": "vonage-node-code-snippets",
   "version": "0.1.0",
-  "description": "Nexmo Quickstart Samples for Node.js",
+  "description": "Vonage Quickstart Samples for Node.js",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "author": "vonage",
   "keywords": [
-    "nexmo",
-    "node.js",
-    "quickstart",
-    "sms"
+    "sms",
+    "voice",
+    "vonage",
+    "verify",
+    "2fa",
+    "phone numbers",
+    "code snippets"
   ],
-  "author": "Phil Leggetter <phil@leggetter.co.uk> (http://www.leggetter.co.uk), Tomomi Imura <tomomi.imura@nexmo.com>",
+  "contributors": [
+    "Kelly J Andrews",
+    "Phil Leggetter",
+    "Tomomi Imura"
+  ],
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
     "dotenv": "^6.1.0",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
-    "nexmo": "^2.8.0"
+    "@vonage/server-sdk": "^2.10.0"
   }
 }

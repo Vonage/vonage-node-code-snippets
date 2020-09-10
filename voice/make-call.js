@@ -1,32 +1,32 @@
 require('dotenv').config({ path: __dirname + '/../.env' })
 
 const TO_NUMBER = process.env.TO_NUMBER
-const NEXMO_NUMBER = process.env.NEXMO_NUMBER
+const VONAGE_NUMBER = process.env.VONAGE_NUMBER
 
-const NEXMO_API_KEY = process.env.NEXMO_API_KEY
-const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET
-const NEXMO_APPLICATION_ID = process.env.NEXMO_APPLICATION_ID
-const NEXMO_APPLICATION_PRIVATE_KEY_PATH = __dirname + "/../" + process.env.NEXMO_APPLICATION_PRIVATE_KEY_PATH
+const VONAGE_API_KEY = process.env.VONAGE_API_KEY
+const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET
+const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID
+const VONAGE_APPLICATION_PRIVATE_KEY_PATH = __dirname + "/../" + process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH
 
-const Nexmo = require('nexmo')
+const Vonage = require('@vonage/server-sdk')
 
-const nexmo = new Nexmo({
-  apiKey: NEXMO_API_KEY,
-  apiSecret: NEXMO_API_SECRET,
-  applicationId: NEXMO_APPLICATION_ID,
-  privateKey: NEXMO_APPLICATION_PRIVATE_KEY_PATH
+const vonage = new Vonage({
+  apiKey: VONAGE_API_KEY,
+  apiSecret: VONAGE_API_SECRET,
+  applicationId: VONAGE_APPLICATION_ID,
+  privateKey: VONAGE_APPLICATION_PRIVATE_KEY_PATH
 })
 
-const ANSWER_URL = 'https://developer.nexmo.com/ncco/tts.json'
+const ANSWER_URL = 'https://raw.githubusercontent.com/nexmo-community/ncco-examples/gh-pages/text-to-speech.json'
 
-nexmo.calls.create({
+vonage.calls.create({
   to: [{
     type: 'phone',
     number: TO_NUMBER
   }],
   from: {
     type: 'phone',
-    number: NEXMO_NUMBER
+    number: VONAGE_NUMBER
   },
   answer_url: [ANSWER_URL]
 }, (error, response) => {

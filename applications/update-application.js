@@ -1,20 +1,20 @@
 require('dotenv').config({ path: __dirname + '/../.env' })
 
-const NEXMO_API_KEY = process.env.NEXMO_API_KEY
-const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET
-const NEXMO_APPLICATION_ID = process.env.NEXMO_APPLICATION_ID
+const VONAGE_API_KEY = process.env.VONAGE_API_KEY
+const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET
+const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID
 const NAME = process.env.NAME
 
-const Nexmo = require('nexmo')
+const Vonage = require('@vonage/server-sdk')
 
-var nexmo = new Nexmo({
-    apiKey: NEXMO_API_KEY,
-    apiSecret: NEXMO_API_SECRET
+const vonage = new Vonage({
+    apiKey: VONAGE_API_KEY,
+    apiSecret: VONAGE_API_SECRET
 }, {
     debug: true
 });
 
-nexmo.applications.update(NEXMO_APPLICATION_ID, {
+vonage.applications.update(VONAGE_APPLICATION_ID, {
     name: NAME,
     capabilities: {
       voice: {

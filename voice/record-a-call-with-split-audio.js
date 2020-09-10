@@ -2,7 +2,7 @@ require('dotenv').config({path: __dirname + '/../.env'})
 
 
 const TO_NUMBER = process.env.TO_NUMBER
-const NEXMO_NUMBER = process.env.NEXMO_NUMBER
+const VONAGE_NUMBER = process.env.VONAGE_NUMBER
 
 const app = require('express')()
 const bodyParser = require('body-parser')
@@ -18,7 +18,7 @@ const onInboundCall = (request, response) => {
     },
     {
       action: "connect",
-      from: NEXMO_NUMBER,
+      from: VONAGE_NUMBER,
       endpoint: [{
         type: "phone",
         number: TO_NUMBER

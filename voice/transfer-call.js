@@ -2,25 +2,25 @@
 
 require('dotenv').config({ path: __dirname + '/../.env' });
 
-const NEXMO_API_KEY = process.env.NEXMO_API_KEY;
-const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET;
-const NEXMO_PRIVATE_KEY = __dirname + "/../" + process.env.NEXMO_PRIVATE_KEY;
-const NEXMO_APPLICATION_ID = process.env.NEXMO_APPLICATION_ID;
+const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
+const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
+const VONAGE_PRIVATE_KEY = __dirname + "/../" + process.env.VONAGE_PRIVATE_KEY;
+const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 
 const UUID = process.env.UUID;
 
-const Nexmo = require('nexmo');
+const Vonage = require('@vonage/server-sdk');
 
-const nexmo = new Nexmo({
-  apiKey: NEXMO_API_KEY,
-  apiSecret: NEXMO_API_SECRET,
-  applicationId: NEXMO_APPLICATION_ID,
-  privateKey: NEXMO_PRIVATE_KEY
+const vonage = new Vonage({
+  apiKey: VONAGE_API_KEY,
+  apiSecret: VONAGE_API_SECRET,
+  applicationId: VONAGE_APPLICATION_ID,
+  privateKey: VONAGE_PRIVATE_KEY
 }, { debug: true });
 
-const NCCO_URL = "https://developer.nexmo.com/ncco/tts.json";
+const NCCO_URL = "https://raw.githubusercontent.com/nexmo-community/ncco-examples/gh-pages/text-to-speech.json";
 
-nexmo.calls.update(UUID, {
+vonage.calls.update(UUID, {
   action: 'transfer',
   destination: {
     "type": "ncco",

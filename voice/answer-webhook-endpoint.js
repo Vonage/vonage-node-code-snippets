@@ -15,7 +15,7 @@ app.get('/answer-webhook', function (req, res) {
   var ncco = [
     {
       action: 'talk',
-      text: 'Hello from Nexmo!'
+      text: 'Hello from Vonage!'
     }
   ];
 

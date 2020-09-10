@@ -1,23 +1,23 @@
 require('dotenv').config({path: __dirname + '/../.env'})
 
-const NEXMO_API_KEY = process.env.NEXMO_API_KEY
-const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET
-const NEXMO_NUMBER = process.env.NEXMO_NUMBER
+const VONAGE_API_KEY = process.env.VONAGE_API_KEY
+const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET
+const VONAGE_NUMBER = process.env.VONAGE_NUMBER
 const COUNTRY_CODE = process.env.COUNTRY_CODE
 
-const Nexmo = require('nexmo')
+const Vonage = require('@vonage/server-sdk')
 
-const nexmo = new Nexmo(
+const vonage = new Vonage(
   {
-    apiKey: NEXMO_API_KEY,
-    apiSecret: NEXMO_API_SECRET
+    apiKey: VONAGE_API_KEY,
+    apiSecret: VONAGE_API_SECRET
   },
   {
     debug: true
   }
 )
 
-nexmo.number.cancel(COUNTRY_CODE, NEXMO_NUMBER, (err, res) => {
+vonage.number.cancel(COUNTRY_CODE, VONAGE_NUMBER, (err, res) => {
   if(err) {
     console.error(err)
   }

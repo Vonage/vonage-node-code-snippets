@@ -1,15 +1,14 @@
-# Nexmo APIs Quickstart Examples for Node.JS
+# Vonage APIs Quickstart Examples for Node.JS
 
-<img src="https://developer.nexmo.com/assets/images/Vonage_Nexmo.svg" height="48px" alt="Nexmo is now known as Vonage" />
+<img src="https://developer.nexmo.com/images/logos/vbc-logo.svg" height="48px"/>
 
+Quickstarts also available for: [Python](https://github.com/Vonage/vonage-python-code-snippets), [.NET](https://github.com/Vonage/vonage-dotnet-code-snippets), [Node.js](https://github.com/Vonage/vonage-node-code-snippets), [PHP](https://github.com/Vonage/vonage-php-code-snippets),  [Ruby](https://github.com/Vonage/vonage-ruby-code-snippets) and [cURL](https://github.com/Vonage/vonage-curl-code-snippets).
 
-Quickstarts also available for: [Java](https://github.com/nexmo-community/nexmo-java-quickstart), [.NET](https://github.com/nexmo-community/nexmo-dotnet-quickstart), [PHP](https://github.com/nexmo-community/nexmo-php-quickstart), [Python](https://github.com/nexmo-community/nexmo-python-quickstart), [Ruby](https://github.com/nexmo-community/nexmo-ruby-quickstart)
+These code samples are meant to be used for [https://developer.nexmo.com/](https://developer.nexmo.com/), and are structured in such a way as to be used for internal testing. Developers are free to use these code snippets as a reference, but these may require changes to be worked into your specific application. We recommend checking out the [Vonage API Developer Website](https://developer.nexmo.com/), which displays these code snippets in a more copy/paste fashion.
 
-These code samples are meant to be used for [https://developer.nexmo.com/](https://developer.nexmo.com/), and are structured in such a way as to be used for internal testing. Developers are free to use these code snippets as a reference, but these may require changes to be worked into your specific application. We recommend checking out the [Nexmo Developer Website](https://developer.nexmo.com/), which displays these code snippets in a more copy/paste fashion.
+## Configure with Your Vonage API Keys
 
-## Configure with Your Nexmo API Keys
-
-If you'd still like to use this sample you will first need a [Nexmo account](https://dashboard.nexmo.com/sign-up). Once you have your own API credentials, rename
+If you'd still like to use this sample you will first need a [Vonage account](https://dashboard.nexmo.com/sign-up). Once you have your own API credentials, rename
 the `.env-example` file to `.env` and set the values as required.
 
 For some of the examples, you will need to [buy a number](https://dashboard.nexmo.com/buy-numbers).
@@ -39,8 +38,6 @@ For some of the examples, you will need to [buy a number](https://dashboard.nexm
 | Tutorial                  | Code Sample                              |
 | ------------------------- | ---------------------------------------- |
 | [Two-Factor Authentication](https://www.nexmo.com/blog/2017/04/11/implement-two-factor-authentication-2fa-web-apps-node-js-dr/) | [2fa.js](https://github.com/nexmo-community/nexmo-node-quickstart/blob/master/verify/2fa.js) and [UI code](https://github.com/nexmo-community/nexmo-node-quickstart/tree/master/verify/views) |
-
-
 
 ## Request More Examples
 
