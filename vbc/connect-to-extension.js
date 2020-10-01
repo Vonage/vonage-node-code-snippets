@@ -1,4 +1,4 @@
-require('dotenv').config({path: __dirname + '/../.env'});
+require('dotenv').config({path: `${__dirname}/../.env`});
 const VBC_EXTENSION = process.env.VBC_EXTENSION;
 
 const app = require('express')()

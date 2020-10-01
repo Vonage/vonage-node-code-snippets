@@ -1,4 +1,4 @@
-require('dotenv').config({path: __dirname + '/../.env'})
+require('dotenv').config({path: `${__dirname}/../.env`})
 
 
 const CONF_NAME = process.env.CONF_NAME

@@ -14,7 +14,7 @@
 'use strict';
 
 require('dotenv').config({
-  path: __dirname + '/../.env'
+  path: `${__dirname}/../.env`
 });
 
 const express = require('express');
@@ -27,10 +27,10 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.set('views', __dirname + '/views'); // Render on browser
+app.set('views', `${__dirname}/views`); // Render on browser
 app.set('view engine', 'html');
 app.engine('html', ejs.renderFile);
-app.use(express.static(__dirname + '/views'));
+app.use(express.static(`${__dirname}/views`));
 
 const server = app.listen(process.env.PORT || 5000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);

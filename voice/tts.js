@@ -1,4 +1,4 @@
-require('dotenv').config({path: __dirname + '/../.env'});
+require('dotenv').config({path: `${__dirname}/../.env`});
 
 var API_KEY = process.env.VONAGE_API_KEY;
 var API_SECRET = process.env.VONAGE_API_SECRET;

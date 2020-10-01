@@ -1,4 +1,4 @@
-require('dotenv').config({path: __dirname + '/../.env'});
+require('dotenv').config({path: `${__dirname}/../.env`});
 const YOUR_SECOND_NUMBER = process.env.YOUR_SECOND_NUMBER;
 const VONAGE_NUMBER = process.env.VONAGE_NUMBER;
 

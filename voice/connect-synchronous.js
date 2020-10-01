@@ -1,6 +1,6 @@
 "use strict";
 
-require('dotenv').config({path: __dirname + '/../.env'});
+require('dotenv').config({path: `${__dirname}/../.env`});
 
 const VONAGE_FROM_NUMBER = process.env.VONAGE_FROM_NUMBER;
 const VONAGE_TO_NUMBER = process.env.VONAGE_TO_NUMBER;
@@ -14,7 +14,7 @@ app.set('port', (process.env.PORT || 5000));
 
 app.get('/answer', function (req, res) {
 
-  const serverHost = req.protocol + '://' + req.get('host');
+  const serverHost = `${req.protocol}://${req.get('host')}`;
 
   const ncco = [{
       action: "connect",

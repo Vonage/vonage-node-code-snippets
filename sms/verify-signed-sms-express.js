@@ -1,4 +1,4 @@
-require('dotenv').config({ path: __dirname + '/../.env' })
+require('dotenv').config({ path: `${__dirname}/../.env` })
 
 const VONAGE_API_SIGNATURE_SECRET = process.env.VONAGE_API_SIGNATURE_SECRET
 

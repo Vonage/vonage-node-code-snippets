@@ -1,6 +1,6 @@
 "use strict";
 
-require('dotenv').config({path: __dirname + '/../.env'});
+require('dotenv').config({path: `${__dirname}/../.env`});
 
 var app = require('express')();
 app.set('port', (process.env.PORT || 5000));

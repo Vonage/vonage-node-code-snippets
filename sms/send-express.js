@@ -2,7 +2,7 @@
 
 'use strict';
 
-require('dotenv').config({path: __dirname + '/../.env'});
+require('dotenv').config({path: `${__dirname}/../.env`});
 
 const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
 const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;

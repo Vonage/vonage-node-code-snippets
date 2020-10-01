@@ -1,9 +1,9 @@
-require('dotenv').config({ path: __dirname + '/../../.env' })
+require('dotenv').config({ path: `${__dirname}/../../.env` })
 
 const VONAGE_API_KEY = process.env.VONAGE_API_KEY
 const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID
-const VONAGE_APPLICATION_PRIVATE_KEY_PATH = __dirname + "/../../" + process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH
+const VONAGE_APPLICATION_PRIVATE_KEY_PATH = `${__dirname}/../../${process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH}`
 const CONVERSATION_ID = process.env.CONVERSATION_ID
 const EVENT_ID = process.env.EVENT_ID
 
