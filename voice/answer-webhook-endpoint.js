@@ -2,9 +2,10 @@
 
 require('dotenv').config({path: __dirname + '/../.env'});
 
-var app = require('express')();
+var express = require('express');
+var app = express();
 app.set('port', (process.env.PORT || 5000));
-app.use(require('body-parser').urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 
 app.get('/answer-webhook', function (req, res) {
   var from = req.query.from;

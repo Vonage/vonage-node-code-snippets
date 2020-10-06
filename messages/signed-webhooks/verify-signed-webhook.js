@@ -2,14 +2,14 @@ require('dotenv').config({ path: __dirname + '/../.env' })
 const VONAGE_API_SIGNATURE_SECRET = process.env.VONAGE_API_SIGNATURE_SECRET || ''
 const jwt = require("jsonwebtoken");
 const sha256 = require('js-sha256');
-const app = require('express')()
-const bodyParser = require('body-parser')
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({
+const express = require('express');
+const app = express()
+app.use(express.json())
+app.use(express.urlencoded({
   extended: true
 }))
 app
-    .route('/webhooks/inbound-message')    
+    .route('/webhooks/inbound-message')
     .post(handleInboundMessage);
 function handleInboundMessage(request, response){
     const payload = Object.assign(request.query, request.body)

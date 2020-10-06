@@ -4,11 +4,11 @@ const VONAGE_API_SIGNATURE_SECRET = process.env.VONAGE_API_SIGNATURE_SECRET
 
 const Vonage = require('@vonage/server-sdk')
 
-const app = require('express')()
-const bodyParser = require('body-parser')
+const express = require('express');
+const app = express()
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({
+app.use(express.json())
+app.use(express.urlencoded({
   extended: true
 }))
 

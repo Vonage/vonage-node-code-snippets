@@ -6,10 +6,10 @@ const VONAGE_FROM_NUMBER = process.env.VONAGE_FROM_NUMBER;
 const VONAGE_TO_NUMBER = process.env.VONAGE_TO_NUMBER;
 const VONAGE_ALT_NUMBER = process.env.VONAGE_ALT_NUMBER;
 
-const app = require('express')();
-const bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/answer', function (req, res) {
@@ -30,21 +30,21 @@ app.get('/answer', function (req, res) {
 
   console.log('Returning NCCO');
   console.dir(ncco)
-  
+
   res.json(ncco);
-  
+
 });
 
 app.post('/connect-event', function(req, res) {
   const ncco = [];
-  
+
   if(req.body.status === 'timeout') {
     // Note: you cannot presently do this
     // ncco.push({
     //   action: 'talk',
     //   text: 'Sorry, the attempt to connect your call timed out.'
     // });
-    
+
     ncco.push({
         action: 'connect',
         from: VONAGE_FROM_NUMBER,
@@ -54,7 +54,7 @@ app.post('/connect-event', function(req, res) {
         }]
       });
   }
-  
+
   res.json(ncco);
 });
 

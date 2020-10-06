@@ -9,12 +9,11 @@ const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
 const VONAGE_FROM_NUMBER = process.env.VONAGE_FROM_NUMBER;
 
 const express = require('express');
-const bodyParser = require('body-parser');
 const Vonage = require('@vonage/server-sdk');
 
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 const server = app.listen(process.env.PORT || 3000);
 
 const vonage = new Vonage({

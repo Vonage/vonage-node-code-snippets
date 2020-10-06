@@ -10,10 +10,10 @@ const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const TO_NUMBER = process.env.VONAGE_TO_NUMBER;
 const FROM_NUMBER = process.env.VONAGE_FROM_NUMBER;
 
-const app = require('express')();
-const bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
+const express = require('express');
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({
   extended: true
 }));
 

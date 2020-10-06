@@ -1,9 +1,9 @@
 'use strict';
 
-const app = require('express')();
-const bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+const express = require('express');
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const server = app.listen(process.env.PORT || 4001, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);

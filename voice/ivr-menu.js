@@ -1,7 +1,7 @@
-const app = require('express')()
-const bodyParser = require('body-parser')
+const express = require('express')
+const app = express()
 
-app.use(bodyParser.json())
+app.use(express.json())
 
 app.get('/webhooks/answer', (req, res) => {
   const ncco = [{

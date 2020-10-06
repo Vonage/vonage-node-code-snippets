@@ -18,12 +18,11 @@ require('dotenv').config({
 });
 
 const express = require('express');
-const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const app = express();
 
-app.use(bodyParser.json()); // for parsing POST req
-app.use(bodyParser.urlencoded({
+app.use(express.json()); // for parsing POST req
+app.use(express.urlencoded({
   extended: true
 }));
 

@@ -4,10 +4,10 @@
 
 'use strict';
 require('dotenv').config({path: __dirname + '/../.env'});
-const app = require('express')();
-const bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+const express = require('express');
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const VONAGE_FROM_NUMBER = process.env.VONAGE_FROM_NUMBER;
 const VONAGE_TO_NUMBER = process.env.VONAGE_TO_NUMBER;

@@ -4,10 +4,10 @@ require('dotenv').config({path: __dirname + '/../.env'})
 const TO_NUMBER = process.env.TO_NUMBER
 const VONAGE_NUMBER = process.env.VONAGE_NUMBER
 
-const app = require('express')()
-const bodyParser = require('body-parser')
+const express = require('express')
+const app = express()
 
-app.use(bodyParser.json())
+app.use(express.json())
 
 const onInboundCall = (request, response) => {
   const ncco = [{
