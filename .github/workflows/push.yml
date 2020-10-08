@@ -11,7 +11,7 @@ jobs:
     - name: Update NDP Submodule
       uses: nexmo/github-actions/submodule-auto-pr@master
       env:
-        GH_ADMIN_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
+        GH_ADMIN_TOKEN: ${{ secrets.PDX_GH_TOKEN }}
         PR_ACTIVE_BRANCH: master
         PR_BRANCH_NAME: automated-node-snippets-update
         PR_SUBMODULE_PATH: .repos/vonage/vonage-node-code-snippets
