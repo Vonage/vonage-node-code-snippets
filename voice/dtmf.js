@@ -7,13 +7,14 @@ const onInboundCall = (request, response) => {
   const ncco = [
     {
       action: 'talk',
-      text: 'Please enter a digit'
+      text:
+        "Hi, this call collects dtmf input using Vonage's Voice API. Please press a couple of buttons on your phone keypad",
+      voice_name: 'Amy',
     },
     {
       action: 'input',
-      eventUrl: [`${request.protocol}://${request.get('host')}/webhooks/dtmf`]
-    }
-  ]
+    },
+  ];
 
   response.json(ncco)
 }

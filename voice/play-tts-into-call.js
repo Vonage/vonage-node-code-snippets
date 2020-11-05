@@ -18,11 +18,20 @@ const vonage = new Vonage({
   privateKey: VONAGE_PRIVATE_KEY
 }, {debug: true});
 
-const TEXT = 'This is some sample text to speech text. It could go on and on and never end.';
+const ncco = [
+  {
+    action: 'talk',
+    text:
+      'You are listening to a test text-to-speech call made with Vonage Voice API',
+    language: 'en-AU',
+    style: 3,
+  },
+];
 
-vonage.calls.talk.start(UUID, { text: TEXT, voice_name: 'Emma', loop: 0 }, (err, res) => {
-  if(err) { console.error(err); }
-  else {
-      console.log(res);
+vonage.calls.talk.start(UUID, ncco, (err, res) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(res);
   }
 });

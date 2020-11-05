@@ -10,13 +10,14 @@ const onInboundCall = (request, response) => {
   const ncco = [
     {
       action: 'talk',
-      text: 'Please wait while we connect you to the conference'
+      text:
+        "You are joining a conference that was created using Vonage's Voice API.",
     },
     {
       action: 'conversation',
-      name: CONF_NAME
-    }
-  ]
+      name: 'vonage-conference',
+    },
+  ];
 
   response.json(ncco)
 }

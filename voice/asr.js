@@ -4,20 +4,23 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
 const onInboundCall = (request, response) => {
-  const ncco = [{
+  const ncco = [
+    {
       action: 'talk',
-      text: 'Please say something',
+      text: 'Please tell us, how can we help you today?',
+      bargeIn: true,
     },
     {
+      eventUrl: ['https://api.example.com/callbacks/events'],
+      eventMethod: 'POST',
       action: 'input',
-      eventUrl: [`${request.protocol}://${request.get('host')}/webhooks/asr`],
       speech: {
-        endOnSilence: 1,
-        language: "en-US",
-        uuid: [request.query.uuid]
-      }
-    }
-  ]
+        uuid: ['aaaaaaaa-bbbb-cccc-dddd-0123456789ab'],
+        language: 'en-gb',
+        context: ['support', 'buy', 'credit', 'account'],
+      },
+    },
+  ];
   response.json(ncco)
 }
 

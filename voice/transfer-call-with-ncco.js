@@ -22,19 +22,25 @@ const vonage = new Vonage({
   debug: true
 });
 
-vonage.calls.update(UUID, {
-  action: 'transfer',
-  destination: {
-    "type": "ncco",
-    "ncco": [
-      "action": 'talk',
-      "text": 'This is a transfer action using an inline NCCO'
-    ]
+vonage.calls.update(
+  UUID,
+  {
+    action: 'transfer',
+    destination: {
+      type: 'ncco',
+      ncco: [
+        {
+          action: 'talk',
+          text: 'Hello, thank you for using the Vonage API. If you can hear this message, then transfer to a new NCCO worked.',
+        },
+      ],
+    },
+  },
+  (err, res) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(res);
+    }
   }
-}, (err, res) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log(res);
-  }
-});
+);

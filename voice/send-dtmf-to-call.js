@@ -43,9 +43,8 @@ app.get('/call', (req, res) => {
       to: [{
         type: 'phone',
         number: TO_NUMBER,
-
         // on answer, send DTMF to the call leg
-        // DTMF is send "out of band" which means you won't hear it
+        // DTMF is sent "out of band" which means you won't hear it
         dtmfAnswer: '2p02p7p7'
       }],
       from: {

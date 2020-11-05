@@ -17,7 +17,8 @@ const vonage = new Vonage({
   privateKey: VONAGE_PRIVATE_KEY
 }, {debug: true});
 
-const URL = 'https://nexmo-community.github.io/ncco-examples/assets/voice_api_audio_streaming.mp3';
+const URL =
+  'https://github.com/nexmo-community/ncco-examples/raw/gh-pages/assets/voice_api_audio_streaming.mp3';
 
 vonage.calls.stream.start(UUID, { stream_url: [URL], loop: 0 }, (err, res) => {
   if(err) { console.error(err); }

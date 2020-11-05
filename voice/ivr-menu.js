@@ -4,16 +4,16 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
 app.get('/webhooks/answer', (req, res) => {
-  const ncco = [{
+  const ncco = [
+    {
       action: 'talk',
-      bargeIn: true,
-      text: 'Hello. Please enter a digit.'
+      text:
+        "Hi, this call collects dtmf input using the Vonage Voice API. Please press a couple of buttons on your phone keypad",
+      voice_name: 'Amy',
     },
     {
       action: 'input',
-      maxDigits: 1,
-      eventUrl: [`${req.protocol}://${req.get('host')}/webhooks/dtmf`]
-    }
+    },
   ]
 
   res.json(ncco)
