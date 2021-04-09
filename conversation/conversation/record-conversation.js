@@ -24,4 +24,3 @@ vonage.conversations.record(CONVERSATION_ID, {
 }, (error, response) => {
   console.log(error);
 });
-};
