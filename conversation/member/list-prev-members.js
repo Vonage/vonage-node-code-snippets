@@ -29,7 +29,8 @@ vonage.conversations.members.get(CONVERSATION_ID, {},
                     console.error(error);
                   } else {
                     console.log(result);
-                  })
+                  }
+                })
               }
             })
         }

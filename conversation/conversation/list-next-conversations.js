@@ -23,6 +23,7 @@ vonage.conversations.get({}, (error, result) => {
               console.error(error);
             } else {
               console.log(result._embedded.data.conversations);
-            });
+            }
+          });
         }
       });
