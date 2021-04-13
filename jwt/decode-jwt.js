@@ -12,7 +12,6 @@ YOUR APPLICATIONS PUBLIC KEY
 -----END PUBLIC KEY-----`
 
 app.set('port', (process.env.PORT || 5000));
-app.use(require('body-parser').urlencoded({ extended: false }));
 
 app.get('/', function (req, res) {
     try {
