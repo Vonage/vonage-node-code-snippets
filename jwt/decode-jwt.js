@@ -7,15 +7,13 @@ const jwt = require('jsonwebtoken')
 
 const app = express();
 
-const app_public_key = `-----BEGIN PUBLIC KEY-----
-YOUR APPLICATIONS PUBLIC KEY
------END PUBLIC KEY-----`
+const signature_secret = VONAGE_SIGNATURE_SECRET;
 
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function (req, res) {
     try {
-        let auth = jwt.verify(req.headers['authorization'], app_public_key)
+        let auth = jwt.verify(req.headers['authorization'], signature_secret)
         res.send('Verified')
     } catch (error) {
         res.sendStatus('401')
