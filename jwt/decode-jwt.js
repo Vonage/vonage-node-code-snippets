@@ -13,7 +13,7 @@ app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function (req, res) {
     try {
-        let auth = jwt.verify(req.headers['authorization'], signature_secret)
+        let auth = jwt.verify(req.headers['authorization'].split(' ')[1], signature_secret)
         res.send('Verified')
     } catch (error) {
         res.sendStatus('401')
