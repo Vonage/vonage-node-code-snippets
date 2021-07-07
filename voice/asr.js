@@ -10,6 +10,7 @@ const onInboundCall = (request, response) => {
     },
     {
       action: 'input',
+      type: ['speech'],
       eventUrl: [`${request.protocol}://${request.get('host')}/webhooks/asr`],
       speech: {
         endOnSilence: 1,

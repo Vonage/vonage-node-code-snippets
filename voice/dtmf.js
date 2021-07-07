@@ -11,6 +11,7 @@ const onInboundCall = (request, response) => {
     },
     {
       action: 'input',
+      type: ['dtmf'],
       eventUrl: [`${request.protocol}://${request.get('host')}/webhooks/dtmf`]
     }
   ]
