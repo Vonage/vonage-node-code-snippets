@@ -6,3 +6,4 @@ opentok.createSession({mediaMode:'routed', archiveMode:'always'}, function(err, 
       console.log("Session ID: " + sessionId);
     }
   });
+  
