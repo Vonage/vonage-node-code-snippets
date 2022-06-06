@@ -10,7 +10,7 @@ const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER
 const BASE_URL = process.env.BASE_URL
 
 const Vonage = require('@vonage/server-sdk')
-const WhatsAppImage = require('@vonage/server-sdk/lib/Messages/WhatsAppImage');
+const WhatsAppText = require('@vonage/server-sdk/lib/Messages/WhatsAppText');
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
