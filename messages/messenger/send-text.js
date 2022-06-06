@@ -26,7 +26,7 @@ const vonage = new Vonage(
 );
 
 vonage.messages.send(
-	new MessengerImage(
+	new MessengerText(
 		'This is a Facebook Messenger text message sent using the Messages API',
 		FB_RECIPIENT_ID,
 		FB_SENDER_ID
