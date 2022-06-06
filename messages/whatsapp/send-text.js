@@ -10,6 +10,7 @@ const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER
 const BASE_URL = process.env.BASE_URL
 
 const Vonage = require('@vonage/server-sdk')
+const WhatsAppImage = require('@vonage/server-sdk/lib/Messages/WhatsAppImage');
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
@@ -20,15 +21,12 @@ const vonage = new Vonage({
   apiHost: BASE_URL
 })
 
-vonage.channel.send(
-  { "type": "whatsapp", "number": TO_NUMBER },
-  { "type": "whatsapp", "number": WHATSAPP_NUMBER },
-  {
-    "content": {
-      "type": "text",
-      "text": "This is a WhatsApp Message text message sent using the Messages API"
-    }
-  },
+vonage.messages.send(
+  new WhatsAppImage(
+    "This is a WhatsApp Message text message sent using the Messages API",
+    TO_NUMBER,
+    WHATSAPP_NUMBER
+  ),
   (err, data) => {
     if (err) {
       console.error(err);

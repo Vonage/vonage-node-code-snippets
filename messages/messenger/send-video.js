@@ -12,6 +12,7 @@ const BASE_URL = process.env.BASE_URL;
 const VIDEO_URL = process.env.VIDEO_URL;
 
 const Vonage = require('@vonage/server-sdk');
+const MessengerVideo = require('@vonage/server-sdk/lib/Messages/MessengerVideo');
 
 const vonage = new Vonage(
 	{
@@ -25,17 +26,8 @@ const vonage = new Vonage(
 	}
 );
 
-vonage.channel.send(
-	{ type: 'messenger', id: FB_RECIPIENT_ID },
-	{ type: 'messenger', id: FB_SENDER_ID },
-	{
-		content: {
-			type: 'video',
-			video: {
-				url: VIDEO_URL,
-			},
-		},
-	},
+vonage.messages.send(
+	new MessengerVideo({ url: VIDEO_URL }, FB_RECIPIENT_ID, FB_SENDER_ID),
 	(err, data) => {
 		if (err) {
 			console.error(err);

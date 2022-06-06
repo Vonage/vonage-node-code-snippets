@@ -6,10 +6,11 @@ const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID
 const VONAGE_APPLICATION_PRIVATE_KEY_PATH = __dirname +"/../"+ process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH
 
 const TO_NUMBER = process.env.TO_NUMBER
-const VONAGE_NUMBER = process.env.FROM_NUMBER
+const FROM_NUMBER = process.env.FROM_NUMBER
 const IMAGE_URL = process.env.IMAGE_URL
 
 const Vonage = require('@vonage/server-sdk')
+const MMSImage = require('@vonage/server-sdk/lib/Messages/MMSImage')
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
@@ -18,15 +19,8 @@ const vonage = new Vonage({
   privateKey: VONAGE_APPLICATION_PRIVATE_KEY_PATH
 })
 
-vonage.channel.send(
-  { "type": "mms", "number": TO_NUMBER },
-  { "type": "mms", "number": FROM_NUMBER },
-  {
-    "content": {
-      "type": "image",
-       "image": { "url": IMAGE_URL }
-    }
-  },
+vonage.messages.send(
+  new MMSImage({ "url": IMAGE_URL }, TO_NUMBER, FROM_NUMBER),
   (err, data) => {
     if (err) {
       console.error(err);

@@ -6,9 +6,10 @@ const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID
 const VONAGE_APPLICATION_PRIVATE_KEY_PATH = __dirname +"/../"+ process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH
 
 const TO_NUMBER = process.env.TO_NUMBER
-const VONAGE_NUMBER = process.env.FROM_NUMBER
+const FROM_NUMBER = process.env.FROM_NUMBER
 
 const Vonage = require('@vonage/server-sdk')
+const SMS = require('@vonage/server-sdk/lib/Messages/SMS');
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
@@ -17,15 +18,8 @@ const vonage = new Vonage({
   privateKey: VONAGE_APPLICATION_PRIVATE_KEY_PATH
 })
 
-vonage.channel.send(
-  { "type": "sms", "number": TO_NUMBER },
-  { "type": "sms", "number": FROM_NUMBER },
-  {
-    "content": {
-      "type": "text",
-      "text": "This is an SMS text message sent using the Messages API"
-    }
-  },
+vonage.messages.send(
+  new SMS("This is an SMS text message sent using the Messages API", TO_NUMBER, FROM_NUMBER),
   (err, data) => {
     if (err) {
       console.error(err);

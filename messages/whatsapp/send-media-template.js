@@ -13,6 +13,7 @@ const WHATSAPP_TEMPLATE_NAME = process.env.WHATSAPP_TEMPLATE_NAME;
 const BASE_URL = process.env.BASE_URL;
 
 const Vonage = require('@vonage/server-sdk');
+const WhatsAppTemplate = require('@vonage/server-sdk/lib/Messages/WhatsAppTemplate');
 
 const vonage = new Vonage(
 	{
@@ -26,58 +27,51 @@ const vonage = new Vonage(
 	}
 );
 
-vonage.channel.send(
-	{ type: 'whatsapp', number: TO_NUMBER },
-	{ type: 'whatsapp', number: WHATSAPP_NUMBER },
-	{
-		content: {
-			type: 'custom',
-			custom: {
-				type: 'template',
-				template: {
-					namespace: WHATSAPP_TEMPLATE_NAMESPACE,
-					name: WHATSAPP_TEMPLATE_NAME,
-					language: {
-						policy: 'deterministic',
-						code: 'en',
-					},
-					components: [
+vonage.messages.send(
+	new WhatsAppTemplate(
+		{
+			name: `${WHATSAPP_TEMPLATE_NAMESPACE}:${WHATSAPP_TEMPLATE_NAME}`,
+			components: [
+				{
+					type: 'header',
+					parameters: [
 						{
-							type: 'header',
-							parameters: [
-								{
-									type: 'location',
-									location: {
-										longitude: -122.425332,
-										latitude: 37.758056,
-										name: 'Facebook HQ',
-										address: '1 Hacker Way, Menlo Park, CA 94025',
-									},
-								},
-							],
-						},
-						{
-							type: 'body',
-							parameters: [
-								{
-									type: 'text',
-									text: 'Value 1',
-								},
-								{
-									type: 'text',
-									text: 'Value 2',
-								},
-								{
-									type: 'text',
-									text: 'Value 3',
-								},
-							],
+							type: 'location',
+							location: {
+								longitude: -122.425332,
+								latitude: 37.758056,
+								name: 'Facebook HQ',
+								address: '1 Hacker Way, Menlo Park, CA 94025',
+							},
 						},
 					],
 				},
-			},
+				{
+					type: 'body',
+					parameters: [
+						{
+							type: 'text',
+							text: 'Value 1',
+						},
+						{
+							type: 'text',
+							text: 'Value 2',
+						},
+						{
+							type: 'text',
+							text: 'Value 3',
+						},
+					],
+				},
+			],
 		},
-	},
+		{
+			policy: 'deterministic',
+			locale: 'en',
+		},
+		TO_NUMBER,
+		WHATSAPP_NUMBER,
+	),
 	(err, data) => {
 		if (err) {
 			console.error(err);

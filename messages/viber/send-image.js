@@ -12,6 +12,7 @@ const BASE_URL = process.env.BASE_URL;
 const IMAGE_URL = process.env.IMAGE_URL;
 
 const Vonage = require('@vonage/server-sdk');
+const ViberImage = require('@vonage/server-sdk/lib/Messages/ViberImage');
 
 const vonage = new Vonage(
 	{
@@ -25,17 +26,8 @@ const vonage = new Vonage(
 	}
 );
 
-vonage.channel.send(
-	{ type: 'viber_service_msg', number: TO_NUMBER },
-	{ type: 'viber_service_msg', id: VIBER_SERVICE_MESSAGE_ID },
-	{
-		content: {
-			type: 'image',
-			image: {
-				url: IMAGE_URL,
-			},
-		},
-	},
+vonage.messages.send(
+	new ViberImage({ url: IMAGE_URL }, TO_NUMBER, VIBER_SERVICE_MESSAGE_ID),
 	(err, data) => {
 		if (err) {
 			console.error(err);

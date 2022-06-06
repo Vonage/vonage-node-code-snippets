@@ -14,6 +14,7 @@ const HEADER_IMAGE_URL = process.env.HEADER_IMAGE_URL;
 const BASE_URL = process.env.BASE_URL;
 
 const Vonage = require('@vonage/server-sdk');
+const WhatsAppCustom = require('@vonage/server-sdk/lib/Messages/WhatsAppCustom');
 
 const vonage = new Vonage(
 	{
@@ -27,70 +28,67 @@ const vonage = new Vonage(
 	}
 );
 
-vonage.channel.send(
-	{ type: 'whatsapp', number: TO_NUMBER },
-	{ type: 'whatsapp', number: WHATSAPP_NUMBER },
-	{
-		content: {
-			type: 'custom',
-			custom: {
-				type: 'template',
-				template: {
-					namespace: WHATSAPP_TEMPLATE_NAMESPACE,
-					name: WHATSAPP_TEMPLATE_NAME,
-					language: {
-						code: 'en',
-						policy: 'deterministic',
-					},
-					components: [
-						{
-							type: 'header',
-							parameters: [
-								{
-									type: 'image',
-									image: {
-										link: HEADER_IMAGE_URL,
-									},
-								},
-							],
-						},
-						{
-							type: 'body',
-							parameters: [
-								{
-									type: 'text',
-									text: 'Anand',
-								},
-								{
-									type: 'text',
-									text: 'Quest',
-								},
-								{
-									type: 'text',
-									text: '113-0921387',
-								},
-								{
-									type: 'text',
-									text: '23rd Nov 2019',
-								},
-							],
-						},
-						{
-							type: 'button',
-							index: 0,
-							sub_type: 'url',
-							parameters: [
-								{
-									type: 'text',
-									text: '1Z999AA10123456784',
-								},
-							],
-						},
-					],
+vonage.messages.send(
+	new WhatsAppCustom(
+		{
+			type: 'template',
+			template: {
+				namespace: WHATSAPP_TEMPLATE_NAMESPACE,
+				name: WHATSAPP_TEMPLATE_NAME,
+				language: {
+					code: 'en',
+					policy: 'deterministic',
 				},
+				components: [
+					{
+						type: 'header',
+						parameters: [
+							{
+								type: 'image',
+								image: {
+									link: HEADER_IMAGE_URL,
+								},
+							},
+						],
+					},
+					{
+						type: 'body',
+						parameters: [
+							{
+								type: 'text',
+								text: 'Anand',
+							},
+							{
+								type: 'text',
+								text: 'Quest',
+							},
+							{
+								type: 'text',
+								text: '113-0921387',
+							},
+							{
+								type: 'text',
+								text: '23rd Nov 2019',
+							},
+						],
+					},
+					{
+						type: 'button',
+						index: 0,
+						sub_type: 'url',
+						parameters: [
+							{
+								type: 'text',
+								text: '1Z999AA10123456784',
+							},
+						],
+					},
+				],
 			},
 		},
-	},
+		TO_NUMBER,
+		WHATSAPP_NUMBER,
+	),
 	(err, data) => {
 		if (err) {
 			console.error(err);

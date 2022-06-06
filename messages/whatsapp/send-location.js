@@ -11,6 +11,7 @@ const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER;
 const BASE_URL = process.env.BASE_URL;
 
 const Vonage = require('@vonage/server-sdk');
+const WhatsAppCustom = require('@vonage/server-sdk/lib/Messages/WhatsAppCustom');
 
 const vonage = new Vonage(
 	{
@@ -24,23 +25,20 @@ const vonage = new Vonage(
 	}
 );
 
-vonage.channel.send(
-	{ type: 'whatsapp', number: TO_NUMBER },
-	{ type: 'whatsapp', number: WHATSAPP_NUMBER },
-	{
-		content: {
-			type: 'custom',
-			custom: {
-				type: 'location',
-				location: {
-					longitude: -122.425332,
-					latitude: 37.758056,
-					name: 'Facebook HQ',
-					address: '1 Hacker Way, Menlo Park, CA 94025',
-				},
+vonage.messages.send(
+	new WhatsAppCustom(
+		{
+			type: 'location',
+			location: {
+				longitude: -122.425332,
+				latitude: 37.758056,
+				name: 'Facebook HQ',
+				address: '1 Hacker Way, Menlo Park, CA 94025',
 			},
 		},
-	},
+		TO_NUMBER,
+		WHATSAPP_NUMBER,
+	),
 	(err, data) => {
 		if (err) {
 			console.error(err);
