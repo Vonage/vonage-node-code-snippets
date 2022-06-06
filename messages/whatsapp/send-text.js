@@ -22,7 +22,7 @@ const vonage = new Vonage({
 })
 
 vonage.messages.send(
-  new WhatsAppImage(
+  new WhatsAppText(
     "This is a WhatsApp Message text message sent using the Messages API",
     TO_NUMBER,
     WHATSAPP_NUMBER
