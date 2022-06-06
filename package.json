@@ -24,6 +24,6 @@
     "dotenv": "^6.1.0",
     "ejs": "^3.1.7",
     "express": "^4.16.3",
-    "@vonage/server-sdk": "^2.10.0"
+    "@vonage/server-sdk": "^2.11.0"
   }
 }

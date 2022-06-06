@@ -13,6 +13,7 @@ const WHATSAPP_TEMPLATE_NAME = process.env.WHATSAPP_TEMPLATE_NAME;
 const BASE_URL = process.env.BASE_URL;
 
 const Vonage = require('@vonage/server-sdk');
+const WhatsAppTemplate = require('@vonage/server-sdk/lib/Messages/WhatsAppTemplate');
 
 const vonage = new Vonage(
 	{
@@ -26,75 +27,68 @@ const vonage = new Vonage(
 	}
 );
 
-vonage.channel.send(
-	{ type: 'whatsapp', number: TO_NUMBER },
-	{ type: 'whatsapp', number: WHATSAPP_NUMBER },
-	{
-		content: {
-			type: 'custom',
-			custom: {
-				type: 'template',
-				template: {
-					namespace: WHATSAPP_TEMPLATE_NAMESPACE,
-					name: WHATSAPP_TEMPLATE_NAME,
-					language: {
-						code: 'en',
-						policy: 'deterministic',
-					},
-					components: [
+vonage.messages.send(
+	new WhatsAppTemplate(
+		{
+			name: `${WHATSAPP_TEMPLATE_NAMESPACE}:${WHATSAPP_TEMPLATE_NAME}`,
+			components: [
+				{
+					type: 'header',
+					parameters: [
 						{
-							type: 'header',
-							parameters: [
-								{
-									type: 'text',
-									text: '12/26',
-								},
-							],
-						},
-						{
-							type: 'body',
-							parameters: [
-								{
-									type: 'text',
-									text: '*Ski Trip*',
-								},
-								{
-									type: 'text',
-									text: '2019-12-26',
-								},
-								{
-									type: 'text',
-									text: '*Squaw Valley Ski Resort, Tahoe*',
-								},
-							],
-						},
-						{
-							type: 'button',
-							sub_type: 'quick_reply',
-							index: 0,
-							parameters: [
-								{
-									type: 'payload',
-									payload: 'Yes-Button-Payload',
-								},
-							],
-						},
-						{
-							type: 'button',
-							sub_type: 'quick_reply',
-							index: 1,
-							parameters: [
-								{
-									type: 'payload',
-									payload: 'No-Button-Payload',
-								},
-							],
+							type: 'text',
+							text: '12/26',
 						},
 					],
 				},
-			},
+				{
+					type: 'body',
+					parameters: [
+						{
+							type: 'text',
+							text: '*Ski Trip*',
+						},
+						{
+							type: 'text',
+							text: '2019-12-26',
+						},
+						{
+							type: 'text',
+							text: '*Squaw Valley Ski Resort, Tahoe*',
+						},
+					],
+				},
+				{
+					type: 'button',
+					sub_type: 'quick_reply',
+					index: 0,
+					parameters: [
+						{
+							type: 'payload',
+							payload: 'Yes-Button-Payload',
+						},
+					],
+				},
+				{
+					type: 'button',
+					sub_type: 'quick_reply',
+					index: 1,
+					parameters: [
+						{
+							type: 'payload',
+							payload: 'No-Button-Payload',
+						},
+					],
+				},
+			],
 		},
-	},
+		{
+			policy: 'deterministic',
+			locale: 'en',
+		},
+		TO_NUMBER,
+		WHATSAPP_NUMBER,
+	),
 	(err, data) => {
 		if (err) {
 			console.error(err);

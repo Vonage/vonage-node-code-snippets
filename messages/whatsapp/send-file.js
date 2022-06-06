@@ -13,6 +13,7 @@ const FILE_URL = process.env.FILE_URL;
 const FILE_CAPTION = process.env.FILE_CAPTION;
 
 const Vonage = require('@vonage/server-sdk');
+const WhatsAppFile = require('@vonage/server-sdk/lib/Messages/WhatsAppFile');
 
 const vonage = new Vonage(
 	{
@@ -26,18 +27,8 @@ const vonage = new Vonage(
 	}
 );
 
-vonage.channel.send(
-	{ type: 'whatsapp', number: TO_NUMBER },
-	{ type: 'whatsapp', number: WHATSAPP_NUMBER },
-	{
-		content: {
-			type: 'file',
-			file: {
-				url: FILE_URL,
-				caption: FILE_CAPTION,
-			},
-		},
-	},
+vonage.messages.send(
+	new WhatsAppFile({ url: FILE_URL }, TO_NUMBER, WHATSAPP_NUMBER),
 	(err, data) => {
 		if (err) {
 			console.error(err);

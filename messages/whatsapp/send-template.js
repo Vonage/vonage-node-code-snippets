@@ -13,6 +13,7 @@ const WHATSAPP_TEMPLATE_NAME = process.env.WHATSAPP_TEMPLATE_NAME;
 const BASE_URL = process.env.BASE_URL;
 
 const Vonage = require('@vonage/server-sdk');
+const WhatsAppTemplate = require('@vonage/server-sdk/lib/Messages/WhatsAppTemplate');
 
 const vonage = new Vonage(
 	{
@@ -26,32 +27,29 @@ const vonage = new Vonage(
 	}
 );
 
-vonage.channel.send(
-	{ type: 'whatsapp', number: TO_NUMBER },
-	{ type: 'whatsapp', number: WHATSAPP_NUMBER },
-	{
-		content: {
-			type: 'template',
-			template: {
-				name: `${WHATSAPP_TEMPLATE_NAMESPACE}:${WHATSAPP_TEMPLATE_NAME}`,
-				parameters: [
-					{
-						default: 'Vonage Verification',
-					},
-					{
-						default: '64873',
-					},
-					{
-						default: '10',
-					},
-				],
-			},
+vonage.messages.send(
+	new WhatsAppTemplate(
+		{
+			name: `${WHATSAPP_TEMPLATE_NAMESPACE}:${WHATSAPP_TEMPLATE_NAME}`,
+			parameters: [
+				{
+					default: 'Vonage Verification',
+				},
+				{
+					default: '64873',
+				},
+				{
+					default: '10',
+				},
+			],
 		},
-		whatsapp: {
+		{
 			policy: 'deterministic',
 			locale: 'en',
 		},
-	},
+		TO_NUMBER,
+		WHATSAPP_NUMBER,
+	),
 	(err, data) => {
 		if (err) {
 			console.error(err);

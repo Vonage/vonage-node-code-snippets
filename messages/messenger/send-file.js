@@ -12,6 +12,7 @@ const BASE_URL = process.env.BASE_URL;
 const FILE_URL = process.env.FILE_URL;
 
 const Vonage = require('@vonage/server-sdk');
+const MessengerFile = require('@vonage/server-sdk/lib/Messages/MessengerFile');
 
 const vonage = new Vonage(
 	{
@@ -25,17 +26,8 @@ const vonage = new Vonage(
 	}
 );
 
-vonage.channel.send(
-	{ type: 'messenger', id: FB_RECIPIENT_ID },
-	{ type: 'messenger', id: FB_SENDER_ID },
-	{
-		content: {
-			type: 'file',
-			file: {
-				url: FILE_URL,
-			},
-		},
-	},
+vonage.messages.send(
+	new MessengerFile({ url: FILE_URL }, FB_RECIPIENT_ID, FB_SENDER_ID),
 	(err, data) => {
 		if (err) {
 			console.error(err);

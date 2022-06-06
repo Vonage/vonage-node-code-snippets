@@ -10,6 +10,7 @@ const VIBER_SERVICE_MESSAGE_ID = process.env.VIBER_SERVICE_MESSAGE_ID
 const BASE_URL = process.env.BASE_URL
 
 const Vonage = require('@vonage/server-sdk')
+const ViberText = require('@vonage/server-sdk/lib/Messages/ViberText');
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
@@ -20,15 +21,8 @@ const vonage = new Vonage({
   apiHost: BASE_URL
 })
 
-vonage.channel.send(
-  { "type": "viber_service_msg", "number": TO_NUMBER },
-  { "type": "viber_service_msg", "id": VIBER_SERVICE_MESSAGE_ID },
-  {
-    "content": {
-      "type": "text",
-      "text": "This is a Viber Service Message text message sent using the Messages API"
-    }
-  },
+vonage.messages.send(
+  new ViberText("This is a Viber Service Message text message sent using the Messages API", TO_NUMBER, VIBER_SERVICE_MESSAGE_ID),
   (err, data) => {
     if (err) {
       console.error(err);

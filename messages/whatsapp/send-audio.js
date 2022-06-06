@@ -12,6 +12,7 @@ const BASE_URL = process.env.BASE_URL;
 const AUDIO_URL = process.env.AUDIO_URL;
 
 const Vonage = require('@vonage/server-sdk');
+const WhatsAppAudio = require('@vonage/server-sdk/lib/Messages/WhatsAppAudio');
 
 const vonage = new Vonage(
 	{
@@ -25,17 +26,8 @@ const vonage = new Vonage(
 	}
 );
 
-vonage.channel.send(
-	{ type: 'whatsapp', number: TO_NUMBER },
-	{ type: 'whatsapp', number: WHATSAPP_NUMBER },
-	{
-		content: {
-			type: 'audio',
-			audio: {
-				url: AUDIO_URL,
-			},
-		},
-	},
+vonage.messages.send(
+	new WhatsAppAudio({ url: AUDIO_URL }, TO_NUMBER, WHATSAPP_NUMBER),
 	(err, data) => {
 		if (err) {
 			console.error(err);
