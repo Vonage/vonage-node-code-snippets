@@ -11,7 +11,7 @@ const FB_SENDER_ID = process.env.FB_SENDER_ID;
 const BASE_URL = process.env.BASE_URL;
 
 const Vonage = require('@vonage/server-sdk');
-const MessengerImage = require('@vonage/server-sdk/lib/Messages/MessengerImage');
+const MessengerText = require('@vonage/server-sdk/lib/Messages/MessengerText');
 
 const vonage = new Vonage(
 	{
