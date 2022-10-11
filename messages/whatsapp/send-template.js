@@ -33,7 +33,7 @@ vonage.messages.send(
 			name: `${WHATSAPP_TEMPLATE_NAMESPACE}:${WHATSAPP_TEMPLATE_NAME}`,
 			parameters: [
 				'Vonage Verification',
-			    '64873',
+				'64873',
 				'10',
 			],
 		},
