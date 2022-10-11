@@ -49,18 +49,9 @@ vonage.messages.send(
 				{
 					type: 'body',
 					parameters: [
-						{
-							type: 'text',
-							text: 'Value 1',
-						},
-						{
-							type: 'text',
-							text: 'Value 2',
-						},
-						{
-							type: 'text',
-							text: 'Value 3',
-						},
+						'Value 1',
+						'Value 2',
+						'Value 3',
 					],
 				},
 			],
