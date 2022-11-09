@@ -4,7 +4,7 @@ const VONAGE_API_KEY = process.env.VONAGE_API_KEY
 const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID
 
-const Vonage = require('@vonage/server-sdk')
+const { Vonage } = require('@vonage/server-sdk')
    
 const vonage = new Vonage({
     apiKey: VONAGE_API_KEY,
@@ -13,11 +13,6 @@ const vonage = new Vonage({
     debug: true
 });
 
-vonage.applications.delete(VONAGE_APPLICATION_ID, (error, result) => {
-  if(error) {
-    console.error(error);
-  }
-  else {
-    console.log(result);
-  }
-});
+vonage.applications.deleteApplication(VONAGE_APPLICATION_ID)
+  .then(resp => console.log(resp))
+  .catch(err => console.error(err));

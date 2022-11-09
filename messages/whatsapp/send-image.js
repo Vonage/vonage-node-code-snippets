@@ -11,8 +11,8 @@ const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER;
 const BASE_URL = process.env.BASE_URL;
 const IMAGE_URL = process.env.IMAGE_URL;
 
-const Vonage = require('@vonage/server-sdk');
-const WhatsAppImage = require('@vonage/server-sdk/lib/Messages/WhatsAppImage');
+const { Vonage } = require('@vonage/server-sdk');
+const { Image } = require('@vonage/messages/dist/classes/WhatsApp/Image');
 
 const vonage = new Vonage(
 	{
@@ -27,12 +27,7 @@ const vonage = new Vonage(
 );
 
 vonage.messages.send(
-	new WhatsAppImage({ url: IMAGE_URL }, TO_NUMBER, WHATSAPP_NUMBER),
-	(err, data) => {
-		if (err) {
-			console.error(err);
-		} else {
-			console.log(data.message_uuid);
-		}
-	}
-);
+	new Image({ url: IMAGE_URL }, TO_NUMBER, WHATSAPP_NUMBER)
+)
+	.then(resp => console.log(resp.message_uuid))
+	.catch(err => console.error(err));

@@ -12,8 +12,8 @@ const WHATSAPP_TEMPLATE_NAMESPACE = process.env.WHATSAPP_TEMPLATE_NAMESPACE;
 const WHATSAPP_TEMPLATE_NAME = process.env.WHATSAPP_TEMPLATE_NAME;
 const BASE_URL = process.env.BASE_URL;
 
-const Vonage = require('@vonage/server-sdk');
-const WhatsAppTemplate = require('@vonage/server-sdk/lib/Messages/WhatsAppTemplate');
+const { Vonage } = require('@vonage/server-sdk');
+const { TemplateMessage } = require('@vonage/messages/dist/classes/WhatsApp/TemplateMessage');
 
 const vonage = new Vonage(
 	{
@@ -28,7 +28,7 @@ const vonage = new Vonage(
 );
 
 vonage.messages.send(
-	new WhatsAppTemplate(
+	new TemplateMessage(
 		{
 			name: `${WHATSAPP_TEMPLATE_NAMESPACE}:${WHATSAPP_TEMPLATE_NAME}`,
 			components: [
@@ -88,12 +88,7 @@ vonage.messages.send(
 		},
 		TO_NUMBER,
 		WHATSAPP_NUMBER,
-	),
-	(err, data) => {
-		if (err) {
-			console.error(err);
-		} else {
-			console.log(data.message_uuid);
-		}
-	}
-);
+	)
+)
+	.then(resp => console.log(resp.message_uuid))
+	.catch(err => console.error(err));

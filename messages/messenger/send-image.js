@@ -11,8 +11,8 @@ const FB_SENDER_ID = process.env.FB_SENDER_ID;
 const BASE_URL = process.env.BASE_URL;
 const IMAGE_URL = process.env.IMAGE_URL;
 
-const Vonage = require('@vonage/server-sdk');
-const MessengerImage = require('@vonage/server-sdk/lib/Messages/MessengerImage');
+const { Vonage } = require('@vonage/server-sdk');
+const { Image } = require('@vonage/messages/dist/classes/Messenger/Image');
 
 const vonage = new Vonage(
 	{
@@ -27,12 +27,7 @@ const vonage = new Vonage(
 );
 
 vonage.messages.send(
-	new MessengerImage({ url: IMAGE_URL }, FB_RECIPIENT_ID, FB_SENDER_ID),
-	(err, data) => {
-		if (err) {
-			console.error(err);
-		} else {
-			console.log(data.message_uuid);
-		}
-	}
-);
+	new Image({ url: IMAGE_URL }, FB_RECIPIENT_ID, FB_SENDER_ID)
+)
+	.then(resp => console.log(resp.message_uuid))
+	.catch(err => console.log(err));

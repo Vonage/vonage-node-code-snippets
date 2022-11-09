@@ -5,7 +5,7 @@ const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID
 const NAME = process.env.NAME
 
-const Vonage = require('@vonage/server-sdk')
+const { Vonage } = require('@vonage/server-sdk')
 
 const vonage = new Vonage({
     apiKey: VONAGE_API_KEY,
@@ -14,7 +14,8 @@ const vonage = new Vonage({
     debug: true
 });
 
-vonage.applications.update(VONAGE_APPLICATION_ID, {
+vonage.applications.updateApplication({
+  applicationId: VONAGE_APPLICATION_ID,
     name: NAME,
     capabilities: {
       voice: {
@@ -50,11 +51,6 @@ vonage.applications.update(VONAGE_APPLICATION_ID, {
         }
       }
     }
-}, (error, result) => {
-  if(error) {
-    console.error(error);
-  }
-  else {
-    console.log(result);
-  }
-});
+})
+  .then(resp => console.log(resp))
+  .catch(err => console.error(err));
