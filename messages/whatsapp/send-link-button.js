@@ -13,8 +13,8 @@ const WHATSAPP_TEMPLATE_NAME = process.env.WHATSAPP_TEMPLATE_NAME;
 const HEADER_IMAGE_URL = process.env.HEADER_IMAGE_URL;
 const BASE_URL = process.env.BASE_URL;
 
-const Vonage = require('@vonage/server-sdk');
-const WhatsAppCustom = require('@vonage/server-sdk/lib/Messages/WhatsAppCustom');
+const { Vonage } = require('@vonage/server-sdk');
+const { CustomMessage } = require('@vonage/messages/dist/classes/WhatsApp/CustomMessage');
 
 const vonage = new Vonage(
 	{
@@ -29,7 +29,7 @@ const vonage = new Vonage(
 );
 
 vonage.messages.send(
-	new WhatsAppCustom(
+	new CustomMessage(
 		{
 			type: 'template',
 			template: {
@@ -88,12 +88,7 @@ vonage.messages.send(
 		},
 		TO_NUMBER,
 		WHATSAPP_NUMBER,
-	),
-	(err, data) => {
-		if (err) {
-			console.error(err);
-		} else {
-			console.log(data.message_uuid);
-		}
-	}
-);
+	)
+)
+	.then(resp => console.log(resp.message_uuid))
+	.catch(err => console.error(err));

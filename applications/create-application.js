@@ -4,6 +4,9 @@
    See also: receive-call-webhook.js
    
    API Referene: https://docs.nexmo.com/voice/voice-api/api-reference
+
+   PLEASE NOTE: This code only works with the v2.x version of the Node SDK
+   and is no longer supported.
  */
 
 'use strict';

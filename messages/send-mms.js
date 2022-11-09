@@ -9,8 +9,8 @@ const TO_NUMBER = process.env.TO_NUMBER
 const FROM_NUMBER = process.env.FROM_NUMBER
 const IMAGE_URL = process.env.IMAGE_URL
 
-const Vonage = require('@vonage/server-sdk')
-const MMSImage = require('@vonage/server-sdk/lib/Messages/MMSImage')
+const { Vonage } = require('@vonage/server-sdk')
+const { Image } = require('@vonage/messages/dist/classes/MMS/Image')
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
@@ -20,12 +20,7 @@ const vonage = new Vonage({
 })
 
 vonage.messages.send(
-  new MMSImage({ "url": IMAGE_URL }, TO_NUMBER, FROM_NUMBER),
-  (err, data) => {
-    if (err) {
-      console.error(err);
-    } else {
-      console.log(data.message_uuid);
-    }
-  }
-);
+  new Image({ "url": IMAGE_URL }, TO_NUMBER, FROM_NUMBER)
+)
+  .then(resp => console.log(resp.message_uuid))
+  .catch(err => console.error(err));

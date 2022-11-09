@@ -11,8 +11,8 @@ const FB_SENDER_ID = process.env.FB_SENDER_ID;
 const BASE_URL = process.env.BASE_URL;
 const AUDIO_URL = process.env.AUDIO_URL;
 
-const Vonage = require('@vonage/server-sdk');
-const MessengerAudio = require('@vonage/server-sdk/lib/Messages/MessengerAudio');
+const { Vonage } = require('@vonage/server-sdk');
+const { Audio } = require('@vonage/messages/dist/classes/Messenger/Audio');
 
 const vonage = new Vonage(
 	{
@@ -27,12 +27,7 @@ const vonage = new Vonage(
 );
 
 vonage.messages.send(
-	new MessengerAudio({ url: AUDIO_URL }, FB_RECIPIENT_ID, FB_SENDER_ID),
-	(err, data) => {
-		if (err) {
-			console.error(err);
-		} else {
-			console.log(data.message_uuid);
-		}
-	}
-);
+	new Audio({ url: AUDIO_URL }, FB_RECIPIENT_ID, FB_SENDER_ID)
+)
+	.then(resp => console.log(message_uuid))
+	.catch(err => console.error(err));

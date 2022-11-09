@@ -11,8 +11,8 @@ const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER;
 const BASE_URL = process.env.BASE_URL;
 const AUDIO_URL = process.env.AUDIO_URL;
 
-const Vonage = require('@vonage/server-sdk');
-const WhatsAppAudio = require('@vonage/server-sdk/lib/Messages/WhatsAppAudio');
+const { Vonage } = require('@vonage/server-sdk');
+const { Audio } = require('@vonage/messages/dist/classes/WhatsApp/Audio');
 
 const vonage = new Vonage(
 	{
@@ -27,12 +27,7 @@ const vonage = new Vonage(
 );
 
 vonage.messages.send(
-	new WhatsAppAudio({ url: AUDIO_URL }, TO_NUMBER, WHATSAPP_NUMBER),
-	(err, data) => {
-		if (err) {
-			console.error(err);
-		} else {
-			console.log(data.message_uuid);
-		}
-	}
-);
+	new Audio({ url: AUDIO_URL }, TO_NUMBER, WHATSAPP_NUMBER)
+)
+	.then(resp => console.log(resp.message_uuid))
+	.catch(err => console.error(err));

@@ -10,8 +10,8 @@ const FB_RECIPIENT_ID = process.env.FB_RECIPIENT_ID;
 const FB_SENDER_ID = process.env.FB_SENDER_ID;
 const BASE_URL = process.env.BASE_URL;
 
-const Vonage = require('@vonage/server-sdk');
-const MessengerText = require('@vonage/server-sdk/lib/Messages/MessengerText');
+const { Vonage } = require('@vonage/server-sdk');
+const { Text } = require('@vonage/messages/dist/classes/Messenger/Text');
 
 const vonage = new Vonage(
 	{
@@ -26,16 +26,11 @@ const vonage = new Vonage(
 );
 
 vonage.messages.send(
-	new MessengerText(
+	new Text(
 		'This is a Facebook Messenger text message sent using the Messages API',
 		FB_RECIPIENT_ID,
 		FB_SENDER_ID
-	),
-	(err, data) => {
-		if (err) {
-			console.error(err);
-		} else {
-			console.log(data.message_uuid);
-		}
-	}
-);
+	)
+)
+	.then(resp => console.log(resp.message_uuid))
+	.catch(err => console.error(err));

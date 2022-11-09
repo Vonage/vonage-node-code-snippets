@@ -11,9 +11,7 @@ const vonage = new Vonage({
   apiSecret: VONAGE_API_SECRET
 })
 
-async function run() {
-    await vonage.secrets.createSecret(VONAGE_API_KEY, NEW_SECRET)
-        .then(resp => console.log(resp))
-        .catch(resp => console.error(resp.response.data));
-}
-run();
+vonage.secrets.createSecret(VONAGE_API_KEY, NEW_SECRET)
+  .then(resp => console.log(resp))
+  .catch(resp => console.error(resp.response.data));
+

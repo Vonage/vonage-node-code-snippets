@@ -4,7 +4,7 @@ const VONAGE_API_KEY = process.env.VONAGE_API_KEY
 const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET
 const APPLICATION_NAME = process.env.APPLICATION_NAME
 
-const Vonage = require('@vonage/server-sdk')
+const { Vonage } = require('@vonage/server-sdk')
 
 const vonage = new Vonage({
     apiKey: VONAGE_API_KEY,
@@ -13,7 +13,7 @@ const vonage = new Vonage({
     debug: true
 });
 
-vonage.applications.create({
+vonage.applications.createApplication({
     name: APPLICATION_NAME,
     capabilities: {
         voice: {
@@ -49,11 +49,6 @@ vonage.applications.create({
             }
         }
     }
-}, (error, result) => {
-    if(error) {
-        console.error(error);
-    }
-    else {
-        console.log(result);
-    }
-});
+})
+    .then(resp => console.log(result))
+    .catch(err => console.error(err));
