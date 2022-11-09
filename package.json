@@ -20,10 +20,10 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "@vonage/server-sdk": "^3.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.1.0",
     "ejs": "^3.1.7",
-    "express": "^4.16.3",
-    "@vonage/server-sdk": "^2.11.0"
+    "express": "^4.16.3"
   }
 }
