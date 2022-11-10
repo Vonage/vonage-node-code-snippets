@@ -8,7 +8,7 @@ const VONAGE_PRIVATE_KEY = __dirname +"/../"+ process.env.VONAGE_PRIVATE_KEY;
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const UUID = process.env.UUID;
 
-const Vonage = require('@vonage/server-sdk');
+const { Vonage } = require('@vonage/server-sdk');
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
@@ -19,20 +19,14 @@ const vonage = new Vonage({
 
 const URL = 'https://nexmo-community.github.io/ncco-examples/assets/voice_api_audio_streaming.mp3';
 
-vonage.calls.stream.start(UUID, { stream_url: [URL], loop: 0 }, (err, res) => {
-  if(err) { console.error(err); }
-  else {
-      console.log(res);
-  }
-});
+vonage.voice.streamAudio(UUID, URL, 0)
+  .then(resp => console.log(resp))
+  .catch(err => console.error(err));
 
 function stop_stream (){
-    vonage.calls.stream.stop(UUID, (err, res) => {
-        if(err) { console.error(err); }
-        else {
-            console.log(res);
-        }
-    });
+  vonage.voice.stopStreamAudio(UUID)
+    .then(resp => console.log(resp))
+    .catch(err => console.error(err));
 }
 
 setTimeout(stop_stream, 5000); // delay 5 seconds

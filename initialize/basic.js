@@ -1,4 +1,4 @@
-const Vonage = require('@vonage/server-sdk')
+const { Vonage } = require('@vonage/server-sdk')
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,

@@ -10,7 +10,7 @@ const VONAGE_FROM_NUMBER = process.env.VONAGE_FROM_NUMBER;
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const Vonage = require('@vonage/server-sdk');
+const { Vonage } = require('@vonage/server-sdk');
 
 const app = express();
 app.use(bodyParser.json());

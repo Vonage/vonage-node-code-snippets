@@ -11,7 +11,7 @@ const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 
 const UUID = process.env.UUID;
 
-const Vonage = require('@vonage/server-sdk');
+const { Vonage } = require('@vonage/server-sdk');
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
@@ -22,19 +22,15 @@ const vonage = new Vonage({
   debug: true
 });
 
-vonage.calls.update(UUID, {
+vonage.voice.transferCallWithNCCO(UUID, {
   action: 'transfer',
   destination: {
     "type": "ncco",
-    "ncco": [
+    "ncco": [{
       "action": 'talk',
       "text": 'This is a transfer action using an inline NCCO'
-    ]
+    }]
   }
-}, (err, res) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log(res);
-  }
-});
+})
+  .then(resp => console.log(resp))
+  .catch(err => console.error(err));

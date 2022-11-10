@@ -9,7 +9,7 @@ const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 
 const UUID = process.env.UUID;
 
-const Vonage = require('@vonage/server-sdk');
+const { Vonage } = require('@vonage/server-sdk');
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
@@ -18,9 +18,6 @@ const vonage = new Vonage({
   privateKey: VONAGE_PRIVATE_KEY
 }, {debug: true});
 
-vonage.calls.get(UUID, (err, res) => {
-  if(err) { console.error(err); }
-  else {
-      console.log(res);
-  }
-});
+vonage.voice.getCall(UUID)
+  .then(resp => console.log(resp))
+  .catch(err => console.error(err));

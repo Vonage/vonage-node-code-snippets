@@ -9,7 +9,7 @@ const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 
 const UUID = process.env.UUID;
 
-const Vonage = require('@vonage/server-sdk');
+const { Vonage } = require('@vonage/server-sdk');
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
@@ -20,16 +20,6 @@ const vonage = new Vonage({
 
 const NCCO_URL = "https://raw.githubusercontent.com/nexmo-community/ncco-examples/gh-pages/text-to-speech.json";
 
-vonage.calls.update(UUID, {
-  action: 'transfer',
-  destination: {
-    "type": "ncco",
-    "url": [NCCO_URL]
-  }
-}, (err, res) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log(res);
-  }
-});
+vonage.voice.transferCallWithURL(UUID, NCCO_URL)
+  .then(resp => console.log(resp))
+  .catch(err => console.error(err));

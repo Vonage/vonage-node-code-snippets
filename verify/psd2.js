@@ -8,21 +8,16 @@ const RECIPIENT_NUMBER = process.env.RECIPIENT_NUMBER;
 const PAYEE = process.env.PAYEE;
 const AMOUNT = process.env.AMOUNT;
 
-const Vonage = require('@vonage/server-sdk');
+const { Vonage } = require('@vonage/server-sdk');
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
   apiSecret: VONAGE_API_SECRET
 });
 
-vonage.verify.psd2({
+vonage.verify.start({
   number: RECIPIENT_NUMBER,
   payee: PAYEE,
   amount: AMOUNT
-}, (err, result) => {
-  if (err) {
-    console.error(err);
-  } else {
-    const verifyRequestId = result.request_id;
-    console.log('request_id', verifyRequestId);
-  }
-});
+})
+  .then(resp => console.log(resp.request_id))
+  .catch(err => console.error(err));

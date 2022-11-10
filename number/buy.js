@@ -5,7 +5,7 @@ const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET
 const VONAGE_NUMBER = process.env.VONAGE_NUMBER
 const COUNTRY_CODE = process.env.COUNTRY_CODE
 
-const Vonage = require('@vonage/server-sdk')
+const { Vonage } = require('@vonage/server-sdk')
 
 const vonage = new Vonage(
   {

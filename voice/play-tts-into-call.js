@@ -9,7 +9,7 @@ const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 
 const UUID = process.env.UUID;
 
-const Vonage = require('@vonage/server-sdk');
+const { Vonage } = require('@vonage/server-sdk');
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
@@ -20,9 +20,6 @@ const vonage = new Vonage({
 
 const TEXT = 'This is some sample text to speech text. It could go on and on and never end.';
 
-vonage.calls.talk.start(UUID, { text: TEXT, voice_name: 'Emma', loop: 0 }, (err, res) => {
-  if(err) { console.error(err); }
-  else {
-      console.log(res);
-  }
-});
+vonage.voice.playTTS(UUID, { action: 'talk', text: TEXT })
+  .then(resp => console.log(resp))
+  .catch(err => console.error(err));

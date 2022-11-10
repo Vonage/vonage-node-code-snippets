@@ -8,7 +8,7 @@ const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID
 const VONAGE_APPLICATION_PRIVATE_KEY_PATH = __dirname + "/../" + process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH
 
-const Vonage = require('@vonage/server-sdk')
+const { Vonage } = require('@vonage/server-sdk')
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
@@ -19,7 +19,7 @@ const vonage = new Vonage({
 
 const ANSWER_URL = 'https://raw.githubusercontent.com/nexmo-community/ncco-examples/gh-pages/text-to-speech.json'
 
-vonage.calls.create({
+vonage.voice.createOutboundCall({
   to: [{
     type: 'phone',
     number: TO_NUMBER
@@ -29,7 +29,6 @@ vonage.calls.create({
     number: VONAGE_NUMBER
   },
   answer_url: [ANSWER_URL]
-}, (error, response) => {
-  if (error) console.error(error)
-  if (response) console.log(response)
 })
+  .then(resp => console.log(resp))
+  .catch(err => console.error(err));

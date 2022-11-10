@@ -17,7 +17,7 @@ if (!CODE) {
   return;
 }
 
-const Vonage = require('@vonage/server-sdk');
+const { Vonage } = require('@vonage/server-sdk');
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
   apiSecret: VONAGE_API_SECRET
@@ -25,13 +25,6 @@ const vonage = new Vonage({
   debug: true
 });
 
-vonage.verify.check({
-  request_id: REQUEST_ID,
-  code: CODE
-}, (err, result) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log(result);
-  }
-});
+vonage.verify.check(REQUEST_ID, CODE)
+  .then(resp => console.log(resp))
+  .catch(err => console.error(err));

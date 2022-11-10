@@ -7,7 +7,7 @@ const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
 const VONAGE_PRIVATE_KEY = __dirname +"/../"+ process.env.VONAGE_PRIVATE_KEY;
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 
-const Vonage = require('@vonage/server-sdk');
+const { Vonage } = require('@vonage/server-sdk');
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
