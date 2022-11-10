@@ -40,7 +40,7 @@ const BRAND_NAME = process.env.VONAGE_BRAND_NAME;
 const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
 const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
 
-const Vonage = require('@vonage/server-sdk');
+const { Vonage } = require('@vonage/server-sdk');
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
   apiSecret: VONAGE_API_SECRET
@@ -55,16 +55,11 @@ app.post('/register', (req, res) => {
   // A user registers with a mobile phone number
   let phoneNumber = req.body.number;
   console.log(phoneNumber);
-  vonage.verify.request({
+  vonage.verify.start({
     number: phoneNumber,
-    brand: BRAND_NAME
-  }, (err, result) => {
-    if (err) {
-      //res.sendStatus(500);
-      res.render('status', {
-        message: 'Server Error'
-      });
-    } else {
+    senderId: BRAND_NAME
+  })
+    .then(result => {
       console.log(result);
       let requestId = result.request_id;
       if (result.status == '0') {
@@ -78,8 +73,8 @@ app.post('/register', (req, res) => {
           requestId: requestId
         });
       }
-    }
-  });
+    })
+    .catch(err => res.render('status', { message: 'Server Error' }));
 });
 
 app.post('/verify', (req, res) => {
@@ -87,16 +82,8 @@ app.post('/verify', (req, res) => {
   let pin = req.body.pin;
   let requestId = req.body.requestId;
 
-  vonage.verify.check({
-    request_id: requestId,
-    code: pin
-  }, (err, result) => {
-    if (err) {
-      //res.status(500).send(err);
-      res.render('status', {
-        message: 'Server Error'
-      });
-    } else {
+  vonage.verify.check(requestId, pin)
+    .then(result => {
       console.log(result);
       // Error status code: https://developer.nexmo.com/api/verify#verify-check
       if (result && result.status == '0') {
@@ -111,6 +98,6 @@ app.post('/verify', (req, res) => {
           requestId: requestId
         });
       }
-    }
-  });
+    })
+    .catch(err => res.render('status', { message: 'Server Error' }));
 });

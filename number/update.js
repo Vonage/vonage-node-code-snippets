@@ -10,7 +10,7 @@ const VOICE_CALLBACK_TYPE = process.env.VOICE_CALLBACK_TYPE;
 const VOICE_CALLBACK_VALUE = process.env.VOICE_CALLBACK_VALUE;
 const VOICE_STATUS_URL = process.env.VOICE_STATUS_URL;
 
-const Vonage = require('@vonage/server-sdk');
+const { Vonage } = require('@vonage/server-sdk');
 
 const vonage = new Vonage(
 	{

@@ -8,21 +8,16 @@ const RECIPIENT_NUMBER = process.env.RECIPIENT_NUMBER;
 const BRAND_NAME = process.env.BRAND_NAME;
 const WORKFLOW_ID = process.env.WORKFLOW_ID;
 
-const Vonage = require('@vonage/server-sdk');
+const { Vonage } = require('@vonage/server-sdk');
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
   apiSecret: VONAGE_API_SECRET
 });
 
-vonage.verify.request({
+vonage.verify.start({
   number: RECIPIENT_NUMBER,
-  brand: BRAND_NAME,
+  senderId: BRAND_NAME,
   workflow_id: WORKFLOW_ID
-}, (err, result) => {
-  if (err) {
-    console.error(err);
-  } else {
-    const verifyRequestId = result.request_id;
-    console.log('request_id', verifyRequestId);
-  }
-});
+})
+  .then(resp => console.log(resp.request_id))
+  .catch(err => console.error(err));

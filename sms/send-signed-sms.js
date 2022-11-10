@@ -6,7 +6,7 @@ const VONAGE_API_SIGNATURE_SECRET = process.env.VONAGE_API_SIGNATURE_SECRET
 const TO_NUMBER = process.env.VONAGE_TO_NUMBER
 const FROM_NUMBER = process.env.VONAGE_FROM_NUMBER
 
-const Vonage = require('@vonage/server-sdk')
+const { Vonage } = require('@vonage/server-sdk')
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,

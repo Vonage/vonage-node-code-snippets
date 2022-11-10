@@ -21,7 +21,7 @@ const server = app.listen(process.env.PORT || 4001, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
 
-const Vonage = require('@vonage/server-sdk');
+const { Vonage } = require('@vonage/server-sdk');
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
@@ -39,7 +39,7 @@ app.get('/call', (req, res) => {
 
   const serverHost = req.protocol + '://' + req.get('host');
 
-  vonage.calls.create({
+  vonage.voice.createOutboundCall({
       to: [{
         type: 'phone',
         number: TO_NUMBER,
@@ -54,15 +54,9 @@ app.get('/call', (req, res) => {
       },
       answer_url: [`${serverHost}/answer`],
       event_url: [`${serverHost}/event`]
-    },
-    (err, result) => {
-      if (err) {
-        console.error(err);
-      } else {
-        console.log(result);
-      }
-    });
-
+  })
+    .then(resp => console.log(resp))
+    .catch(err => console.error(err));
 })
 
 /**
