@@ -17,11 +17,10 @@ const vonage = new Vonage(
   }
 )
 
-vonage.number.buy(COUNTRY_CODE, VONAGE_NUMBER, (err, res) => {
-  if (err) {
-    console.error(err)
-  }
-  else {
-    console.log(JSON.stringify(res, null, 2))
-  }
+vonage.number.buyNumber({
+    country: COUNTRY_CODE,
+    target_api_key: API_KEY
+    msisdn: VONAGE_NUMBER,
 })
+    .then(resp => console.log(result))
+    .catch(err => console.error(err));

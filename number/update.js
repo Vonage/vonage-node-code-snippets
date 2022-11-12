@@ -22,22 +22,13 @@ const vonage = new Vonage(
 	}
 );
 
-vonage.number.update(
-	COUNTRY_CODE,
-	VONAGE_NUMBER,
-	{
-		messagesCallbackType: 'app',
-		messagesCallbackValue: VONAGE_APPLICATION_ID,
-		voiceCallbackType: VOICE_CALLBACK_TYPE,
-		voiceCallbackValue: VOICE_CALLBACK_VALUE,
-		voiceStatusCallback: VOICE_STATUS_URL,
-		moHttpUrl: SMS_CALLBACK_URL,
-	},
-	(err, res) => {
-		if (err) {
-			console.error(err);
-		} else {
-			console.log(JSON.stringify(res, null, 2));
-		}
-	}
-);
+vonage.number.updateNumber({
+    country: COUNTRY_CODE,
+	msisdn: VONAGE_NUMBER,
+    applicationId: VONAGE_APPLICATION_ID,
+    voiceCallbackType: VOICE_CALLBACK_TYPE,
+    voiceCallbackValue: VOICE_CALLBACK_VALUE,
+    voiceStatusCallback: VOICE_STATUS_URL,
+})
+    .then(resp => console.log(result))
+    .catch(err => console.error(err));
