@@ -19,14 +19,10 @@ const from = FROM_NUMBER
 const to = TO_NUMBER
 const text = 'A text message sent using the Vonage SMS API'
 
-vonage.message.sendSms(from, to, text, (err, responseData) => {
-    if (err) {
-        console.log(err);
-    } else {
-        if(responseData.messages[0]['status'] === "0") {
-            console.log("Message sent successfully.");
-        } else {
-            console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
-        }
-    }
+vonage.sms.send({
+    from: from,
+    to: to,
+    text: text,
 })
+    .then(resp => console.log(result))
+    .catch(err => console.error(err));
