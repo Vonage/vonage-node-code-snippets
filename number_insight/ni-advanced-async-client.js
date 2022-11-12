@@ -13,15 +13,6 @@ const vonage = new Vonage({
   apiSecret: VONAGE_API_SECRET
 });
 
-vonage.numberInsight.get({
-  level: 'advancedAsync',
-  number: INSIGHT_NUMBER,
-  callback: 'https://demo.ngrok.io/webhooks/insight'
-}, (error, result) => {
-  if (error) {
-    console.error(error);
-  }
-  else {
-    console.log(result);
-  }
-});
+vonage.numberInsight.advancedLookup(INSIGHT_NUMBER)
+    .then(resp => console.log(result))
+    .catch(err => console.error(err));
