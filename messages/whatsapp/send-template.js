@@ -13,7 +13,7 @@ const WHATSAPP_TEMPLATE_NAME = process.env.WHATSAPP_TEMPLATE_NAME;
 const BASE_URL = process.env.BASE_URL;
 
 const { Vonage } = require('@vonage/server-sdk');
-const { TemplateMessage } = require('@vonage/messages/dist/classes/WhatsApp/TemplateMessage');
+const { TemplateMessage } = require('@vonage/messages')
 
 const vonage = new Vonage(
 	{
@@ -37,12 +37,9 @@ vonage.messages.send(
 				'10',
 			],
 		},
-		{
-			policy: 'deterministic',
-			locale: 'en',
-		},
 		TO_NUMBER,
 		WHATSAPP_NUMBER,
+		'en',
 	)
 )
 	.then(resp => console.log(resp.message_uuid))

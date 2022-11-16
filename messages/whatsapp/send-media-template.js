@@ -13,7 +13,7 @@ const WHATSAPP_TEMPLATE_NAME = process.env.WHATSAPP_TEMPLATE_NAME;
 const BASE_URL = process.env.BASE_URL;
 
 const { Vonage } = require('@vonage/server-sdk');
-const { TemplateMessage } = require('@vonage/messages/dist/classes/WhatsApp/TemplateMessage');
+const { CustomMessage } = require('@vonage/messages')
 
 const vonage = new Vonage(
 	{
@@ -28,7 +28,7 @@ const vonage = new Vonage(
 );
 
 vonage.messages.send(
-	new TemplateMessage(
+	new CustomMessage(
 		{
 			name: `${WHATSAPP_TEMPLATE_NAMESPACE}:${WHATSAPP_TEMPLATE_NAME}`,
 			components: [
