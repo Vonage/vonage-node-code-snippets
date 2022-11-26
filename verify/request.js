@@ -15,7 +15,7 @@ const vonage = new Vonage({
 
 vonage.verify.start({
   number: RECIPIENT_NUMBER,
-  senderId: BRAND_NAME
+  brand: BRAND_NAME
 })
   .then(resp => console.log(resp.request_id))
   .catch(err => console.error(err));
