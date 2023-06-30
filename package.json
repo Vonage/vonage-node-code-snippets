@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@vonage/server-sdk": "^3",
+    "@vonage/subaccounts": "1.1.0",
     "@vonage/verify2": "1.4.0",
     "body-parser": "^1.20.2",
     "dotenv": "^16.3.1",
