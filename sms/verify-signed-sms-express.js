@@ -1,32 +1,38 @@
-require('dotenv').config({ path: __dirname + '/../.env' })
+require('dotenv').config({ path: __dirname + '/../.env' });
 
-const VONAGE_API_SIGNATURE_SECRET = process.env.VONAGE_API_SIGNATURE_SECRET
+const VONAGE_API_SIGNATURE_SECRET = process.env.VONAGE_API_SIGNATURE_SECRET;
 
-const { Vonage } = require('@vonage/server-sdk')
+const { Vonage } = require('@vonage/server-sdk');
 
-const app = require('express')()
-const bodyParser = require('body-parser')
+const app = require('express')();
+const bodyParser = require('body-parser');
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: true
-}))
+  extended: true,
+}));
 
 app
   .route('/webhooks/inbound-sms')
   .get(handleInboundSms)
-  .post(handleInboundSms)
+  .post(handleInboundSms);
 
 function handleInboundSms(request, response) {
-  const params = Object.assign(request.query, request.body)
+  const params = Object.assign(request.query, request.body);
+  const { sig } = params;
 
-  if (Vonage.generateSignature("md5hash", VONAGE_API_SIGNATURE_SECRET, params) === params.sig) {
+  if (Vonage.sms.verifySignature(
+    sig,
+    params,
+    VONAGE_API_SIGNATURE_SECRET, 
+    "md5hash", // one of md5hash, md5, sha1, sha256, or sha512 
+  ) === params.sig) {
     console.log("Valid signature");
   } else {
     console.log("Invalid signature");
   }
 
-  response.status(204).send()
+  response.status(204).send();
 }
 
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 3000);
