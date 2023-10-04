@@ -2,11 +2,6 @@ require('dotenv').config({ path: __dirname + '/../../.env' });
 const { verifySignature } = require('@vonage/jwt');
 const { readFileSync } = require('fs');
 
-const VONAGE_APPLICATION_PRIVATE_KEY_PATH = __dirname + "/../../" + process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH;
-
-
-const privateKey = readFileSync(VONAGE_APPLICATION_PRIVATE_KEY_PATH);
-
 const app = require('express')();
 const bodyParser = require('body-parser');
 
@@ -21,7 +16,7 @@ app
 
 function handleInboundMessage(request, response){
   const token = request.headers.authorization.split(" ")[1];
-  if (verifySignature(token, privateKey)) {
+  if (verifySignature(token, VONAGE_API_SIGNATURE_SECRET)) {
     console.log("Valid signature");
   } else {
     console.log("Invalid signature");
