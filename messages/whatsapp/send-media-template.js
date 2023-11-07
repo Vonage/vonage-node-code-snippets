@@ -7,8 +7,9 @@ const VONAGE_PRIVATE_KEY = process.env.VONAGE_PRIVATE_KEY;
 
 const TO_NUMBER = process.env.TO_NUMBER;
 const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER;
-const WHATSAPP_TEMPLATE_NAMESPACE = process.env.WHATSAPP_TEMPLATE_NAMESPACE;
 const WHATSAPP_TEMPLATE_NAME = process.env.WHATSAPP_TEMPLATE_NAME;
+const IMAGE_URL = process.env.IMAGE_URL;
+const WHATSAPP_TEMPLATE_REPLACEMENT_TEXT = process.env.WHATSAPP_TEMPLATE_REPLACEMENT_TEXT;
 
 const { Vonage } = require('@vonage/server-sdk');
 const { WhatsAppCustom } = require('@vonage/messages');
@@ -23,35 +24,37 @@ const vonage = new Vonage({
 vonage.messages.send(
   new WhatsAppCustom({
     custom: {
-      name: `${WHATSAPP_TEMPLATE_NAMESPACE}:${WHATSAPP_TEMPLATE_NAME}`,
-      components: [
-        {
-          type: 'header',
-          parameters: [
-            {
-              type: 'location',
-              location: {
-                longitude: -122.425332,
-                latitude: 37.758056,
-                name: 'Facebook HQ',
-                address: '1 Hacker Way, Menlo Park, CA 94025',
-              },
-            },
-          ],
+      type: 'template',
+      template: {
+        name: `${WHATSAPP_TEMPLATE_NAME}`,
+        language: {
+          policy: 'deterministic',
+          code: 'en'
         },
-        {
-          type: 'body',
-          parameters: [
-            'Value 1',
-            'Value 2',
-            'Value 3',
-          ],
-        },
-      ],
+        components: [
+          {
+            type: 'header',
+            parameters: [
+              {
+                type: 'image',
+                image: {
+                  link: `${IMAGE_URL}`
+                }
+              }
+            ]
+          },
+          {
+            type: 'body',
+            parameters: [
+              {
+                type: 'text',
+                text: `${WHATSAPP_TEMPLATE_REPLACEMENT_TEXT}`
+              }
+            ]
+          }
+        ]
+      }
     },
-    
-    policy: 'deterministic',
-    locale: 'en',
     to: TO_NUMBER,
     from: WHATSAPP_NUMBER,
   }),
