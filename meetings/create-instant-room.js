@@ -16,10 +16,6 @@ const options = {};
 
 const meetingsClient = new Meetings(credentials, options);
 await meetingsClient.createRoom({
-  type: MeetingType.LONG_TERM,
+  type: MeetingType.INSTANT,
   displayName: ROOM_DISPLAY_NAME,
-  availableFeatures: {
-    isRecordingAvailable: true,
-  },
-  themeId: THEME_ID,
 });

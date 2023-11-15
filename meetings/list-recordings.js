@@ -14,7 +14,6 @@ const credentials = new Auth({
 const options = {};
 
 const meetingsClient = new Meetings(credentials, options);
-
 const recordings = await meetingsClient.getSessionRecordings(SESSION_ID);
 const recording = await recordings.next();
 console.log(recording);
