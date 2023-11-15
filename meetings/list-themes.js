@@ -2,11 +2,9 @@ require('dotenv').config({ path: __dirname + '/../../.env' });
 
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VONAGE_APPLICATION_PRIVATE_KEY_PATH = __dirname + "/../../" + process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH;
-const ROOM_DISPLAY_NAME = process.env.ROOM_DISPLAY_NAME;
-const THEME_ID = process.env.THEME_ID;
 
 const { Auth } = require('@vonage/auth');
-const { Meetings, MeetingType } = require('@vonage/meetings');
+const { Meetings } = require('@vonage/meetings');
 
 const credentials = new Auth({
   privateKey: VONAGE_APPLICATION_PRIVATE_KEY_PATH,
@@ -15,11 +13,7 @@ const credentials = new Auth({
 const options = {};
 
 const meetingsClient = new Meetings(credentials, options);
-await meetingsClient.createRoom({
-  type: MeetingType.LONG_TERM,
-  displayName: ROOM_DISPLAY_NAME,
-  availableFeatures: {
-    isRecordingAvailable: true,
-  },
-  themeId: THEME_ID,
-});
+for await (const theme of meetingsClient.getThemes()) {
+  console.log(theme);
+
+};

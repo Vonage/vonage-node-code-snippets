@@ -15,5 +15,4 @@ const options = {};
 const meetingsClient = new Meetings(credentials, options);
 for await (const room of meetingsClient.getRooms()) {
   console.log(room);
-
 };
