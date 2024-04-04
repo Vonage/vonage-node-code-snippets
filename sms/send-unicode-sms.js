@@ -15,18 +15,12 @@ const vonage = new Vonage({
 const from = VONAGE_BRAND_NAME
 const to = TO_NUMBER
 const text = 'こんにちは世界'
-const opts = {
-  "type": "unicode"
+const type = 'unicode'
+
+async function sendSMS() {
+    await vonage.sms.send({to, from, text, type})
+        .then(resp => { console.log('Message sent successfully'); console.log(resp); })
+        .catch(err => { console.log('There was an error sending the messages.'); console.error(err); });
 }
 
-vonage.message.sendSms(from, to, text, opts, (err, responseData) => {
-    if (err) {
-        console.log(err);
-    } else {
-        if(responseData.messages[0]['status'] === "0") {
-            console.log("Message sent successfully.");
-        } else {
-            console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
-        }
-    }
-})
+sendSMS();
