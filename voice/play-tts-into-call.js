@@ -1,6 +1,6 @@
 'use strict';
 
-require('dotenv').config({path: __dirname + '/../.env'});
+require('dotenv').config({ path: __dirname + '/../.env' });
 
 const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
 const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
@@ -15,11 +15,11 @@ const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
   apiSecret: VONAGE_API_SECRET,
   applicationId: VONAGE_APPLICATION_ID,
-  privateKey: VONAGE_PRIVATE_KEY
-}, {debug: true});
+  privateKey: VONAGE_PRIVATE_KEY,
+});
 
 const TEXT = 'This is some sample text to speech text. It could go on and on and never end.';
 
-vonage.voice.playTTS(UUID, { action: 'talk', text: TEXT })
+vonage.voice.playTTS(UUID, { action: 'talk', text: TEXT, language: 'en-US' })
   .then(resp => console.log(resp))
   .catch(err => console.error(err));
