@@ -26,7 +26,7 @@
     "lint:fix": "eslint -- . --fix"
   },
   "dependencies": {
-    "@vonage/meetings": "1.5.0",
+    "@vonage/meetings": "1.6.0",
     "@vonage/server-sdk": "3.12.0",
     "@vonage/verify2": "1.4.0",
     "body-parser": "^1.20.2",
