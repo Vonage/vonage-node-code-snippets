@@ -15,7 +15,7 @@ const vonage = new Vonage({
 });
 
 vonage.applications.updateApplication({
-  applicationId: VONAGE_APPLICATION_ID,
+    id: VONAGE_APPLICATION_ID,
     name: NAME,
     capabilities: {
       voice: {
