@@ -2,30 +2,30 @@
 
 <img src="https://developer.nexmo.com/images/logos/vbc-logo.svg" height="48px"/>
 
-Quickstarts also available for: 
-[Python](https://github.com/Vonage/vonage-python-code-snippets), 
-[.NET](https://github.com/Vonage/vonage-dotnet-code-snippets), 
-[Node.js](https://github.com/Vonage/vonage-node-code-snippets), 
-[PHP](https://github.com/Vonage/vonage-php-code-snippets),  
-[Ruby](https://github.com/Vonage/vonage-ruby-code-snippets) and 
+Quickstarts also available for:
+[Python](https://github.com/Vonage/vonage-python-code-snippets),
+[.NET](https://github.com/Vonage/vonage-dotnet-code-snippets),
+[Node.js](https://github.com/Vonage/vonage-node-code-snippets),
+[PHP](https://github.com/Vonage/vonage-php-code-snippets),
+[Ruby](https://github.com/Vonage/vonage-ruby-code-snippets) and
 [cURL](https://github.com/Vonage/vonage-curl-code-snippets).
 
-These code samples are meant to be used for 
-[https://developer.nexmo.com/](https://developer.nexmo.com/), and are 
-structured in such a way as to be used for internal testing. Developers are 
-free to use these code snippets as a reference, but these may require changes 
-to be worked into your specific application. We recommend checking out the 
-[Vonage API Developer Website](https://developer.nexmo.com/), which displays 
+These code samples are meant to be used for
+[https://developer.nexmo.com/](https://developer.nexmo.com/), and are
+structured in such a way as to be used for internal testing. Developers are
+free to use these code snippets as a reference, but these may require changes
+to be worked into your specific application. We recommend checking out the
+[Vonage API Developer Website](https://developer.nexmo.com/), which displays
 these code snippets in a more copy/paste fashion.
 
 ## Configure with Your Vonage API Keys
 
-If you'd still like to use this sample you will first need a 
-[Vonage account](https://dashboard.nexmo.com/sign-up). Once you have your own 
-API credentials, rename the `.env-example` file to `.env` and set the values 
+If you'd still like to use this sample you will first need a
+[Vonage account](https://dashboard.nexmo.com/sign-up). Once you have your own
+API credentials, rename the `.env-example` file to `.env` and set the values
 as required.
 
-For some of the examples, you will need to 
+For some of the examples, you will need to
 [buy a number](https://dashboard.nexmo.com/buy-numbers).
 
 ## Tutorials & Sample Code
@@ -56,9 +56,11 @@ For some of the examples, you will need to
 
 ## Request More Examples
 
-Please [raise an issue](https://github.com/Vonage/vonage-node-sdk/issues) to 
-request an example that isn't present within the quickstart. Pull requests 
-will be gratefully received.
+[raise an issue](/../../issues/) if there is a an issue with the code.
+
+If you want to know how to do something specific with the Vonage APIs,
+Please [ask a question](https://github.com/Vonage/vonage-node-sdk/issues) in
+the Node SDK repo.
 
 ## Licenses
 
