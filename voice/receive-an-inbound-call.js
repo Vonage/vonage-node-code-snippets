@@ -1,17 +1,20 @@
-const app = require('express')()
+const Express = require('express');
+const app = new Express();
 
 const onInboundCall = (request, response) => {
-  const from = request.query.from
-  const fromSplitIntoCharacters = from.split('').join(' ')
+  const from = request.query.from;
+  const fromSplitIntoCharacters = from.split('').join(' ');
 
-  const ncco = [{
-    action: 'talk',
-    text: `Thank you for calling from ${fromSplitIntoCharacters}`
-  }]
+  const ncco = [
+    {
+      action: 'talk',
+      text: `Thank you for calling from ${fromSplitIntoCharacters}`,
+    },
+  ];
 
-  response.json(ncco)
-}
+  response.json(ncco);
+};
 
-app.get('/webhooks/answer', onInboundCall)
+app.get('/webhooks/answer', onInboundCall);
 
-app.listen(3000)
+app.listen(3000);

@@ -15,5 +15,5 @@ const subAccountClient = new SubAccount({
 });
 
 subAccountClient.getSubAccounts()
-  .then(subAccounts => console.log(subAccounts))
-  .catch(err => console.error(err));
+  .then((subAccounts) => console.log(subAccounts))
+  .catch((error) => console.error(error));

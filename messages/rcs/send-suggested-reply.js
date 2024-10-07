@@ -8,6 +8,7 @@ const RCS_SENDER_ID = process.env.RCS_SENDER_ID;
 
 const { Vonage } = require('@vonage/server-sdk');
 const { RCSCustom } = require('@vonage/messages');
+
 const vonage = new Vonage({
   applicationId: VONAGE_APPLICATION_ID,
   privateKey: VONAGE_PRIVATE_KEY,
@@ -17,18 +18,18 @@ vonage.messages.send(
   new RCSCustom({
     custom: {
       contentMessage: {
-        text: "What do you think of Vonage APIs?",
+        text: 'What do you think of Vonage APIs?',
         suggestions: [
           {
             reply: {
-              text: "They're great!",
-              postbackData: "suggestion_1",
+              text: 'They\'re great!',
+              postbackData: 'suggestion_1',
             },
           },
           {
             reply: {
-              text: "They're awesome!",
-              postbackData: "suggestion_2",
+              text: 'They\'re awesome!',
+              postbackData: 'suggestion_2',
             },
           },
         ],
@@ -38,5 +39,5 @@ vonage.messages.send(
     from: RCS_SENDER_ID,
   }),
 )
-  .then(resp => console.log(resp.messageUUID))
-  .catch(err => console.error(err));
+  .then(({ messageUUID}) => console.log(messageUUID))
+  .catch((error) => console.error(error));

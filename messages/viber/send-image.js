@@ -1,7 +1,5 @@
 require('dotenv').config({ path: __dirname + '/../../.env' });
 
-const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
-const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VONAGE_PRIVATE_KEY = process.env.VONAGE_PRIVATE_KEY;
 
@@ -13,8 +11,6 @@ const { Vonage } = require('@vonage/server-sdk');
 const { ViberImage } = require('@vonage/messages');
 
 const vonage = new Vonage({
-  apiKey: VONAGE_API_KEY,
-  apiSecret: VONAGE_API_SECRET,
   applicationId: VONAGE_APPLICATION_ID,
   privateKey: VONAGE_PRIVATE_KEY,
 });
@@ -22,11 +18,11 @@ const vonage = new Vonage({
 vonage.messages.send(
   new ViberImage({
     image: {
-      url: IMAGE_URL, 
+      url: IMAGE_URL,
     },
     to: TO_NUMBER,
     from: VIBER_SERVICE_MESSAGE_ID,
   }),
 )
-  .then(resp => console.log(resp.messageUUID))
-  .catch(err => console.error(err));
+  .then(({ messageUUID}) => console.log(messageUUID))
+  .catch((error) => console.error(error));

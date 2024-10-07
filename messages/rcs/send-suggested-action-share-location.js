@@ -8,6 +8,7 @@ const RCS_SENDER_ID = process.env.RCS_SENDER_ID;
 
 const { Vonage } = require('@vonage/server-sdk');
 const { RCSCustom } = require('@vonage/messages');
+
 const vonage = new Vonage({
   applicationId: VONAGE_APPLICATION_ID,
   privateKey: VONAGE_PRIVATE_KEY,
@@ -17,12 +18,12 @@ vonage.messages.send(
   new RCSCustom({
     custom: {
       contentMessage: {
-        text: "Your driver will come and meet you at your specified location.",
+        text: 'Your driver will come and meet you at your specified location.',
         suggestions: [
           {
             action: {
-              text: "Share a location",
-              postbackData: "postback_data_1234",
+              text: 'Share a location',
+              postbackData: 'postback_data_1234',
               shareLocationAction: {},
             },
           },
@@ -33,5 +34,5 @@ vonage.messages.send(
     from: RCS_SENDER_ID,
   }),
 )
-  .then(resp => console.log(resp.messageUUID))
-  .catch(err => console.error(err));
+  .then(({ messageUUID}) => console.log(messageUUID))
+  .catch((error) => console.error(error));

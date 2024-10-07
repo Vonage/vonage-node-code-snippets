@@ -16,10 +16,10 @@ const vonage = new Vonage({
 
 vonage.messages.send(
   new WhatsAppText({
-    text: "This is a WhatsApp Message text message sent using the Messages API",
+    text: 'This is a WhatsApp Message text message sent using the Messages API',
     to: TO_NUMBER,
     from: WHATSAPP_NUMBER,
   }),
 )
-  .then(resp => console.log(resp.messageUUID))
-  .catch(err => console.error(err));
+  .then((resp) => console.log(resp.messageUUID))
+  .catch((error) => console.error(error));

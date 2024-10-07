@@ -15,5 +15,5 @@ const subAccountClient = new SubAccount({
 });
 
 subAccountClient.listBalanceTransfers()
-  .then(balanceTranfsers => console.log(balanceTranfsers))
-  .catch(err => console.error(err));
+  .then((balanceTranfsers) => console.log(balanceTranfsers))
+  .catch((error) => console.error(error));

@@ -9,5 +9,5 @@ const { Vonage } = require('@vonage/server-sdk');
 
 const vonage = new Vonage({ apiKey: API_KEY, apiSecret: API_SECRET });
 vonage.voice.playTTS(TO_NUMBER, { action: 'talk', text: 'Hello from Vonage', language: 'en-US' })
-  .then(resp => console.log(resp))
-  .catch(err => console.error(err));
+  .then((resp) => console.log(resp))
+  .catch((error) => console.error(error));

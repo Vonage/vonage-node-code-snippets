@@ -14,7 +14,7 @@
 'use strict';
 
 require('dotenv').config({
-  path: __dirname + '/../.env'
+  path: __dirname + '/../.env',
 });
 
 const express = require('express');
@@ -24,7 +24,7 @@ const app = express();
 
 app.use(bodyParser.json()); // for parsing POST req
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: true,
 }));
 
 app.set('views', __dirname + '/views'); // Render on browser
@@ -43,7 +43,7 @@ const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
 const { Vonage } = require('@vonage/server-sdk');
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
-  apiSecret: VONAGE_API_SECRET
+  apiSecret: VONAGE_API_SECRET,
 });
 
 // Web UI ("Registration Form")
@@ -53,51 +53,51 @@ app.get('/', (req, res) => {
 
 app.post('/register', (req, res) => {
   // A user registers with a mobile phone number
-  let phoneNumber = req.body.number;
+  const phoneNumber = req.body.number;
   console.log(phoneNumber);
   vonage.verify.start({
     number: phoneNumber,
-    senderId: BRAND_NAME
+    senderId: BRAND_NAME,
   })
-    .then(result => {
+    .then((result) => {
       console.log(result);
-      let requestId = result.request_id;
+      const requestId = result.request_id;
       if (result.status == '0') {
         res.render('verify', {
-          requestId: requestId
+          requestId: requestId,
         });
       } else {
-        //res.status(401).send(result.error_text);
+        // res.status(401).send(result.error_text);
         res.render('status', {
           message: result.error_text,
-          requestId: requestId
+          requestId: requestId,
         });
       }
     })
-    .catch(err => res.render('status', { message: 'Server Error' }));
+    .catch(() => res.render('status', { message: 'Server Error' }));
 });
 
 app.post('/verify', (req, res) => {
   // Checking to see if the code matches
-  let pin = req.body.pin;
-  let requestId = req.body.requestId;
+  const pin = req.body.pin;
+  const requestId = req.body.requestId;
 
   vonage.verify.check(requestId, pin)
-    .then(result => {
+    .then((result) => {
       console.log(result);
       // Error status code: https://developer.nexmo.com/api/verify#verify-check
       if (result && result.status == '0') {
-        //res.status(200).send('Account verified!');
+        // res.status(200).send('Account verified!');
         res.render('status', {
-          message: 'Account verified! 🎉'
+          message: 'Account verified! 🎉',
         });
       } else {
-        //res.status(401).send(result.error_text);
+        // res.status(401).send(result.error_text);
         res.render('status', {
           message: result.error_text,
-          requestId: requestId
+          requestId: requestId,
         });
       }
     })
-    .catch(err => res.render('status', { message: 'Server Error' }));
+    .catch(() => res.render('status', { message: 'Server Error' }));
 });

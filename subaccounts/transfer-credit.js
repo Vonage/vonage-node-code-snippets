@@ -22,5 +22,5 @@ subAccountClient.transferCredit({
   to: SUBACCOUNT_KEY,
   amount: AMOUNT,
 })
-  .then(creditTransfer => console.log(creditTransfer))
-  .catch(err => console.error(err));
+  .then((creditTransfer) => console.log(creditTransfer))
+  .catch((error) => console.error(error));

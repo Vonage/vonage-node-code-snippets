@@ -8,6 +8,7 @@ const RCS_SENDER_ID = process.env.RCS_SENDER_ID;
 
 const { Vonage } = require('@vonage/server-sdk');
 const { RCSCustom } = require('@vonage/messages');
+
 const vonage = new Vonage({
   applicationId: VONAGE_APPLICATION_ID,
   privateKey: VONAGE_PRIVATE_KEY,
@@ -19,43 +20,43 @@ vonage.messages.send(
       contentMessage: {
         richCard: {
           carouselCard: {
-            cardWidth: "MEDIUM",
+            cardWidth: 'MEDIUM',
             cardContents: [
               {
-                title: "Option 1: Photo",
-                description: "Do you prefer this photo?",
+                title: 'Option 1: Photo',
+                description: 'Do you prefer this photo?',
                 suggestions: [
                   {
                     reply: {
-                      text: "Option 1",
-                      postbackData: "card_1",
+                      text: 'Option 1',
+                      postbackData: 'card_1',
                     },
                   },
                 ],
                 media: {
-                  height: "MEDIUM",
+                  height: 'MEDIUM',
                   contentInfo: {
-                    fileUrl: "'$IMAGE_URL'",
-                    forceRefresh: "false",
+                    fileUrl: '\'$IMAGE_URL\'',
+                    forceRefresh: 'false',
                   },
                 },
               },
               {
-                title: "Option 2: Video",
-                description: "Or this video?",
+                title: 'Option 2: Video',
+                description: 'Or this video?',
                 suggestions: [
                   {
                     reply: {
-                      text: "Option 2",
-                      postbackData: "card_2",
+                      text: 'Option 2',
+                      postbackData: 'card_2',
                     },
                   },
                 ],
                 media: {
-                  height: "MEDIUM",
+                  height: 'MEDIUM',
                   contentInfo: {
-                    fileUrl: "'$VIDEO_URL'",
-                    forceRefresh: "false",
+                    fileUrl: '\'$VIDEO_URL\'',
+                    forceRefresh: 'false',
                   },
                 },
               },
@@ -68,5 +69,5 @@ vonage.messages.send(
     from: RCS_SENDER_ID,
   }),
 )
-  .then(resp => console.log(resp.messageUUID))
-  .catch(err => console.error(err));
+  .then(({ messageUUID}) => console.log(messageUUID))
+  .catch((error) => console.error(error));

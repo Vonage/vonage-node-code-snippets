@@ -3,7 +3,7 @@
  */
 
 'use strict';
-require('dotenv').config({path: __dirname + '/../.env'});
+require('dotenv').config({ path: __dirname + '/../.env' });
 const app = require('express')();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -26,10 +26,10 @@ app.get('/proxy-call', (req, res) => {
       'endpoint': [
         {
           'type': 'phone',
-          'number': VONAGE_FROM_NUMBER // forwarding to this real number
-        }
-      ]
-    }
+          'number': VONAGE_FROM_NUMBER, // forwarding to this real number
+        },
+      ],
+    },
   ];
   res.json(ncco);
 });

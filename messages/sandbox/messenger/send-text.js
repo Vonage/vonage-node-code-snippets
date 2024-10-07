@@ -19,16 +19,16 @@ const vonage = new Vonage({
   privateKey: VONAGE_PRIVATE_KEY,
 },
 {
-  apiHost: MESSAGES_SANDBOX_URL
+  apiHost: MESSAGES_SANDBOX_URL,
 });
 
 
 vonage.messages.send(
   new MessengerText({
-    text: `This is a Facebook Messenger text message sent using the Messages API via the Messages Sandbox`,
+    text: 'This is a Facebook Messenger text message sent using the Messages API via the Messages Sandbox',
     to: MESSAGES_SANDBOX_FB_ID,
     from: MESSAGES_SANDBOX_ALLOW_LISTED_FB_RECIPIENT_ID,
   }),
 )
-  .then(resp => console.log(resp.messageUUID))
-  .catch(err => console.error(err));
+  .then((resp) => console.log(resp.messageUUID))
+  .catch((error) => console.error(error));

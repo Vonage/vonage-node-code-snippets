@@ -1,26 +1,28 @@
-require('dotenv').config({path: __dirname + '/../.env'})
-const CONF_NAME = process.env.CONF_NAME
+require('dotenv').config({ path: __dirname + '/../.env' });
+const CONF_NAME = process.env.CONF_NAME;
 
-const app = require('express')()
-const bodyParser = require('body-parser')
+const Express = require('express');
 
-app.use(bodyParser.json())
+const app = new Express();
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
 
 const onInboundCall = (request, response) => {
   const ncco = [
     {
       action: 'talk',
-      text: 'Please wait while we connect you to the conference'
+      text: 'Please wait while we connect you to the conference',
     },
     {
       action: 'conversation',
-      name: CONF_NAME
-    }
-  ]
+      name: CONF_NAME,
+    },
+  ];
 
-  response.json(ncco)
-}
+  response.json(ncco);
+};
 
-app.get('/webhooks/answer', onInboundCall)
+app.get('/webhooks/answer', onInboundCall);
 
-app.listen(3000)
+app.listen(3000);

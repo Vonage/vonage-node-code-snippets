@@ -16,5 +16,5 @@ const subAccountClient = new SubAccount({
 });
 
 subAccountClient.listClientTransfers()
-  .then(creditTranfsers => console.log(creditTranfsers))
-  .catch(err => console.error(err));
+  .then((creditTranfsers) => console.log(creditTranfsers))
+  .catch((error) => console.error(error));

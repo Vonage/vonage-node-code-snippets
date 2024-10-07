@@ -8,6 +8,7 @@ const RCS_SENDER_ID = process.env.RCS_SENDER_ID;
 
 const { Vonage } = require('@vonage/server-sdk');
 const { RCSCustom } = require('@vonage/messages');
+
 const vonage = new Vonage({
   applicationId: VONAGE_APPLICATION_ID,
   privateKey: VONAGE_PRIVATE_KEY,
@@ -17,24 +18,24 @@ vonage.messages.send(
   new RCSCustom({
     custom: {
       contentMessage: {
-        text: "Need some help? Call us now or visit our website for more information.",
+        text: 'Need some help? Call us now or visit our website for more information.',
         suggestions: [
           {
             action: {
-              text: "Call us",
-              postbackData: "postback_data_1234",
-              fallbackUrl: "https://www.example.com/contact/",
-              dialAction: { 
-                phoneNumber: "+447900000000", 
+              text: 'Call us',
+              postbackData: 'postback_data_1234',
+              fallbackUrl: 'https://www.example.com/contact/',
+              dialAction: {
+                phoneNumber: '+447900000000',
               },
             },
           },
           {
             action: {
-              text: "Visit site",
-              postbackData: "postback_data_1234",
+              text: 'Visit site',
+              postbackData: 'postback_data_1234',
               openUrlAction: {
-                url: "http://example.com/", 
+                url: 'http://example.com/',
               },
             },
           },
@@ -45,5 +46,5 @@ vonage.messages.send(
     from: RCS_SENDER_ID,
   }),
 )
-  .then(resp => console.log(resp.messageUUID))
-  .catch(err => console.error(err));
+  .then(({ messageUUID}) => console.log(messageUUID))
+  .catch((error) => console.error(error));

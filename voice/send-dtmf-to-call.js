@@ -1,10 +1,10 @@
 'use strict';
 
-require('dotenv').config({path: __dirname + '/../.env'});
+require('dotenv').config({ path: __dirname + '/../.env' });
 
 const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
 const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
-const VONAGE_PRIVATE_KEY = __dirname + "/../" + process.env.VONAGE_PRIVATE_KEY;
+const VONAGE_PRIVATE_KEY = __dirname + '/../' + process.env.VONAGE_PRIVATE_KEY;
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 
 const TO_NUMBER = process.env.VONAGE_TO_NUMBER;
@@ -14,7 +14,7 @@ const app = require('express')();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: true,
 }));
 
 const server = app.listen(process.env.PORT || 4001, () => {
@@ -27,9 +27,9 @@ const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
   apiSecret: VONAGE_API_SECRET,
   applicationId: VONAGE_APPLICATION_ID,
-  privateKey: VONAGE_PRIVATE_KEY
+  privateKey: VONAGE_PRIVATE_KEY,
 }, {
-  debug: true
+  debug: true,
 });
 
 /**
@@ -40,35 +40,41 @@ app.get('/call', (req, res) => {
   const serverHost = req.protocol + '://' + req.get('host');
 
   vonage.voice.createOutboundCall({
-      to: [{
+    to: [
+      {
         type: 'phone',
         number: TO_NUMBER,
 
         // on answer, send DTMF to the call leg
         // DTMF is send "out of band" which means you won't hear it
-        dtmfAnswer: '2p02p7p7'
-      }],
-      from: {
-        type: 'phone',
-        number: FROM_NUMBER
+        dtmfAnswer: '2p02p7p7',
       },
-      answer_url: [`${serverHost}/answer`],
-      event_url: [`${serverHost}/event`]
+    ],
+    from: {
+      type: 'phone',
+      number: FROM_NUMBER,
+    },
+    answer_url: [`${serverHost}/answer`],
+    event_url: [`${serverHost}/event`],
   })
-    .then(resp => console.log(resp))
-    .catch(err => console.error(err));
-})
+    .then((resp) => console.log(resp))
+    .then(() => res.status(200))
+    .catch((error) => console.error(error));
+});
 
 /**
  * Handle answer_url webhook. Return an NCCO.
  */
 app.get('/answer', (req, res) => {
-  console.log(req.querystring)
-  res.json([{
-    action: 'talk',
-    text: 'hello from vonage',
-    loop: 0
-  }]);
+  console.log(req.querystring);
+  res.json([
+    {
+      action: 'talk',
+      text: 'hello from vonage',
+      loop: 0,
+    },
+  ]);
+  res.status(200);
 });
 
 /**

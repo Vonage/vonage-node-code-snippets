@@ -21,5 +21,5 @@ subAccountClient.createSubAccount({
   name: NEW_SUBACCOUNT_NAME,
   secret: NEW_SUBACCOUNT_SECRET,
 })
-  .then(newSubAccount => console.log(newSubAccount))
-  .catch(err => console.error(err));
+  .then((newSubAccount) => console.log(newSubAccount))
+  .catch((error) => console.error(error));

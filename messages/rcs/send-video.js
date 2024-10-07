@@ -9,6 +9,7 @@ const VIDEO_URL = process.env.VIDEO_URL;
 
 const { Vonage } = require('@vonage/server-sdk');
 const { RCSVideo } = require('@vonage/messages');
+
 const vonage = new Vonage({
   applicationId: VONAGE_APPLICATION_ID,
   privateKey: VONAGE_PRIVATE_KEY,
@@ -23,5 +24,5 @@ vonage.messages.send(
     from: RCS_SENDER_ID,
   }),
 )
-  .then(resp => console.log(resp.messageUUID))
-  .catch(err => console.error(err));
+  .then(({ messageUUID}) => console.log(messageUUID))
+  .catch((error) => console.error(error));

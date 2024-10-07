@@ -12,32 +12,20 @@ const VOICE_STATUS_URL = process.env.VOICE_STATUS_URL;
 
 const { Vonage } = require('@vonage/server-sdk');
 
-const vonage = new Vonage(
-	{
-		apiKey: VONAGE_API_KEY,
-		apiSecret: VONAGE_API_SECRET,
-	},
-	{
-		debug: true,
-	}
-);
+const vonage = new Vonage({
+  apiKey: VONAGE_API_KEY,
+  apiSecret: VONAGE_API_SECRET,
+});
 
-vonage.number.update(
-	COUNTRY_CODE,
-	VONAGE_NUMBER,
-	{
-		messagesCallbackType: 'app',
-		messagesCallbackValue: VONAGE_APPLICATION_ID,
-		voiceCallbackType: VOICE_CALLBACK_TYPE,
-		voiceCallbackValue: VOICE_CALLBACK_VALUE,
-		voiceStatusCallback: VOICE_STATUS_URL,
-		moHttpUrl: SMS_CALLBACK_URL,
-	},
-	(err, res) => {
-		if (err) {
-			console.error(err);
-		} else {
-			console.log(JSON.stringify(res, null, 2));
-		}
-	}
-);
+vonage.numbers.updateNumber({
+  country: COUNTRY_CODE,
+  msisdn: VONAGE_NUMBER,
+  messagesCallbackType: 'app',
+  messagesCallbackValue: VONAGE_APPLICATION_ID,
+  voiceCallbackType: VOICE_CALLBACK_TYPE,
+  voiceCallbackValue: VOICE_CALLBACK_VALUE,
+  voiceStatusCallback: VOICE_STATUS_URL,
+  moHttpUrl: SMS_CALLBACK_URL,
+})
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));

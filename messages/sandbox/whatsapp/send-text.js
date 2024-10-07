@@ -19,15 +19,15 @@ const vonage = new Vonage({
   privateKey: VONAGE_PRIVATE_KEY,
 },
 {
-  apiHost: MESSAGES_SANDBOX_URL
+  apiHost: MESSAGES_SANDBOX_URL,
 });
 
 vonage.messages.send(
   new WhatsAppText({
-    text: "This is a WhatsApp Message text message sent using the Messages API",
+    text: 'This is a WhatsApp Message text message sent using the Messages API',
     to: MESSAGES_SANDBOX_ALLOW_LISTED_TO_NUMBER,
     from: MESSAGES_SANDBOX_WHATSAPP_NUMBER,
   }),
 )
-  .then(resp => console.log(resp.messageUUID))
-  .catch(err => console.error(err));
+  .then((resp) => console.log(resp.messageUUID))
+  .catch((error) => console.error(error));

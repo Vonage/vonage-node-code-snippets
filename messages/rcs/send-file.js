@@ -9,6 +9,7 @@ const FILE_URL = process.env.FILE_URL;
 
 const { Vonage } = require('@vonage/server-sdk');
 const { RCSFile } = require('@vonage/messages');
+
 const vonage = new Vonage({
   applicationId: VONAGE_APPLICATION_ID,
   privateKey: VONAGE_PRIVATE_KEY,
@@ -16,12 +17,12 @@ const vonage = new Vonage({
 
 vonage.messages.send(
   new RCSFile({
-    file: { 
+    file: {
       url: FILE_URL,
-    }, 
+    },
     to: TO_NUMBER,
     from: RCS_SENDER_ID,
   }),
 )
-  .then(resp => console.log(resp.messageUUID))
-  .catch(err => console.error(err));
+  .then(({ messageUUID}) => console.log(messageUUID))
+  .catch((error) => console.error(error));

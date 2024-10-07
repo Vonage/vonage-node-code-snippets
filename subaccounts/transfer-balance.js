@@ -22,5 +22,5 @@ subAccountClient.transferBalance({
   to: SUBACCOUNT_KEY,
   amount: AMOUNT,
 })
-  .then(balanceTransfer => console.log(balanceTransfer))
-  .catch(err => console.error(err));
+  .then((balanceTransfer) => console.log(balanceTransfer))
+  .catch((error) => console.error(error));

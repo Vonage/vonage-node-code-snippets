@@ -1,7 +1,5 @@
 require('dotenv').config({ path: __dirname + '/../../.env' });
 
-const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
-const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VONAGE_PRIVATE_KEY = process.env.VONAGE_PRIVATE_KEY;
 
@@ -15,8 +13,6 @@ const { Vonage } = require('@vonage/server-sdk');
 const { WhatsAppCustom } = require('@vonage/messages');
 
 const vonage = new Vonage({
-  apiKey: VONAGE_API_KEY,
-  apiSecret: VONAGE_API_SECRET,
   applicationId: VONAGE_APPLICATION_ID,
   privateKey: VONAGE_PRIVATE_KEY,
 });
@@ -29,7 +25,7 @@ vonage.messages.send(
         name: `${WHATSAPP_TEMPLATE_NAME}`,
         language: {
           policy: 'deterministic',
-          code: 'en'
+          code: 'en',
         },
         components: [
           {
@@ -38,26 +34,26 @@ vonage.messages.send(
               {
                 type: 'image',
                 image: {
-                  link: `${IMAGE_URL}`
-                }
-              }
-            ]
+                  link: `${IMAGE_URL}`,
+                },
+              },
+            ],
           },
           {
             type: 'body',
             parameters: [
               {
                 type: 'text',
-                text: `${WHATSAPP_TEMPLATE_REPLACEMENT_TEXT}`
-              }
-            ]
-          }
-        ]
-      }
+                text: `${WHATSAPP_TEMPLATE_REPLACEMENT_TEXT}`,
+              },
+            ],
+          },
+        ],
+      },
     },
     to: TO_NUMBER,
     from: WHATSAPP_NUMBER,
   }),
 )
-  .then(resp => console.log(resp.message_uuid))
-  .catch(err => console.error(err));
+  .then(({ messageUUID}) => console.log(messageUUID))
+  .catch((error) => console.error(error));

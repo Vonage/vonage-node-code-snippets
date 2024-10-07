@@ -1,27 +1,20 @@
-require('dotenv').config({path: __dirname + '/../.env'})
+require('dotenv').config({ path: __dirname + '/../.env' });
 
-const VONAGE_API_KEY = process.env.VONAGE_API_KEY
-const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET
-const VONAGE_NUMBER = process.env.VONAGE_NUMBER
-const COUNTRY_CODE = process.env.COUNTRY_CODE
+const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
+const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
+const VONAGE_NUMBER = process.env.VONAGE_NUMBER;
+const COUNTRY_CODE = process.env.COUNTRY_CODE;
 
-const { Vonage } = require('@vonage/server-sdk')
+const { Vonage } = require('@vonage/server-sdk');
 
-const vonage = new Vonage(
-  {
-    apiKey: VONAGE_API_KEY,
-    apiSecret: VONAGE_API_SECRET
-  },
-  {
-    debug: true
-  }
-)
+const vonage = new Vonage({
+  apiKey: VONAGE_API_KEY,
+  apiSecret: VONAGE_API_SECRET,
+});
 
-vonage.number.cancel(COUNTRY_CODE, VONAGE_NUMBER, (err, res) => {
-  if(err) {
-    console.error(err)
-  }
-  else {
-    console.log(JSON.stringify(res, null, 2))
-  }
+vonage.number.cancelNumber({
+  country: COUNTRY_CODE,
+  msisdn: VONAGE_NUMBER,
 })
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
