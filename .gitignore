@@ -1,10 +1,4 @@
 .env
 node_modules
-.DS_Store
-.node-persist
-chat
 npm-debug.log
-*.mp3
-*.key
-.c9
 private.key
