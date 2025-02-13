@@ -3,15 +3,13 @@ const { Vonage } = require('@vonage/server-sdk');
 
 const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
 const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
-const SMS_CALLBACK_URL = process.env.SMS_CALLBACK_URL;
+const ACCOUNT_ID = process.env.ACCOUNT_ID;
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
   apiSecret: VONAGE_API_SECRET,
 });
 
-vonage.accounts.updateAccountCallbacks({
-  moCallBackUrl: SMS_CALLBACK_URL
-})
+vonage.secrets.listSecrets(ACCOUNT_ID)
   .then((resp) => console.log(resp))
   .catch((error) => console.error(error));
