@@ -1,23 +1,21 @@
 require('dotenv').config({ path: __dirname + '/../../.env' });
+const { Vonage } = require('@vonage/server-sdk');
 
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
-const VONAGE_APPLICATION_PRIVATE_KEY_PATH = __dirname + '/../../' + process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH;
-const MEMBER_ID = process.env.MEMBER_ID;
-const CONVERSATION_ID = process.env.CONVERSATION_ID;
-const YOUR_EVENT_NAME = process.env.YOUR_EVENT_NAME;
-
-const { Vonage } = require('@vonage/server-sdk');
+const VONAGE_PRIVATE_KEY = __dirname + '/../../' + process.env.VONAGE_PRIVATE_KEY;
+const CONV_EVENT_FROM = process.env.CONV_EVENT_FROM;
+const CONV_ID = process.env.CONVERSATION_ID;
 
 const vonage = new Vonage({
   applicationId: VONAGE_APPLICATION_ID,
-  privateKey: VONAGE_APPLICATION_PRIVATE_KEY_PATH,
+  privateKey: VONAGE_PRIVATE_KEY,
 });
 
 vonage.conversations.createEvent(
-  CONVERSATION_ID,
+  CONV_ID,
   {
-    'type': `custom:${YOUR_EVENT_NAME}`,
-    'from': MEMBER_ID,
+    'type': 'custom:YOUR_EVENT_NAME',
+    'from': CONV_EVENT_FROM,
     'body': {
       'your': 'data',
     },
