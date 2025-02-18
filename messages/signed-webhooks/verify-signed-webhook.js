@@ -1,7 +1,7 @@
 require('dotenv').config({ path: __dirname + '/../../.env' });
-const VONAGE_API_SIGNATURE_SECRET = process.env.VONAGE_API_SIGNATURE_SECRET;
-
 const { verifySignature } = require('@vonage/jwt');
+
+const VONAGE_API_SIGNATURE_SECRET = process.env.VONAGE_API_SIGNATURE_SECRET;
 
 const app = require('express')();
 const bodyParser = require('body-parser');

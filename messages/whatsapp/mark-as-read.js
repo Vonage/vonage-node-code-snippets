@@ -1,13 +1,11 @@
 require('dotenv').config({ path: __dirname + '/../../.env' });
 const { Vonage } = require('@vonage/server-sdk');
-const { Channels } = require('@vonage/messages');
+const { UpdateMessageStatus } = require('@vonage/messages');
 
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VONAGE_PRIVATE_KEY = process.env.VONAGE_PRIVATE_KEY;
-const MESSAGES_TO_NUMBER = process.env.MESSAGES_TO_NUMBER;
-const VIBER_SENDER_ID = process.env.VIBER_SENDER_ID;
-const MESSAGES_IMAGE_URL = process.env.MESSAGES_IMAGE_URL;
-const MESSAGES_API_URL = process.env.MESSAGES_API_URL;
+const MESSAGES_MESSAGE_ID = process.env.MESSAGES_MESSAGE_ID;
+const GEOSPECIFIC_MESSAGES_API_URL = process.env.GEOSPECIFIC_MESSAGES_API_URL;
 
 /**
  * It is best to send messages using JWT instead of basic auth. If you leave out
@@ -21,18 +19,10 @@ const vonage = new Vonage(
     privateKey: VONAGE_PRIVATE_KEY,
   },
   {
-    ...(MESSAGES_API_URL ? {apiHost: MESSAGES_API_URL} : {}),
+    ...(GEOSPECIFIC_MESSAGES_API_URL ? {apiHost: GEOSPECIFIC_MESSAGES_API_URL} : {}),
   },
 );
 
-vonage.messages.send({
-  messageType: 'image',
-  channel: Channels.VIBER,
-  image: {
-    url: MESSAGES_IMAGE_URL,
-  },
-  to: MESSAGES_TO_NUMBER,
-  from: VIBER_SENDER_ID,
-})
+vonage.messages.updateMessage(MESSAGES_MESSAGE_ID, UpdateMessageStatus.READ)
   .then(({ messageUUID }) => console.log(messageUUID))
   .catch((error) => console.error(error));
