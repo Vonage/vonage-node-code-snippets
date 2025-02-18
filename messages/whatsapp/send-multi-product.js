@@ -6,7 +6,9 @@ const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VONAGE_PRIVATE_KEY = process.env.VONAGE_PRIVATE_KEY;
 const MESSAGES_TO_NUMBER = process.env.MESSAGES_TO_NUMBER;
 const WHATSAPP_SENDER_ID = process.env.WHATSAPP_SENDER_ID;
-const MESSAGES_FILE_URL = process.env.MESSAGES_FILE_URL;
+const WHATSAPP_CATALOG_ID = process.env.WHATSAPP_CATALOG_ID;
+const WHATSAPP_PRODUCT_ID_1 = process.env.WHATSAPP_PRODUCT_ID_1;
+const WHATSAPP_PRODUCT_ID_2 = process.env.WHATSAPP_PRODUCT_ID_2;
 const MESSAGES_API_URL = process.env.MESSAGES_API_URL;
 
 /**
@@ -29,9 +31,46 @@ vonage.messages.send({
   to: MESSAGES_TO_NUMBER,
   from: WHATSAPP_SENDER_ID,
   channel: Channels.WHATSAPP,
-  messageType: 'file',
-  file: {
-    url: MESSAGES_FILE_URL,
+  messageType: 'custom',
+  custom: {
+    type: 'interactive',
+    interactive: {
+      type: 'product_list',
+      header: {
+        type: 'text',
+        text: 'Our top products',
+      },
+      body: {
+        text: 'Check out these great products',
+      },
+      footer: {
+        text: 'Sale now on!',
+      },
+      action: {
+        catalog_id: WHATSAPP_CATALOG_ID,
+        sections: [
+          {
+            title: 'Cool products',
+            product_items: [
+              {
+                product_retailer_id: WHATSAPP_PRODUCT_ID_1,
+              },
+              {
+                product_retailer_id: WHATSAPP_PRODUCT_ID_2,
+              },
+            ],
+          },
+          {
+            title: 'Awesome products',
+            product_items: [
+              {
+                product_retailer_id: WHATSAPP_PRODUCT_ID_1,
+              },
+            ],
+          },
+        ],
+      },
+    },
   },
 })
   .then(({ messageUUID }) => console.log(messageUUID))

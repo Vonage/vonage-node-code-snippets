@@ -5,8 +5,9 @@ const { Channels } = require('@vonage/messages');
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VONAGE_PRIVATE_KEY = process.env.VONAGE_PRIVATE_KEY;
 const MESSAGES_TO_NUMBER = process.env.MESSAGES_TO_NUMBER;
-const VIBER_SENDER_ID = process.env.VIBER_SENDER_ID;
-const MESSAGES_IMAGE_URL = process.env.MESSAGES_IMAGE_URL;
+const WHATSAPP_SENDER_ID = process.env.WHATSAPP_SENDER_ID;
+const MESSAGES_EMOJI = process.env.MESSAGES_EMOJI;
+const MESSAGES_MESSAGE_ID = process.env.MESSAGES_MESSAGE_ID;
 const MESSAGES_API_URL = process.env.MESSAGES_API_URL;
 
 /**
@@ -26,13 +27,17 @@ const vonage = new Vonage(
 );
 
 vonage.messages.send({
-  messageType: 'image',
-  channel: Channels.VIBER,
-  image: {
-    url: MESSAGES_IMAGE_URL,
-  },
   to: MESSAGES_TO_NUMBER,
-  from: VIBER_SENDER_ID,
+  from: WHATSAPP_SENDER_ID,
+  channel: Channels.WHATSAPP,
+  messageType: 'reaction',
+  reaction: {
+    action: 'react',
+    emoji: MESSAGES_EMOJI,
+  },
+  context: {
+    message_uuid: MESSAGES_MESSAGE_ID,
+  },
 })
   .then(({ messageUUID }) => console.log(messageUUID))
   .catch((error) => console.error(error));

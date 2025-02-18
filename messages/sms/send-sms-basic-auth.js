@@ -2,23 +2,22 @@ require('dotenv').config({ path: __dirname + '/../.env' });
 const { Vonage } = require('@vonage/server-sdk');
 const { Channels } = require('@vonage/messages');
 
-const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
-const VONAGE_PRIVATE_KEY = process.env.VONAGE_PRIVATE_KEY;
+const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
+const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
 const MESSAGES_TO_NUMBER = process.env.MESSAGES_TO_NUMBER;
-const MMS_SEENDER_ID = process.env.MMS_SEENDER_ID;
-const MESSAGES_IMAGE_URL = process.env.MESSAGES_IMAGE_URL;
+const SMS_SEENDER_ID = process.env.SMS_SEENDER_ID;
 const MESSAGES_API_URL = process.env.MESSAGES_API_URL;
 
 /**
- * It is best to send messages using JWT instead of basic auth. If you leave out
- * apiKey and apiSecret, the messages SDK will send requests using JWT tokens
+ * By leaving out the applicationId and privateKey parameters, the Vonage
+ * SDK will use basic authentication to authenticate with the Messages API.
  *
  * @link https://developer.vonage.com/en/messages/technical-details#authentication
  */
 const vonage = new Vonage(
   {
-    applicationId: VONAGE_APPLICATION_ID,
-    privateKey: VONAGE_PRIVATE_KEY,
+    apiKey: VONAGE_API_KEY,
+    apiSecret: VONAGE_API_SECRET,
   },
   {
     ...(MESSAGES_API_URL ? {apiHost: MESSAGES_API_URL} : {}),
@@ -26,13 +25,11 @@ const vonage = new Vonage(
 );
 
 vonage.messages.send({
-  messageType: 'image',
-  channel: Channels.MMS,
-  image: {
-    url: MESSAGES_IMAGE_URL,
-  },
+  messageType: 'sms',
+  channel: Channels.SMS,
+  text: 'This is an SMS text message sent using the Messages API',
   to: MESSAGES_TO_NUMBER,
-  from: MMS_SEENDER_ID,
+  from: SMS_SEENDER_ID,
 })
   .then(({ messageUUID }) => console.log(messageUUID))
   .catch((error) => console.error(error));

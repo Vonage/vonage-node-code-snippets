@@ -1,12 +1,12 @@
-require('dotenv').config({ path: __dirname + '/../../.env' });
+require('dotenv').config({ path: __dirname + '/../.env' });
 const { Vonage } = require('@vonage/server-sdk');
 const { Channels } = require('@vonage/messages');
 
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VONAGE_PRIVATE_KEY = process.env.VONAGE_PRIVATE_KEY;
 const MESSAGES_TO_NUMBER = process.env.MESSAGES_TO_NUMBER;
-const VIBER_SENDER_ID = process.env.VIBER_SENDER_ID;
-const MESSAGES_IMAGE_URL = process.env.MESSAGES_IMAGE_URL;
+const MMS_SEENDER_ID = process.env.MMS_SEENDER_ID;
+const MESSAGES_AUDIO_URL = process.env.MESSAGES_AUDIO_URL;
 const MESSAGES_API_URL = process.env.MESSAGES_API_URL;
 
 /**
@@ -26,13 +26,13 @@ const vonage = new Vonage(
 );
 
 vonage.messages.send({
-  messageType: 'image',
-  channel: Channels.VIBER,
-  image: {
-    url: MESSAGES_IMAGE_URL,
+  messageType: 'audio',
+  channel: Channels.MMS,
+  audio:{
+    url: MESSAGES_AUDIO_URL,
   },
   to: MESSAGES_TO_NUMBER,
-  from: VIBER_SENDER_ID,
+  from: MMS_SEENDER_ID,
 })
   .then(({ messageUUID }) => console.log(messageUUID))
   .catch((error) => console.error(error));
