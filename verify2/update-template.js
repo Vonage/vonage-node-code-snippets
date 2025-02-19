@@ -1,10 +1,9 @@
 require('dotenv').config({path: __dirname + '/../.env'});
+const { Vonage } = require('@vonage/server-sdk');
 
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VONAGE_APPLICATION_PRIVATE_KEY_PATH = process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH;
 const TEMPLATE_ID = process.env.TEMPLATE_ID;
-
-const { Vonage } = require('@vonage/server-sdk');
 
 const vonage = new Vonage ({
   applicationId: VONAGE_APPLICATION_ID,
@@ -16,7 +15,7 @@ vonage.verify2.getTemplateFragment(
   {
     name: 'Updated template name',
     isDefault: true,
-  }
+  },
 )
   .then((fragment) => console.log(fragment))
   .catch((error) => console.error(error));

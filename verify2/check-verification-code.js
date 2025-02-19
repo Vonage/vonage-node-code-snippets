@@ -1,12 +1,10 @@
 require('dotenv').config({path: __dirname + '/../.env'});
+const { Vonage } = require('@vonage/server-sdk');
 
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VONAGE_APPLICATION_PRIVATE_KEY_PATH = process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH;
-
-const REQUEST_ID = process.argv[2] || process.env.REQUEST_ID;
-const CODE = process.argv[3] || process.env.CODE;
-
-const { Vonage } = require('@vonage/server-sdk');
+const REQUEST_ID = process.env.REQUEST_ID;
+const CODE = process.env.CODE;
 
 const vonage = new Vonage ({
   applicationId: VONAGE_APPLICATION_ID,
