@@ -1,19 +1,18 @@
 require('dotenv').config({ path: __dirname + '/../../.env' });
+const { Vonage } = require('@vonage/server-sdk');
 
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
-const VONAGE_APPLICATION_PRIVATE_KEY_PATH = __dirname +'/../../'+ process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH;
-const CONVERSATION_ID = process.env.CONVERSATION_ID;
-
-const { Vonage } = require('@vonage/server-sdk');
+const VONAGE_PRIVATE_KEY = __dirname +'/../../'+ process.env.VONAGE_PRIVATE_KEY;
+const CONV_ID = process.env.CONV_ID;
 
 const vonage = new Vonage({
   applicationId: VONAGE_APPLICATION_ID,
-  privateKey: VONAGE_APPLICATION_PRIVATE_KEY_PATH,
+  privateKey: VONAGE_PRIVATE_KEY,
 });
 
 const run = async () => {
   try {
-    for await (const member of vonage.conversations.listAllMembers(CONVERSATION_ID)) {
+    for await (const member of vonage.conversations.listAllMembers(CONV_ID)) {
       console.log(member);
     }
   } catch (error) {
