@@ -5,8 +5,9 @@ const { Channels } = require('@vonage/messages');
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VONAGE_PRIVATE_KEY = process.env.VONAGE_PRIVATE_KEY;
 const MESSAGES_TO_NUMBER = process.env.MESSAGES_TO_NUMBER;
-const VIBER_SENDER_ID = process.env.VIBER_SENDER_ID;
+const MESSAGES_VIDEO_URL = process.env.MESSAGES_VIDEO_URL;
 const MESSAGES_IMAGE_URL = process.env.MESSAGES_IMAGE_URL;
+const VIBER_SENDER_ID = process.env.VIBER_SENDER_ID;
 const MESSAGES_API_URL = process.env.MESSAGES_API_URL;
 
 /**
@@ -26,10 +27,11 @@ const vonage = new Vonage(
 );
 
 vonage.messages.send({
-  messageType: 'image',
+  type: 'video',
   channel: Channels.VIBER,
-  image: {
-    url: MESSAGES_IMAGE_URL,
+  video: {
+    url: MESSAGES_VIDEO_URL,
+    thumbUrl: MESSAGES_IMAGE_URL,
   },
   to: MESSAGES_TO_NUMBER,
   from: VIBER_SENDER_ID,

@@ -5,8 +5,9 @@ const { Channels } = require('@vonage/messages');
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VONAGE_PRIVATE_KEY = process.env.VONAGE_PRIVATE_KEY;
 const MESSAGES_TO_NUMBER = process.env.MESSAGES_TO_NUMBER;
-const VIBER_SENDER_ID = process.env.VIBER_SENDER_ID;
-const MESSAGES_IMAGE_URL = process.env.MESSAGES_IMAGE_URL;
+const WHATSAPP_SENDER_ID = process.env.WHATSAPP_SENDER_ID;
+const WHATSAPP_TEMPLATE_NAME = process.env.WHATSAPP_TEMPLATE_NAME;
+const WHATSAPP_OTP = process.env.WHATSAPP_OTP;
 const MESSAGES_API_URL = process.env.MESSAGES_API_URL;
 
 /**
@@ -25,14 +26,44 @@ const vonage = new Vonage(
   },
 );
 
+;
 vonage.messages.send({
-  messageType: 'image',
-  channel: Channels.VIBER,
-  image: {
-    url: MESSAGES_IMAGE_URL,
-  },
   to: MESSAGES_TO_NUMBER,
-  from: VIBER_SENDER_ID,
+  from: WHATSAPP_SENDER_ID,
+  channel: Channels.WHATSAPP,
+  messageType: 'custom',
+  custom: {
+    type: 'template',
+    template: {
+      name: WHATSAPP_TEMPLATE_NAME,
+      language: {
+        policy: 'deterministic',
+        code: 'en',
+      },
+      components: [
+        {
+          type: 'body',
+          parameters: [
+            {
+              type: 'text',
+              text: WHATSAPP_OTP,
+            },
+          ],
+        },
+        {
+          type: 'button',
+          sub_type: 'url',
+          index: '0',
+          parameters: [
+            {
+              type: 'text',
+              text: WHATSAPP_OTP,
+            },
+          ],
+        },
+      ],
+    },
+  },
 })
   .then(({ messageUUID }) => console.log(messageUUID))
   .catch((error) => console.error(error));
