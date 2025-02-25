@@ -1,6 +1,8 @@
 const Express = require('express');
 const app = new Express();
 
+const port = process.env.PORT || 3000;
+
 const onInboundCall = (request, response) => {
   const ncco = [
     {
@@ -23,7 +25,7 @@ const onInboundCall = (request, response) => {
   response.json(ncco);
 };
 
-const onNotification = (request, response) => {
+const onNotification = (_, response) => {
   const ncco = [
     {
       'action': 'talk',
@@ -38,4 +40,6 @@ app
   .get('/webhooks/answer', onInboundCall)
   .post('/webhooks/notification', onNotification);
 
-app.listen(3000);
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
