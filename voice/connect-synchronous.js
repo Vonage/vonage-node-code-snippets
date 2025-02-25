@@ -1,20 +1,17 @@
-'use strict';
-
 require('dotenv').config({ path: __dirname + '/../.env' });
+const Express = require('express');
+const bodyParser = require('body-parser');
 
+const app = new Express();
+app.use(bodyParser.json());
+
+const port = process.env.PORT || 3000;
 const VONAGE_FROM_NUMBER = process.env.VONAGE_FROM_NUMBER;
 const VONAGE_TO_NUMBER = process.env.VONAGE_TO_NUMBER;
 const VONAGE_ALT_NUMBER = process.env.VONAGE_ALT_NUMBER;
 
-const app = require('express')();
-const bodyParser = require('body-parser');
-
-app.use(bodyParser.json());
-app.set('port', (process.env.PORT || 5000));
-
-app.get('/answer', function (req, res) {
-
-  const serverHost = req.protocol + '://' + req.get('host');
+app.get('/answer', (req, res) => {
+  const serverHost = req.protocol + '://' + req.host;
 
   const ncco = [
     {
@@ -39,16 +36,10 @@ app.get('/answer', function (req, res) {
 
 });
 
-app.post('/connect-event', function(req, res) {
+app.post('/connect-event', (req, res) => {
   const ncco = [];
 
   if(req.body.status === 'timeout') {
-    // Note: you cannot presently do this
-    // ncco.push({
-    //   action: 'talk',
-    //   text: 'Sorry, the attempt to connect your call timed out.'
-    // });
-
     ncco.push({
       action: 'connect',
       from: VONAGE_FROM_NUMBER,
@@ -69,6 +60,6 @@ app.post('/events', function(req, res) {
   res.status(200);
 });
 
-const server = app.listen(process.env.PORT || 4004, () => {
-  console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
 });
