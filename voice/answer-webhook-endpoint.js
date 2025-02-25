@@ -1,12 +1,13 @@
-'use strict';
-
 require('dotenv').config({ path: __dirname + '/../.env' });
+const Express = require('express');
+const bodyParser = require('body-parser');
 
-const app = require('express')();
-app.set('port', (process.env.PORT || 5000));
-app.use(require('body-parser').urlencoded({ extended: false }));
+const app = new Express();
+const port = process.env.PORT || 3000;
 
-app.get('/answer-webhook', function (req, res) {
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.get('/webhook/answer', (_, res) => {
   // At this point you build an NCCO that fulfills your use case.
   // For the purposes of an example we'll just read out some text.
   const ncco = [
@@ -20,6 +21,7 @@ app.get('/answer-webhook', function (req, res) {
   res.status(200);
 });
 
-app.listen(app.get('port'), function() {
-  console.log('Example app listening on port', app.get('port'));
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
 });
+
