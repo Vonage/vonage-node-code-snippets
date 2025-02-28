@@ -1,14 +1,14 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
-const CONF_NAME = process.env.CONF_NAME;
-
 const Express = require('express');
-
-const app = new Express();
 const bodyParser = require('body-parser');
 
+const app = new Express();
+const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
-const onInboundCall = (request, response) => {
+const VOICE_CONF_NAME = process.env.VOICE_CONF_NAME;
+
+const onInboundCall = (_, response) => {
   const ncco = [
     {
       action: 'talk',
@@ -16,7 +16,7 @@ const onInboundCall = (request, response) => {
     },
     {
       action: 'conversation',
-      name: CONF_NAME,
+      name: VOICE_CONF_NAME,
     },
   ];
 
@@ -25,4 +25,6 @@ const onInboundCall = (request, response) => {
 
 app.get('/webhooks/answer', onInboundCall);
 
-app.listen(3000);
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});

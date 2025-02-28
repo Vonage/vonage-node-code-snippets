@@ -1,6 +1,8 @@
 const Express = require('express');
 const bodyParser = require('body-parser');
 
+const port = process.env.PORT || 3000;
+
 const app = new Express();
 app.use(bodyParser.json());
 
@@ -37,4 +39,6 @@ app
   .get('/webhooks/answer', onInboundCall)
   .post('/webhooks/recordings', onRecording);
 
-app.listen(3000);
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
