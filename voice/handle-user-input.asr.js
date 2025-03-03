@@ -1,8 +1,8 @@
+require('dotenv').config({ path: __dirname + '/../.env' });
 const Express = require('express');
-const bodyParser = require('body-parser');
 
 const app = new Express();
-app.use(bodyParser.json());
+const port = process.env.PORT || 3000;
 
 const onInboundCall = (request, response) => {
   const ncco = [
@@ -42,4 +42,6 @@ app
   .get('/webhooks/answer', onInboundCall)
   .post('/webhooks/asr', onInput);
 
-app.listen(3000);
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
