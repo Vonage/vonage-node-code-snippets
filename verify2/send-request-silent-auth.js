@@ -1,11 +1,12 @@
 require('dotenv').config({path: __dirname + '/../.env'});
-const { Vonage } = require('@vonage/server-sdk');
-const { SilentAuthChannel } = require('@vonage/verify2');
 
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VONAGE_APPLICATION_PRIVATE_KEY_PATH = process.env.VONAGE_APPLICATION_PRIVATE_KEY_PATH;
-const BRAND_NAME = process.env.BRAND_NAME;
-const TO_NUMBER =  process.env.TO_NUMBER;
+const VERIFY_BRAND_NAME = process.env.VERIFY_BRAND_NAME;
+const VERIFY_NUMBER =  process.env.VERIFY_NUMBER;
+
+const { Vonage } = require('@vonage/server-sdk');
+const { SilentAuthChannel } = require('@vonage/verify2');
 
 const vonage = new Vonage({
   applicationId: VONAGE_APPLICATION_ID,
@@ -13,11 +14,11 @@ const vonage = new Vonage({
 });
 
 vonage.verify2.newRequest({
-  brand: BRAND_NAME,
+  brand: VERIFY_BRAND_NAME,
   workflow: [
     {
       channel: SilentAuthChannel.SILENT_AUTH,
-      to: TO_NUMBER,
+      to: VERIFY_NUMBER,
     },
   ],
 })
