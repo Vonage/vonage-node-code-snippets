@@ -2,31 +2,30 @@ require('dotenv').config({ path: __dirname + '/../.env' });
 
 const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
 const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
-const VONAGE_API_SIGNATURE_SECRET = process.env.VONAGE_API_SIGNATURE_SECRET;
-const TO_NUMBER = process.env.VONAGE_TO_NUMBER;
-const FROM_NUMBER = process.env.VONAGE_FROM_NUMBER;
+const SMS_SIGNATURE = process.env.SMS_SIGNATURE;
+const SMS_TO_NUMBER = process.env.VONAGE_SMS_TO_NUMBER;
+const SMS_SENDER_ID = process.env.VONAGE_SMS_SENDER_ID;
 
 const { Vonage } = require('@vonage/server-sdk');
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
   apiSecret: VONAGE_API_SECRET,
+  // By passing in the signature, the SDK will sign the request for you
+  // Isn't that neat?!
   signature: {
-    secret: VONAGE_API_SIGNATURE_SECRET,
+    secret: SMS_SIGNATURE,
     algorithm: 'md5hash',
   },
 });
 
-const from = FROM_NUMBER;
-const to = TO_NUMBER;
-const text = 'A text message sent using the Vonage SMS API';
 
 const sendMessage = async () => {
   try {
     const result = await vonage.sms.send({
-      from: from,
-      to: to,
-      text: text,
+      from: SMS_SENDER_ID,
+      to: SMS_TO_NUMBER,
+      text: 'A text message sent using the Vonage SMS API',
     });
 
     console.log('Message sent successfully.');

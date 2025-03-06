@@ -2,7 +2,7 @@ require('dotenv').config({ path: __dirname + '/../.env' });
 
 const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
 const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
-const VONAGE_FROM_NUMBER = process.env.VONAGE_FROM_NUMBER;
+const SMS_SENDER_ID = process.env.SMS_SENDER_ID;
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -21,9 +21,8 @@ const vonage = new Vonage({
 });
 
 app.post('/send', (req, res) => {
-  // Sending SMS via Vonage
   vonage.message.send(new SMS({
-    from: VONAGE_FROM_NUMBER,
+    from: SMS_SENDER_ID,
     to: req.body.toNumber,
     text: req.body.message,
   }))

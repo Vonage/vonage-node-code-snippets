@@ -1,6 +1,6 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
 
-const VONAGE_API_SIGNATURE_SECRET = process.env.VONAGE_API_SIGNATURE_SECRET;
+const VONAGE_SIGNATURE_SECRET = process.env.VONAGE_SIGNATURE_SECRET;
 
 const { Vonage } = require('@vonage/server-sdk');
 
@@ -24,7 +24,7 @@ const  handleInboundSms = (request, response) => {
   if (Vonage.sms.verifySignature(
     sig,
     params,
-    VONAGE_API_SIGNATURE_SECRET,
+    VONAGE_SIGNATURE_SECRET,
     'md5hash', // one of md5hash, md5, sha1, sha256, or sha512
   )) {
     console.log('Valid signature');
