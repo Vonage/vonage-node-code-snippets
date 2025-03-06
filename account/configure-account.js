@@ -1,9 +1,10 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
-const { Vonage } = require('@vonage/server-sdk');
 
 const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
 const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
 const SMS_CALLBACK_URL = process.env.SMS_CALLBACK_URL;
+
+const { Vonage } = require('@vonage/server-sdk');
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
@@ -11,7 +12,7 @@ const vonage = new Vonage({
 });
 
 vonage.accounts.updateAccountCallbacks({
-  moCallBackUrl: SMS_CALLBACK_URL
+  moCallBackUrl: SMS_CALLBACK_URL,
 })
   .then((resp) => console.log(resp))
   .catch((error) => console.error(error));
