@@ -1,11 +1,12 @@
 require('dotenv').config({path: __dirname + '/../.env'});
-const { Vonage } = require('@vonage/server-sdk');
 
 const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
 const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
-const RECIPIENT_NUMBER = process.env.RECIPIENT_NUMBER;
-const CODE = process.env.CODE;
-const BRAND_NAME = process.env.BRAND_NAME;
+const VERIFY_NUMBER = process.env.VERIFY_NUMBER;
+const VERIFY_CODE = process.env.VERIFY_CODE;
+const VERIFY_BRAND_NAME = process.env.VERIFY_BRAND_NAME;
+
+const { Vonage } = require('@vonage/server-sdk');
 
 const vonage = new Vonage({
   apiKey: VONAGE_API_KEY,
@@ -13,9 +14,9 @@ const vonage = new Vonage({
 });
 
 vonage.verify.start({
-  number: RECIPIENT_NUMBER,
-  brand: BRAND_NAME,
-  pinCode: CODE,
+  number: VERIFY_NUMBER,
+  brand: VERIFY_BRAND_NAME,
+  pinCode: VERIFY_CODE,
 })
   .then(({ requestId } ) => console.log(requestId))
   .catch((error) => console.error(error));
