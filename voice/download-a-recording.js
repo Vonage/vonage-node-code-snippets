@@ -1,11 +1,11 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
-const { FileClient } = require('@vonage/server-client');
 
-const VONAGE_PRIVATE_KEY = __dirname +'/../'+ process.env.VONAGE_PRIVATE_KEY;
+const VONAGE_PRIVATE_KEY = process.env.VONAGE_PRIVATE_KEY;
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
-
 const VOICE_RECORDING_URL = process.env.VOICE_RECORDING_URL;
 const VOICE_RECORDING_DESTINATION = process.env.VOICE_RECORDING_DESTINATION;
+
+const { FileClient } = require('@vonage/server-client');
 
 const fileClient = new FileClient({
   applicationId: VONAGE_APPLICATION_ID,
