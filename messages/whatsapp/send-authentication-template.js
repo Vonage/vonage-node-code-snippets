@@ -1,6 +1,4 @@
 require('dotenv').config({ path: __dirname + '/../../.env' });
-const { Vonage } = require('@vonage/server-sdk');
-const { Channels } = require('@vonage/messages');
 
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VONAGE_PRIVATE_KEY = process.env.VONAGE_PRIVATE_KEY;
@@ -9,6 +7,9 @@ const WHATSAPP_SENDER_ID = process.env.WHATSAPP_SENDER_ID;
 const WHATSAPP_TEMPLATE_NAME = process.env.WHATSAPP_TEMPLATE_NAME;
 const WHATSAPP_OTP = process.env.WHATSAPP_OTP;
 const MESSAGES_API_URL = process.env.MESSAGES_API_URL;
+
+const { Vonage } = require('@vonage/server-sdk');
+const { Channels } = require('@vonage/messages');
 
 /**
  * It is best to send messages using JWT instead of basic auth. If you leave out
