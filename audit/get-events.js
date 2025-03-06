@@ -1,8 +1,9 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
-const { Audit } = require('@vonage/audit');
 
 const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
 const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
+
+const { Audit } = require('@vonage/audit');
 
 const auditClient = new Audit({
   apiKey: VONAGE_API_KEY,
