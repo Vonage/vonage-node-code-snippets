@@ -12,11 +12,11 @@ const vonage = new Vonage({
   apiSecret: VONAGE_API_SECRET,
 });
 
-const from = SMS_SENDER_ID;
-const to = SMS_TO_NUMBER;
-const text = 'こんにちは世界';
-const type = 'unicode';
-
-vonage.sms.send({ to, from, text, type })
+vonage.sms.send({
+  to: SMS_TO_NUMBER,
+  from: SMS_SENDER_ID,
+  text: 'こんにちは世界',
+  type: 'unicode',
+})
   .then((resp) => console.log(resp))
   .catch((error) => console.error(error));

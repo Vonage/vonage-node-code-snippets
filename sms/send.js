@@ -12,11 +12,11 @@ const vonage = new Vonage({
   apiSecret: VONAGE_API_SECRET,
 });
 
-const from = SMS_SENDER_ID;
-const to = SMS_TO_NUMBER;
-const text = 'A text message sent using the Vonage SMS API';
-
-vonage.sms.send({ to, from, text })
+vonage.sms.send({
+  to: SMS_TO_NUMBER,
+  from: SMS_SENDER_ID,
+  text: 'A text message sent using the Vonage SMS API',
+})
   .then((resp) => {
     console.log('Message sent successfully');
     console.log(resp);
