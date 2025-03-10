@@ -1,12 +1,13 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
+
+const VOICE_CONF_NAME = process.env.VOICE_CONF_NAME;
+const port = process.env.PORT || 3000;
+
 const Express = require('express');
 const bodyParser = require('body-parser');
 
 const app = new Express();
-const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
-
-const VOICE_CONF_NAME = process.env.VOICE_CONF_NAME;
 
 const onInboundCall = (_, response) => {
   const ncco = [

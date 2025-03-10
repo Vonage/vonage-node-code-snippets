@@ -1,10 +1,11 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
-const Express = require('express');
-const bodyParser = require('body-parser');
 
 const VOICE_TO_NUMBER = process.env.VOICE_TO_NUMBER;
 const VONAGE_VIRTUAL_NUMBER = process.env.VONAGE_VIRTUAL_NUMBER;
 const port = process.env.PORT || 3000;
+
+const Express = require('express');
+const bodyParser = require('body-parser');
 
 const app = new Express();
 app.use(bodyParser.json());

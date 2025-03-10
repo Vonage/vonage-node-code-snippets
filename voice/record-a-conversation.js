@@ -1,9 +1,10 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
-const Express = require('express');
-const bodyParser = require('body-parser');
 
 const VOICE_CONF_NAME = process.env.CONF_NAME;
 const port = process.env.PORT || 3000;
+
+const Express = require('express');
+const bodyParser = require('body-parser');
 
 const app = new Express();
 app.use(bodyParser.json());
@@ -14,7 +15,7 @@ const onInboundCall = (request, response) => {
       'action': 'conversation',
       'name': VOICE_CONF_NAME,
       'record': 'true',
-      'eventMethod': 'POST', // This currently needs to be set rather than default due to a known issue https://help.nexmo.com/hc/en-us/articles/360001162687
+      'eventMethod': 'POST',
       'eventUrl': [`${request.protocol}://${request.get('host')}/webhooks/recordings`],
     },
   ];

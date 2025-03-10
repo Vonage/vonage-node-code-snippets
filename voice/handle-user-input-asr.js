@@ -1,8 +1,10 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
+
+const port = process.env.PORT || 3000;
+
 const Express = require('express');
 
 const app = new Express();
-const port = process.env.PORT || 3000;
 
 const onInboundCall = (request, response) => {
   const ncco = [

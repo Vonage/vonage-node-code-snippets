@@ -1,9 +1,11 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
+
+const port = process.env.PORT || 3000;
+
 const Express = require('express');
 const bodyParser = require('body-parser');
 
 const app = new Express();
-const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 

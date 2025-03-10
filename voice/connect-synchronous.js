@@ -1,13 +1,15 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
+
+const port = process.env.PORT || 3000;
+const VONAGE_VIRTUAL_NUMBER = process.env.VONAGE_VIRTUAL_NUMBER;
+const VOICE_TO_NUMBER = process.env.VOICE_TO_NUMBER;
+
 const Express = require('express');
 const bodyParser = require('body-parser');
 
 const app = new Express();
 app.use(bodyParser.json());
 
-const port = process.env.PORT || 3000;
-const VONAGE_VIRTUAL_NUMBER = process.env.VONAGE_VIRTUAL_NUMBER;
-const VOICE_TO_NUMBER = process.env.VOICE_TO_NUMBER;
 
 app.get('/answer', (req, res) => {
   const serverHost = req.protocol + '://' + req.host;
