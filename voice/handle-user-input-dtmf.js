@@ -1,7 +1,10 @@
+require('dotenv').config({ path: __dirname + '/../.env' });
 const Express = require('express');
 const bodyParser = require('body-parser');
 
 const app = new Express();
+const port = process.env.PORT || 3000;
+
 app.use(bodyParser.json());
 
 const onInboundCall = (request, response) => {
@@ -37,4 +40,6 @@ app
   .get('/webhooks/answer', onInboundCall)
   .post('/webhooks/dtmf', onInput);
 
-app.listen(3000);
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});

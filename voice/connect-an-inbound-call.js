@@ -1,11 +1,12 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
+
+const VONAGE_NUMBER = process.env.VONAGE_NUMBER;
+const VONAGE_VIRTUAL_NUMBER = process.env.VONAGE_VIRTUAL_NUMBER;
+
 const Express = require('express');
 
 const app = new Express();
 const port = process.env.PORT || 3000;
-
-const VONAGE_NUMBER = process.env.VONAGE_NUMBER;
-const VONAGE_VIRTUAL_NUMBER = process.env.VONAGE_VIRTUAL_NUMBER;
 
 const onInboundCall = (_, response) => {
   const ncco = [

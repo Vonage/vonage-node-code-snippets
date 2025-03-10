@@ -1,5 +1,7 @@
 const Express = require('express');
+
 const app = new Express();
+const port = process.env.PORT || 3000;
 
 const onInboundCall = (request, response) => {
   const from = request.query.from;
@@ -17,4 +19,6 @@ const onInboundCall = (request, response) => {
 
 app.get('/webhooks/answer', onInboundCall);
 
-app.listen(3000);
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
