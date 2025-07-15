@@ -3,7 +3,7 @@ require('dotenv').config({ path: __dirname + '/../.env' });
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VONAGE_PRIVATE_KEY = process.env.VONAGE_PRIVATE_KEY;
 const MESSAGES_TO_NUMBER = process.env.MESSAGES_TO_NUMBER;
-const MMS_SEENDER_ID = process.env.MMS_SEENDER_ID;
+const MMS_SENDER_ID = process.env.MMS_SENDER_ID;
 const MESSAGES_VIDEO_URL = process.env.MESSAGES_VIDEO_URL;
 const MESSAGES_API_URL = process.env.MESSAGES_API_URL;
 
@@ -33,7 +33,7 @@ vonage.messages.send({
     url: MESSAGES_VIDEO_URL,
   },
   to: MESSAGES_TO_NUMBER,
-  from: MMS_SEENDER_ID,
+  from: MMS_SENDER_ID,
 })
   .then(({ messageUUID }) => console.log(messageUUID))
   .catch((error) => console.error(error));

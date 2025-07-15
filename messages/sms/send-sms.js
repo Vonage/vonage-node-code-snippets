@@ -3,7 +3,7 @@ require('dotenv').config({ path: __dirname + '/../.env' });
 const VONAGE_APPLICATION_ID = process.env.VONAGE_APPLICATION_ID;
 const VONAGE_PRIVATE_KEY = process.env.VONAGE_PRIVATE_KEY;
 const MESSAGES_TO_NUMBER = process.env.MESSAGES_TO_NUMBER;
-const SMS_SEENDER_ID = process.env.SMS_SEENDER_ID;
+const SMS_SENDER_ID = process.env.SMS_SENDER_ID;
 const MESSAGES_API_URL = process.env.MESSAGES_API_URL;
 
 const { Vonage } = require('@vonage/server-sdk');
@@ -30,7 +30,7 @@ vonage.messages.send({
   channel: Channels.SMS,
   text: 'This is an SMS text message sent using the Messages API',
   to: MESSAGES_TO_NUMBER,
-  from: SMS_SEENDER_ID,
+  from: SMS_SENDER_ID,
 })
   .then(({ messageUUID }) => console.log(messageUUID))
   .catch((error) => console.error(error));
