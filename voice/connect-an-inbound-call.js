@@ -1,7 +1,7 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
 
-const VONAGE_NUMBER = process.env.VONAGE_NUMBER;
 const VONAGE_VIRTUAL_NUMBER = process.env.VONAGE_VIRTUAL_NUMBER;
+const VOICE_TO_NUMBER = process.env.VOICE_TO_NUMBER;
 const port = process.env.PORT || 3000;
 
 const Express = require('express');
@@ -12,11 +12,11 @@ const onInboundCall = (_, response) => {
   const ncco = [
     {
       action: 'connect',
-      from: VONAGE_NUMBER,
+      from: VONAGE_VIRTUAL_NUMBER,
       endpoint: [
         {
           type: 'phone',
-          number: VONAGE_VIRTUAL_NUMBER,
+          number: VOICE_TO_NUMBER,
         },
       ],
     },
