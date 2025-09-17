@@ -36,9 +36,9 @@ vonage.messages.send({
     {
       to: MESSAGES_TO_NUMBER,
       from: SMS_SENDER_ID,
-      channel: Channels.RCS,
+      channel: Channels.SMS,
       messageType: MessageType.TEXT,
-      text: 'This is an RCS text message sent via the Vonage Messages API.',
+      text: 'This is an SMS sent using the Vonage Messages API.',
 
     }
   ]
