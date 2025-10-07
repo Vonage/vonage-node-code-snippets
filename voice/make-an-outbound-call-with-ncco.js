@@ -17,17 +17,17 @@ const builder = new NCCOBuilder();
 builder.addAction(new Talk('This is a text to speech call from Vonage'));
 
 vonage.voice.createOutboundCall({
-  ncco: builder.build(),
   to: [
     {
       type: 'phone',
       number: VOICE_TO_NUMBER,
     },
-    {
-      type: 'phone',
-      number: VONAGE_VIRTUAL_NUMBER,
-    },
   ],
+  from: {
+    type: 'phone',
+    number: VONAGE_VIRTUAL_NUMBER,
+  },
+  ncco: builder.build(),
 })
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
