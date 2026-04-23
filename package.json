@@ -44,6 +44,6 @@
     "eslint-plugin-n": "17.15.1",
     "express": "^4.21.2",
     "globals": "15.15.0",
-    "jsonwebtoken": "9.0.2"
+    "jsonwebtoken": "9.0.3"
   }
 }
