@@ -40,7 +40,7 @@
     "@vonage/voice": "1.17.1",
     "body-parser": "^1.20.3",
     "dotenv": "^16.4.7",
-    "ejs": "^3.1.10",
+    "ejs": "^4.0.0",
     "eslint-plugin-n": "17.15.1",
     "express": "^4.21.2",
     "globals": "15.15.0",
