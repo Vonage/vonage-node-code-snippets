@@ -30,7 +30,7 @@
     "@vonage/audit": "1.16.1",
     "@vonage/auth": "1.12.0",
     "@vonage/jwt": "1.11.0",
-    "@vonage/meetings": "1.12.1",
+    "@vonage/meetings": "1.13.0",
     "@vonage/messages": "1.18.2",
     "@vonage/number-insight-v2": "1.8.4",
     "@vonage/server-client": "1.16.1",
