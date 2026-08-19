@@ -26,7 +26,7 @@ const vonage = new Vonage(
 );
 
 vonage.messages.send({
-  messageType: 'sms',
+  messageType: 'text',
   channel: Channels.SMS,
   text: 'This is an SMS text message sent using the Messages API',
   to: MESSAGES_TO_NUMBER,
