@@ -34,7 +34,7 @@
     "@vonage/messages": "1.18.2",
     "@vonage/number-insight-v2": "1.8.4",
     "@vonage/server-client": "1.16.1",
-    "@vonage/server-sdk": "3.19.4",
+    "@vonage/server-sdk": "3.25.1",
     "@vonage/subaccounts": "1.12.1",
     "@vonage/verify2": "1.15.1",
     "@vonage/voice": "1.17.1",
