@@ -29,7 +29,7 @@
     "@stylistic/eslint-plugin-js": "4.4.1",
     "@vonage/audit": "1.22.0",
     "@vonage/auth": "1.17.0",
-    "@vonage/jwt": "1.16.0",
+    "@vonage/jwt": "1.11.2",
     "@vonage/meetings": "1.13.0",
     "@vonage/messages": "1.26.0",
     "@vonage/number-insight-v2": "1.14.0",
